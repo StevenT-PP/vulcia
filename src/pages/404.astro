@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Page introuvable | IAForge"
+  description="Cette page n'existe pas. Retournez à l'accueil IAForge."
+>
+  <meta name="robots" content="noindex, follow" slot="head" />
+  <Nav />
+  <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+    <div class="text-center max-w-xl">
+      <p class="text-8xl font-black mb-6" style="color: rgba(124,92,252,0.3);">404</p>
+      <h1 class="text-3xl font-black text-white mb-4">Cette page n'existe pas</h1>
+      <p class="text-[#8888aa] mb-10">Elle a peut-être été déplacée ou supprimée. Pas d'inquiétude — l'accueil vous attend.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="px-8 py-3.5 rounded-xl text-white font-bold text-sm transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+          Retour à l'accueil
+        </a>
+        <a href="/contact" class="px-8 py-3.5 rounded-xl glass text-white font-bold text-sm hover:bg-white/10 transition-all">
+          Nous contacter
+        </a>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>

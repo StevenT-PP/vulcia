@@ -1,0 +1,1250 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const sectors = [
+  {
+    emoji: '🏥', name: 'Médecin / Dentiste',
+    subtitle: 'Vos rendez-vous se remplissent seuls. Vos patients ne patientent plus.',
+    gains: [
+      'Réserve les RDV directement dans votre agenda en ligne',
+      'Répond aux messages à toute heure, même le week-end à 23h',
+      'Envoie des rappels automatiques — les oublis de RDV disparaissent',
+      'Explique les tarifs, les actes, ce qui est remboursé par la Sécu',
+      'Gère les annulations et propose les créneaux libres immédiatement',
+    ],
+    result: '14h récupérées par semaine', resultSub: 'Gain estimé pour ce type de cabinet', resultEmoji: '⏰',
+    conv: [
+      { c: true, t: "Bonjour, j'aurais besoin d'un RDV pour un détartrage. Je suis libre jeudi après-midi ou vendredi matin." },
+      { c: false, t: "Bonjour ! J'ai un créneau jeudi 26 juin à 15h ou vendredi 27 juin à 9h30. Laquelle vous convient ?" },
+      { c: true, t: "Vendredi 9h30, c'est parfait !" },
+      { c: false, t: "✅ RDV confirmé vendredi 27 juin à 9h30 avec Dr. Martin. Vous recevrez un SMS de rappel la veille. À vendredi !" },
+    ],
+  },
+  {
+    emoji: '🍽️', name: 'Restaurant / Hôtel',
+    subtitle: 'Votre salle est toujours pleine. Sans décrocher le téléphone.',
+    gains: [
+      'Gère les réservations de table 24h/24, 7j/7, en quelques secondes',
+      'Répond aux questions sur le menu, les allergènes, les horaires',
+      'Envoie une confirmation automatique + rappel la veille',
+      'Répond aux avis Google pour améliorer votre réputation en ligne',
+      'Envoie vos promotions du soir aux clients réguliers par SMS',
+    ],
+    result: '+40% de réservations confirmées', resultSub: 'Potentiel estimé pour ce secteur', resultEmoji: '📅',
+    conv: [
+      { c: true, t: "Bonsoir, vous avez de la place vendredi soir pour 4 personnes vers 20h ?" },
+      { c: false, t: "Bonsoir ! Oui, une table est disponible vendredi 27/06 à 20h pour 4 personnes. Je réserve à votre nom ?" },
+      { c: true, t: "Oui s'il vous plaît, au nom de Martin" },
+      { c: false, t: "✅ C'est noté ! Vendredi 27 juin, 20h, 4 personnes — M. Martin. Nous vous attendons avec plaisir !" },
+    ],
+  },
+  {
+    emoji: '🔧', name: 'Artisan / BTP',
+    subtitle: 'Votre téléphone ne sonne plus en plein milieu d\'un chantier.',
+    gains: [
+      'Collecte toutes les infos nécessaires pour établir un devis automatique',
+      'Identifie et priorise les urgences (fuite, panne électrique, sinistre…)',
+      'Prend les RDV d\'intervention et envoie une confirmation par SMS',
+      'Répond aux questions sur vos tarifs, délais et zones d\'intervention',
+      'Relance les devis non signés sans que vous y pensiez',
+    ],
+    result: '-60% de temps passé à gérer les appels', resultSub: 'Potentiel estimé pour ce secteur', resultEmoji: '📞',
+    conv: [
+      { c: true, t: "Mon robinet fuit depuis ce matin, c'est urgent. Vous pouvez intervenir ?" },
+      { c: false, t: "Bonjour ! Quelle est votre adresse et quel type de fuite (robinet, tuyau, joint) ?" },
+      { c: true, t: "12 rue des Fleurs Lyon 6, joint du robinet de l'évier" },
+      { c: false, t: "✅ Un plombier peut intervenir aujourd'hui entre 14h et 17h. Devis estimé : 60–80€. SMS de confirmation envoyé !" },
+    ],
+  },
+  {
+    emoji: '🛒', name: 'E-commerce',
+    subtitle: 'Votre service client tourne seul. Vos ventes grimpent.',
+    gains: [
+      'Répond instantanément aux questions produits, délais et retours',
+      'Recommande des produits personnalisés selon le profil du client',
+      'Relance automatiquement les paniers abandonnés',
+      'Gère le SAV et les réclamations sans intervention humaine',
+      'Génère les fiches produits optimisées pour Google automatiquement',
+    ],
+    result: '+31% de taux de conversion', resultSub: 'Potentiel estimé pour ce secteur', resultEmoji: '📈',
+    conv: [
+      { c: true, t: "J'ai commandé il y a 5 jours et je n'ai toujours rien reçu. Commande #8472." },
+      { c: false, t: "Bonjour ! Commande #8472 expédiée le 21/06 — livraison prévue demain avant 18h. Un bon de 10% vous est offert pour ce délai." },
+      { c: true, t: "Ah ok, merci c'est rassurant !" },
+      { c: false, t: "Avec plaisir ! Votre bon est valable 30 jours. Bonne réception !" },
+    ],
+  },
+  {
+    emoji: '🏠', name: 'Immobilier',
+    subtitle: 'Vos leads ne refroidissent plus. Vos visites se remplissent seules.',
+    gains: [
+      'Qualifie chaque acheteur ou vendeur potentiel en moins de 5 minutes',
+      'Programme les visites directement dans votre agenda',
+      'Envoie automatiquement les biens correspondant aux critères du client',
+      'Répond aux questions sur les biens (surface, DPE, quartier, prix)',
+      'Suit les dossiers de A à Z jusqu\'à la promesse de vente',
+    ],
+    result: '+40% de leads convertis en visites', resultSub: 'Potentiel estimé pour ce secteur', resultEmoji: '🎯',
+    conv: [
+      { c: true, t: "Bonjour, je cherche un T3 à Lyon, budget 280 000€ max, proche des transports." },
+      { c: false, t: "Bonjour ! J'ai 3 biens correspondant à vos critères. Je vous envoie les fiches. Disponible pour une visite cette semaine ?" },
+      { c: true, t: "Oui, jeudi ou vendredi" },
+      { c: false, t: "✅ Visite programmée jeudi 26/06 à 10h — 47 rue Garibaldi, Lyon 7e. Fiche complète et plan d'accès envoyés par email." },
+    ],
+  },
+  {
+    emoji: '⚖️', name: 'Avocat / Comptable',
+    subtitle: 'Vos dossiers sont triés avant même que vous arriviez au bureau.',
+    gains: [
+      'Qualifie chaque cas avant le premier RDV — 20 minutes économisées par dossier',
+      'Collecte automatiquement toutes les pièces justificatives nécessaires',
+      'Explique les procédures et délais aux clients qui attendent une réponse',
+      'Prend les rendez-vous et envoie le questionnaire préalable',
+      'Archive et classe les documents clients sans intervention humaine',
+    ],
+    result: '22h d\'administration économisées par semaine', resultSub: 'Potentiel estimé pour ce secteur', resultEmoji: '📂',
+    conv: [
+      { c: true, t: "Bonjour, mon propriétaire refuse de me rendre ma caution depuis 3 mois. C'est 1 200€." },
+      { c: false, t: "C'est un litige locatif classique. Avez-vous un état des lieux de sortie et des preuves de paiement de loyers ?" },
+      { c: true, t: "Oui, j'ai tout ça" },
+      { c: false, t: "Parfait. Un avocat vous rappelle sous 24h. Je vous envoie le questionnaire préalable — il réduira votre consultation de 30 minutes." },
+    ],
+  },
+  {
+    emoji: '📚', name: 'Coach / Formateur',
+    subtitle: 'Vos formations se vendent pendant que vous êtes en séance.',
+    gains: [
+      'Qualifie les candidats à votre programme avant tout entretien',
+      'Répond aux questions sur le contenu, les prérequis et les résultats attendus',
+      'Gère les inscriptions et envoie les accès automatiquement',
+      'Envoie les supports pédagogiques et rappels de session',
+      'Suit la progression de vos élèves et envoie des relances de motivation',
+    ],
+    result: '+3 000€/mois de chiffre d\'affaires additionnel', resultSub: 'Potentiel estimé pour ce secteur', resultEmoji: '💰',
+    conv: [
+      { c: true, t: "Votre formation \"Lancer son business\" convient-elle à un débutant complet ?" },
+      { c: false, t: "Bonjour ! Oui, 80% de nos élèves n'avaient jamais lancé d'activité avant notre programme. Je vous envoie le programme détaillé ?" },
+      { c: true, t: "Oui et comment je m'inscris ?" },
+      { c: false, t: "✅ Programme envoyé ! Prochaine session : 1er juillet, 20 places disponibles. Lien d'inscription valable 48h." },
+    ],
+  },
+];
+---
+
+<Layout
+  title="IAForge — Agence IA & SEO pour PME | Agents intelligents, résultats en 3 semaines"
+  description="IAForge déploie des agents IA sur-mesure, une stratégie SEO autonome et des sites haute performance pour les PME françaises. Audit gratuit en 30 minutes."
+>
+  <Nav />
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 px-6">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="grid-bg"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <div>
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass mb-8 reveal">
+            <span class="pulse-dot"></span>
+            <span class="text-xs text-[#8888aa] font-medium">Agence IA · France entière · Opérationnel en 3 semaines</span>
+          </div>
+
+          <h1 class="text-[clamp(2.4rem,5vw,4.5rem)] font-black leading-[1.05] tracking-tight mb-6 reveal">
+            <span class="text-white">Votre premier assistant IA,</span><br/>
+            <span class="gradient-text">configuré pour votre métier.</span><br/>
+            <span class="text-white">Opérationnel en 3 semaines.</span>
+          </h1>
+
+          <p class="text-lg text-[#9090b0] leading-relaxed mb-3 max-w-lg reveal">
+            Un assistant virtuel disponible 24h/24 qui répond à vos clients, prend vos rendez-vous et qualifie vos prospects — adapté à votre secteur d'activité, pas à n'importe qui.
+          </p>
+          <p class="text-base leading-relaxed mb-8 max-w-lg reveal">
+            <strong class="text-white font-semibold">Dès 149€/mois. 0€ de frais d'installation. Résultat garanti en 90 jours.</strong>
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mb-10 reveal">
+            <a href="/contact" class="btn-primary flex items-center justify-center gap-2 group">
+              Audit gratuit — 30 min
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#secteurs" class="btn-ghost flex items-center justify-center gap-2">
+              Voir pour mon métier
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-6 reveal">
+            {[
+              { v: '149€', l: 'Prix d\'entrée / mois' },
+              { v: '0€', l: 'Frais d\'installation' },
+              { v: '90j', l: 'Résultat garanti' },
+            ].map(m => (
+              <div>
+                <div class="text-2xl font-black text-white">{m.v}</div>
+                <div class="text-xs text-[#8888aa] mt-0.5">{m.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Mockup hero -->
+        <div class="relative reveal-right hidden lg:block">
+          <div class="absolute inset-0 rounded-3xl opacity-30" style="background: radial-gradient(circle at 50% 50%, #7c5cfc, transparent 70%); filter: blur(40px);"></div>
+
+          <div class="relative rounded-2xl overflow-hidden border border-white/10" style="background: #0d0d1a;">
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5" style="background: rgba(255,255,255,0.03);">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full" style="background:#ff5f57;"></div>
+                <div class="w-3 h-3 rounded-full" style="background:#febc2e;"></div>
+                <div class="w-3 h-3 rounded-full" style="background:#28c840;"></div>
+              </div>
+              <div class="flex-1 mx-4 px-3 py-1 rounded text-xs text-[#8888aa]" style="background: rgba(255,255,255,0.04);">
+                agent.iaforge.fr — Tableau de bord
+              </div>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <div class="text-white font-bold text-sm">Agent RDV — Cabinet Dr. Martin</div>
+                  <div class="text-xs text-[#8888aa]">Actif depuis 14 jours</div>
+                </div>
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-[#34d399]" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse"></div>
+                  En ligne
+                </div>
+              </div>
+
+              <div class="grid grid-cols-3 gap-3 mb-5">
+                {[
+                  { v: '142', l: 'Demandes traitées', c: '#7c5cfc' },
+                  { v: '38', l: 'RDV confirmés', c: '#38bdf8' },
+                  { v: '14h', l: 'Temps économisé', c: '#34d399' },
+                ].map(s => (
+                  <div class="rounded-xl p-3 text-center" style={`background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);`}>
+                    <div class="text-lg font-black mb-0.5" style={`color: ${s.c};`}>{s.v}</div>
+                    <div class="text-[10px] text-[#8888aa] leading-tight">{s.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="rounded-xl p-4 space-y-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="text-xs text-[#8888aa] mb-2 font-semibold uppercase tracking-wider">Conversation en temps réel</div>
+
+                <div class="flex gap-2 items-start">
+                  <div class="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs" style="background: rgba(255,255,255,0.08);">👤</div>
+                  <div class="rounded-xl rounded-tl-sm px-3 py-2 text-xs text-[#c0c0e0] max-w-[80%]" style="background: rgba(255,255,255,0.06);">
+                    Bonjour, je voudrais prendre un RDV pour un détartrage, disponible jeudi ou vendredi matin
+                  </div>
+                </div>
+
+                <div class="flex gap-2 items-start justify-end">
+                  <div class="rounded-xl rounded-tr-sm px-3 py-2 text-xs text-white max-w-[80%]" style="background: linear-gradient(135deg, rgba(124,92,252,0.4), rgba(56,189,248,0.3)); border: 1px solid rgba(124,92,252,0.3);">
+                    Bonjour ! Je peux vous proposer jeudi 26 juin à 9h30 ou vendredi 27 juin à 10h00. Une préférence ?
+                  </div>
+                  <div class="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold" style="background: linear-gradient(135deg, #7c5cfc, #38bdf8);">IA</div>
+                </div>
+
+                <div class="flex gap-2 items-start">
+                  <div class="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs" style="background: rgba(255,255,255,0.08);">👤</div>
+                  <div class="rounded-xl rounded-tl-sm px-3 py-2 text-xs text-[#c0c0e0]" style="background: rgba(255,255,255,0.06);">
+                    Jeudi 9h30 c'est parfait !
+                  </div>
+                </div>
+
+                <div class="flex gap-2 items-start justify-end">
+                  <div class="rounded-xl rounded-tr-sm px-3 py-2 text-xs text-white" style="background: linear-gradient(135deg, rgba(124,92,252,0.4), rgba(56,189,248,0.3)); border: 1px solid rgba(124,92,252,0.3);">
+                    ✅ RDV confirmé ! Jeudi 26 juin à 9h30 avec Dr. Martin. Un SMS de rappel la veille.
+                  </div>
+                  <div class="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold" style="background: linear-gradient(135deg, #7c5cfc, #38bdf8);">IA</div>
+                </div>
+
+                <div class="flex items-center gap-2 text-[10px] text-[#8888aa]">
+                  <div class="flex gap-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#7c5cfc] typing-dot" style="animation-delay:0ms"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#7c5cfc] typing-dot" style="animation-delay:160ms"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#7c5cfc] typing-dot" style="animation-delay:320ms"></div>
+                  </div>
+                  Agent traite 3 nouvelles demandes…
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-4 -left-4 glass rounded-xl px-4 py-3 flex items-center gap-3 border border-white/10">
+            <div class="text-2xl">⚡</div>
+            <div>
+              <div class="text-white font-bold text-sm">Réponse en 3 secondes</div>
+              <div class="text-[#8888aa] text-xs">vs 4h en moyenne par email</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BARRE DE CONFIANCE
+  ══════════════════════════════════════ -->
+  <div class="border-y border-white/5 py-6 px-6" style="background: rgba(255,255,255,0.015);">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+        <span class="text-xs text-[#8888aa] uppercase tracking-widest font-semibold flex-shrink-0">IA utilisée</span>
+        {[
+          { label: 'GPT-4o', logo: '🤖' },
+          { label: 'Claude 3.5', logo: '🧠' },
+          { label: 'Mistral Large', logo: '🌟' },
+          { label: 'Google Gemini', logo: '♊' },
+          { label: 'Hébergement FR', logo: '🇫🇷' },
+          { label: 'Cloudflare', logo: '🔒' },
+        ].map(t => (
+          <div class="flex items-center gap-2 text-[#8888aa] hover:text-white transition-colors">
+            <span class="text-lg">{t.logo}</span>
+            <span class="text-sm font-semibold">{t.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTEURS — tabs interactifs
+  ══════════════════════════════════════ -->
+  <section id="secteurs" class="py-24 px-6" style="background: var(--bg-2);">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-12 reveal">
+        <p class="label-tag mb-3">Pour tous les métiers</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Concrètement, votre agent IA<br/><span class="gradient-text">fait quoi ?</span></h2>
+        <p class="text-[#9090b0] mt-4 max-w-2xl mx-auto text-base">Un client envoie un message sur votre site. L'agent lit sa demande, comprend ce qu'il veut, et répond en quelques secondes — comme vous le feriez, mais sans que vous soyez là. Il peut prendre un rendez-vous, envoyer un devis, répondre à une question ou qualifier un prospect. Configuré pour votre vocabulaire, vos horaires, votre façon de travailler. Choisissez votre métier pour voir :</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10" id="sector-tabs">
+        {sectors.map((s, i) => (
+          <button
+            class:list={['sector-tab', i === 0 ? 'sector-active' : '']}
+            data-sector={i}
+            type="button"
+          >
+            <span>{s.emoji}</span> {s.name}
+          </button>
+        ))}
+      </div>
+
+      <!-- Panels -->
+      {sectors.map((s, i) => (
+        <div
+          class:list={['sector-panel', i !== 0 ? 'hidden' : '']}
+          data-panel={i}
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+            <!-- Gauche : Ce que ça fait -->
+            <div class="glass rounded-2xl p-8 flex flex-col">
+              <div class="text-4xl mb-4">{s.emoji}</div>
+              <h3 class="text-2xl font-black text-white mb-2">{s.name}</h3>
+              <p class="text-[#9090b0] mb-6 leading-relaxed">{s.subtitle}</p>
+
+              <ul class="space-y-3 mb-8 flex-1">
+                {s.gains.map(g => (
+                  <li class="flex items-start gap-3">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-sm text-[#c0c0e0] leading-relaxed">{g}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="rounded-xl px-5 py-4 flex items-center gap-4 mt-auto" style="background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.15);">
+                <div class="text-3xl">{s.resultEmoji}</div>
+                <div>
+                  <div class="text-white font-black text-lg">{s.result}</div>
+                  <div class="text-[#8888aa] text-xs mt-0.5">{s.resultSub}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Droite : Conversation live -->
+            <div class="flex flex-col">
+              <div class="glass rounded-2xl flex-1" style="overflow: hidden;">
+                <!-- Barre app -->
+                <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5" style="background: rgba(255,255,255,0.02);">
+                  <div class="w-2 h-2 rounded-full bg-[#34d399] animate-pulse"></div>
+                  <span class="text-xs text-[#8888aa] font-medium">Votre agent IA · En ligne maintenant</span>
+                </div>
+
+                <!-- Messages -->
+                <div class="p-6 space-y-4">
+                  <div class="text-center mb-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs text-[#8888aa]" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);">
+                      Exemple de conversation réelle
+                    </div>
+                  </div>
+
+                  {s.conv.map((msg, mi) => (
+                    <div class:list={['flex gap-3 items-end', !msg.c ? 'justify-end' : '']}>
+                      {msg.c && (
+                        <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm" style="background: rgba(255,255,255,0.08);">
+                          👤
+                        </div>
+                      )}
+                      <div
+                        class:list={['rounded-2xl px-4 py-3 text-sm max-w-[78%] leading-relaxed', msg.c ? 'rounded-tl-sm' : 'rounded-tr-sm']}
+                        style={msg.c
+                          ? 'background: rgba(255,255,255,0.06); color: #c0c0e0;'
+                          : 'background: linear-gradient(135deg, rgba(124,92,252,0.35), rgba(56,189,248,0.25)); border: 1px solid rgba(124,92,252,0.3); color: white;'}
+                      >
+                        {msg.t}
+                      </div>
+                      {!msg.c && (
+                        <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black" style="background: linear-gradient(135deg, #7c5cfc, #38bdf8);">
+                          IA
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  <div class="flex items-center gap-2 text-xs text-[#8888aa] pl-11 pt-2">
+                    <div class="flex gap-1">
+                      <div class="w-1.5 h-1.5 rounded-full bg-[#7c5cfc] typing-dot" style="animation-delay:0ms"></div>
+                      <div class="w-1.5 h-1.5 rounded-full bg-[#7c5cfc] typing-dot" style="animation-delay:160ms"></div>
+                      <div class="w-1.5 h-1.5 rounded-full bg-[#7c5cfc] typing-dot" style="animation-delay:320ms"></div>
+                    </div>
+                    Traitement de la prochaine demande…
+                  </div>
+                </div>
+
+                <!-- Footer de la chat -->
+                <div class="px-6 pb-6">
+                  <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                    <span class="text-xs text-[#8888aa] flex-1">Votre message…</span>
+                    <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #7c5cfc, #38bdf8);">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA sous la chat -->
+              <div class="mt-4 text-center">
+                <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-[#7c5cfc] hover:text-white transition-colors">
+                  Voir un agent comme ça pour mon activité
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       AVANT / APRÈS
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="label-tag mb-3">La réalité</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Votre business <span class="gradient-text">avant et après</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal">
+        <div class="rounded-2xl p-8" style="background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.12);">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-red-400 mb-6" style="background: rgba(239,68,68,0.1);">
+            ❌ Sans assistant virtuel
+          </div>
+          <ul class="space-y-4">
+            {[
+              ['⏰', 'Les tâches répétitives (répondre aux messages, gérer les RDV, envoyer des devis) prennent des heures chaque semaine'],
+              ['🔇', 'Votre site ne remonte pas sur Google — les gens qui cherchent vos services ne vous trouvent pas facilement'],
+              ['😤', 'Un prospect qui n\'obtient pas de réponse rapide passe à la concurrence, souvent sans vous le dire'],
+              ['📝', 'Produire du contenu régulier demande du temps que vous n\'avez pas quand vous gérez tout seul'],
+              ['💸', 'Déléguer à un assistant ou une secrétaire représente un budget conséquent pour une petite structure'],
+            ].map(([icon, text]) => (
+              <li class="flex items-start gap-3">
+                <span class="text-lg flex-shrink-0">{icon}</span>
+                <span class="text-[#9090b0] text-sm leading-relaxed">{text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-2xl p-8" style="background: rgba(52,211,153,0.04); border: 1px solid rgba(52,211,153,0.15);">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-[#34d399] mb-6" style="background: rgba(52,211,153,0.1);">
+            ✅ Avec IAForge
+          </div>
+          <ul class="space-y-4">
+            {[
+              ['🤖', 'Votre assistant IA gère les tâches répétitives 24h/24 — sans erreur, sans pause'],
+              ['📈', '8 à 30 articles SEO publiés chaque mois — votre site remonte sur Google automatiquement'],
+              ['⚡', 'Chaque prospect reçoit une réponse personnalisée en 3 secondes, qualifié et orienté'],
+              ['✍️', 'Contenu marketing créé à votre voix, publié sans que vous leviez le petit doigt'],
+              ['💡', 'Dès 349€/mois : site + agent IA + SEO local. Une solution complète pour une fraction du coût d\'un employé'],
+            ].map(([icon, text]) => (
+              <li class="flex items-start gap-3">
+                <span class="text-lg flex-shrink-0">{icon}</span>
+                <span class="text-white text-sm leading-relaxed">{text}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="inline-flex items-center gap-2 mt-6 text-sm font-bold text-[#34d399] hover:text-white transition-colors">
+            Je veux ça pour mon entreprise →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SERVICES — bento
+  ══════════════════════════════════════ -->
+  <section id="services" class="py-24 px-6" style="background: var(--bg-2);">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16 reveal">
+        <p class="label-tag mb-3">Ce que nous faisons</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Trois leviers.<br/><span class="gradient-text">Une seule promesse.</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+
+        <!-- Agent IA -->
+        <div class="md:col-span-7 service-card rounded-3xl p-8 overflow-hidden relative group">
+          <div class="glow-hover" style="--gc: #7c5cfc;"></div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="icon-chip" style="--c: #7c5cfc;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="1.8"><path d="M12 2a7 7 0 017 7v1a7 7 0 01-7 7 7 7 0 01-7-7V9a7 7 0 017-7z"/><path d="M9 10h6M9 13h4"/><path d="M12 19v3M9 22h6"/></svg>
+              </div>
+              <span class="text-xs font-bold uppercase tracking-widest text-[#7c5cfc]">Service phare</span>
+            </div>
+
+            <h3 class="text-3xl font-black text-white mb-3">Votre assistant IA personnel</h3>
+            <p class="text-[#9090b0] mb-7 max-w-md">Imaginez un employé qui ne dort jamais, ne prend jamais de congés et ne fait jamais d'erreur. Il répond, qualifie, réserve, prospecte — pendant que vous gérez votre vrai travail.</p>
+
+            <div class="rounded-xl p-4 mb-6" style="background: rgba(124,92,252,0.06); border: 1px solid rgba(124,92,252,0.15);">
+              <div class="space-y-2.5">
+                <div class="flex gap-2">
+                  <div class="w-5 h-5 rounded-full flex-shrink-0" style="background: rgba(255,255,255,0.08);"></div>
+                  <div class="rounded-lg px-3 py-1.5 text-xs text-[#c0c0e0]" style="background: rgba(255,255,255,0.05);">Je voudrais un devis pour mon projet</div>
+                </div>
+                <div class="flex gap-2 justify-end">
+                  <div class="rounded-lg px-3 py-1.5 text-xs text-white" style="background: rgba(124,92,252,0.3);">Bien sûr ! Décrivez-moi votre projet en 2-3 lignes et je prépare votre devis personnalisé. ✨</div>
+                  <div class="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-[9px] font-black" style="background: linear-gradient(135deg, #7c5cfc, #38bdf8);">IA</div>
+                </div>
+                <div class="text-[10px] text-[#8888aa] flex items-center gap-1.5 pl-7">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#34d399]"></span> Réponse en 2 secondes · Disponible 24h/24
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mb-6">
+              {[
+                { icon: '📅', l: 'Prise de RDV automatique' },
+                { icon: '🎯', l: 'Qualification de prospects' },
+                { icon: '💬', l: 'Support client 24h/24' },
+                { icon: '📊', l: 'Prospection automatisée' },
+                { icon: '📋', l: 'Devis intelligents' },
+                { icon: '🔔', l: 'Rappels et relances' },
+              ].map(t => (
+                <div class="flex items-center gap-2 glass rounded-lg px-3 py-2">
+                  <span class="text-base">{t.icon}</span>
+                  <span class="text-xs text-white font-medium">{t.l}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href="/services#agents" class="inline-flex items-center gap-2 text-sm font-bold text-[#7c5cfc] hover:text-white transition-colors">
+              En savoir plus <span class="group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="md:col-span-5 flex flex-col gap-4">
+
+          <!-- SEO -->
+          <div class="flex-1 service-card rounded-3xl p-7 relative overflow-hidden group">
+            <div class="glow-hover" style="--gc: #38bdf8;"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-5">
+                <div class="icon-chip" style="--c: #38bdf8;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><path d="M21 21l-4.35-4.35M17 11A6 6 0 105 11a6 6 0 0012 0z"/></svg>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[11px] font-bold text-white" style="background: rgba(56,189,248,0.2); border: 1px solid rgba(56,189,248,0.3);">Populaire</span>
+              </div>
+              <h3 class="text-xl font-black text-white mb-2">Référencement Google automatisé</h3>
+              <p class="text-[#9090b0] text-sm mb-4">Articles publiés chaque mois, votre fiche Google optimisée, votre site que Google comprend mieux — tout en automatique, sans vous solliciter.</p>
+
+              <div class="space-y-2">
+                {[
+                  { label: 'Position Google', v: '+85%', color: '#38bdf8' },
+                  { label: 'Trafic organique', v: '+290%', color: '#7c5cfc' },
+                  { label: 'Mots-clés page 1', v: '+92%', color: '#34d399' },
+                ].map(b => (
+                  <div>
+                    <div class="flex justify-between text-[11px] mb-1">
+                      <span class="text-[#8888aa]">{b.label}</span>
+                      <span class="font-bold" style={`color: ${b.color};`}>{b.v}</span>
+                    </div>
+                    <div class="h-1.5 rounded-full" style="background: rgba(255,255,255,0.06);">
+                      <div class="h-full rounded-full seo-bar" style={`background: ${b.color};`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Sites web -->
+          <div class="flex-1 service-card rounded-3xl p-7 relative overflow-hidden group">
+            <div class="glow-hover" style="--gc: #a78bfa;"></div>
+            <div class="relative z-10">
+              <div class="icon-chip mb-5" style="--c: #a78bfa;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <h3 class="text-xl font-black text-white mb-2">Sites ultrarapides qui convertissent</h3>
+              <p class="text-[#9090b0] text-sm mb-4">Dans le top 1% des sites français en termes de vitesse. Livré en 3 semaines avec un design premium taillé pour convaincre.</p>
+
+              <div class="flex items-center gap-4">
+                <div class="relative w-16 h-16">
+                  <svg viewBox="0 0 36 36" class="w-16 h-16 -rotate-90">
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2.5"/>
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#a78bfa" stroke-width="2.5"
+                      stroke-dasharray="97 100" stroke-linecap="round"/>
+                  </svg>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-base font-black text-white">98</span>
+                  </div>
+                </div>
+                <div class="text-sm">
+                  <div class="text-white font-bold">Score PageSpeed</div>
+                  <div class="text-[#8888aa] text-xs">Chargement quasi-instantané</div>
+                  <div class="text-[#34d399] text-xs font-semibold">Critères Google ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preuves bas -->
+        <div class="md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { icon: '⚡', text: 'Opérationnel en 3 semaines, pas 3 mois' },
+            { icon: '🔒', text: 'Vos données vous appartiennent, toujours' },
+            { icon: '📈', text: 'ROI mesurable dès le premier mois' },
+            { icon: '🇫🇷', text: 'Équipe française, support en français' },
+          ].map(i => (
+            <div class="glass rounded-xl px-5 py-4 flex items-center gap-3">
+              <span class="text-xl flex-shrink-0">{i.icon}</span>
+              <span class="text-sm text-[#9090b0] leading-snug">{i.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       DÉMO — activité de la nuit
+  ══════════════════════════════════════ -->
+  <section id="demo" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="label-tag mb-3">En action</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Votre assistant IA,<br/><span class="gradient-text">pendant que vous dormez</span></h2>
+        <p class="text-[#9090b0] mt-4 max-w-xl mx-auto">Voici à quoi ressemble le tableau de bord d'un agent IA en fonctionnement. Chaque interaction est enregistrée, classifiée et consultable à tout moment.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+
+        <div class="md:col-span-2 glass rounded-3xl p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-white font-bold">Exemple de journal d'activité</h3>
+            <span class="text-xs text-[#8888aa] px-2 py-1 rounded" style="background: rgba(255,255,255,0.05);">Simulation</span>
+          </div>
+          <div class="space-y-4">
+            {[
+              { time: '22h14', type: 'RDV confirmé', desc: 'Marie D. — détartrage jeudi 9h30 · Rappel SMS programmé', icon: '📅', color: '#34d399' },
+              { time: '23h42', type: 'Lead qualifié', desc: 'Entreprise Dupont — devis isolation demandé · Budget identifié : 8 000€', icon: '🎯', color: '#7c5cfc' },
+              { time: '01h07', type: 'Question répondue', desc: '"Quels sont vos horaires ?" — réponse envoyée en 2 secondes', icon: '💬', color: '#38bdf8' },
+              { time: '03h33', type: 'Réservation', desc: 'Restaurant La Table — 4 couverts vendredi 20h · Confirmation envoyée', icon: '🍽️', color: '#f59e0b' },
+              { time: '06h18', type: 'Lead qualifié', desc: 'Sarah M. — recherche T3 à Lyon 280k€ · 3 biens envoyés par email', icon: '🏠', color: '#7c5cfc' },
+              { time: '07h55', type: 'Cas transmis', desc: 'Demande complexe hors périmètre — votre attention requise', icon: '⚠️', color: '#fbbf24' },
+            ].map((e, i) => (
+              <div class="flex items-start gap-4">
+                <div class="text-xs text-[#8888aa] w-12 flex-shrink-0 pt-0.5">{e.time}</div>
+                <div class="w-px self-stretch flex-shrink-0 relative">
+                  <div class="absolute top-1.5 -left-1 w-2 h-2 rounded-full" style={`background: ${e.color};`}></div>
+                  {i < 5 && <div class="absolute top-4 left-0 bottom-0 w-px" style="background: rgba(255,255,255,0.06);"></div>}
+                </div>
+                <div class="flex-1 pb-4">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <span class="text-sm">{e.icon}</span>
+                    <span class="text-sm font-semibold text-white">{e.type}</span>
+                    <span class="text-[11px] px-2 py-0.5 rounded-full font-medium" style={`background: ${e.color}18; color: ${e.color};`}>auto</span>
+                  </div>
+                  <p class="text-xs text-[#8888aa]">{e.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-sm text-[#8888aa]">6 interactions traitées · 1 escalade · 0 intervention humaine</span>
+            <span class="text-sm font-bold text-[#34d399]">100% autonome</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="glass rounded-2xl p-6 text-center flex-1">
+            <div class="text-5xl font-black text-white mb-2">5/6</div>
+            <div class="text-sm text-[#8888aa]">Interactions résolues sans vous</div>
+            <div class="mt-3 text-xs text-[#34d399] font-semibold">83% d'autonomie</div>
+          </div>
+          <div class="glass rounded-2xl p-6 text-center flex-1">
+            <div class="text-5xl font-black text-white mb-2">2.3s</div>
+            <div class="text-sm text-[#8888aa]">Temps de réponse moyen</div>
+            <div class="mt-3 text-xs text-[#38bdf8] font-semibold">vs 4h par email</div>
+          </div>
+          <div class="glass rounded-2xl p-6 text-center flex-1">
+            <div class="text-5xl font-black text-white mb-2">0€</div>
+            <div class="text-sm text-[#8888aa]">Coût de cette nuit de travail</div>
+            <div class="mt-3 text-xs text-[#7c5cfc] font-semibold">Inclus dans votre pack</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MÉTHODE
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6" style="background: var(--bg-2);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="label-tag mb-3">Notre méthode</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Simple. Rapide.<br/><span class="gradient-text">Mesurable.</span></h2>
+        <p class="text-[#9090b0] mt-4 max-w-md mx-auto">Aucune boîte noire. Vous validez à chaque étape et voyez exactement ce qui se passe.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 reveal">
+        {[
+          { n: '01', title: 'Audit gratuit 30 min', desc: 'On analyse vos processus, votre visibilité Google, vos outils. On ressort les 3 gains les plus rapides avec un chiffrage de ROI.', icon: '🔍', color: '#7c5cfc', badge: 'Gratuit' },
+          { n: '02', title: 'Proposition sous 72h', desc: 'Devis détaillé : coût, délai, résultat attendu par action. Sur-mesure. Jamais une présentation générique copiée-collée.', icon: '📋', color: '#9b72fc', badge: '72h chrono' },
+          { n: '03', title: 'Déploiement en 3 sem.', desc: 'Votre site en ligne, votre agent IA opérationnel, votre SEO lancé. Vous testez et validez à chaque étape.', icon: '🚀', color: '#38bdf8', badge: '< 3 semaines' },
+          { n: '04', title: 'Amélioration continue', desc: 'Rapport mensuel, nouveaux articles publiés, agents améliorés. Vous suivez tout depuis un dashboard simple.', icon: '📊', color: '#34d399', badge: 'Chaque mois' },
+        ].map(step => (
+          <div class="glass rounded-2xl p-7 text-center process-card">
+            <div class="text-4xl mb-4">{step.icon}</div>
+            <div class="text-3xl font-black mb-3" style={`color: ${step.color};`}>{step.n}</div>
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-4" style={`background: ${step.color}15; color: ${step.color}; border: 1px solid ${step.color}30;`}>{step.badge}</div>
+            <h3 class="text-lg font-black text-white mb-3">{step.title}</h3>
+            <p class="text-sm text-[#9090b0] leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CE QU'ON LIVRE
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="label-tag mb-3">Ce qu'on livre</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Concret, mesurable,<br/><span class="gradient-text">vérifiable</span></h2>
+        <p class="text-[#9090b0] mt-4 max-w-md mx-auto">Voici exactement ce qu'on configure, ce qu'on livre, et comment vous mesurez l'impact — sans avoir à nous faire confiance sur parole.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+        {[
+          {
+            emoji: '🤖',
+            title: 'Agent IA configuré pour votre métier',
+            items: [
+              'On apprend votre vocabulaire, vos horaires, vos questions fréquentes',
+              'On configure l\'agent et on teste avec vous avant la mise en ligne',
+              'Vous voyez chaque conversation dans le tableau de bord',
+              'Vous restez maître : l\'agent escalade ce qu\'il ne sait pas gérer',
+            ],
+            measure: 'Mesurable : nombre de conversations traitées, leads reçus, temps économisé',
+            color: '#7c5cfc',
+          },
+          {
+            emoji: '📝',
+            title: 'Contenu SEO publié chaque mois',
+            items: [
+              'On identifie les sujets recherchés par vos clients potentiels',
+              'On rédige des articles optimisés et on les publie sur votre site',
+              'On suit vos positions Google et on vous transmet un rapport',
+              'Vous validez chaque article si vous le souhaitez, avant publication',
+            ],
+            measure: 'Mesurable : positions Google, trafic organique, visiteurs issus des articles',
+            color: '#38bdf8',
+          },
+          {
+            emoji: '🌐',
+            title: 'Site rapide, lisible, bien référencé',
+            items: [
+              'Design adapté à votre secteur et pensé pour convertir',
+              'Optimisé pour les moteurs de recherche dès le premier jour',
+              'Score de performance dans le top des sites français',
+              'Modifiable simplement avec notre accompagnement',
+            ],
+            measure: 'Mesurable : vitesse de chargement, formulaires reçus, appels générés',
+            color: '#a78bfa',
+          },
+        ].map(c => (
+          <div class="glass rounded-2xl p-7 flex flex-col">
+            <div class="text-3xl mb-4">{c.emoji}</div>
+            <h3 class="text-base font-black text-white mb-4">{c.title}</h3>
+            <ul class="space-y-3 flex-1 mb-5">
+              {c.items.map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-[#9090b0]">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={c.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class="rounded-lg px-4 py-3 text-xs mt-auto" style={`background: ${c.color}0d; border: 1px solid ${c.color}25; color: ${c.color};`}>{c.measure}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       COMPARATIF
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6" style="background: var(--bg-2);">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="label-tag mb-3">Notre approche</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Comment on travaille<br/><span class="gradient-text">différemment</span></h2>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden reveal">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr style="background: rgba(255,255,255,0.03);">
+                <th class="text-left px-6 py-4 text-[#8888aa] text-sm font-semibold">Critère</th>
+                <th class="px-6 py-4 text-center">
+                  <div class="text-white font-black text-sm">IAForge</div>
+                  <div class="text-[#7c5cfc] text-xs">Vous êtes ici</div>
+                </th>
+                <th class="px-6 py-4 text-center text-[#8888aa] text-sm font-semibold">Agences classiques</th>
+                <th class="px-6 py-4 text-center text-[#8888aa] text-sm font-semibold">Freelances</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Délai de mise en ligne', '3 semaines ⚡', '2-4 mois 🐌', '1-3 mois'],
+                ['Prix transparent affiché', '✅ Oui, dès 149€/mois', '❌ Sur devis seulement', '⚠️ Variable'],
+                ['Assistant IA inclus', '✅ Dès le 1er pack', '❌ En option coûteuse', '❌ Rarement proposé'],
+                ['SEO automatisé mensuel', '✅ 3 à 15 articles/mois selon pack', '⚠️ Supplément facturé', '⚠️ Supplément'],
+                ['Tableau de bord supervision', '✅ Dès Pack Croissance', '❌ Non', '❌ Non'],
+                ['Vos données vous appartiennent', '✅ Toujours, garanti', '⚠️ Selon contrat', '✅ Oui'],
+                ['Support en français', '✅ 24h ouvrées', '⚠️ Variable', '⚠️ Variable'],
+                ['Sans engagement long terme', '✅ Résiliable par mois', '❌ 12 mois minimum', '⚠️ Par projet'],
+              ].map((row) => (
+                <tr class="border-t border-white/5 hover:bg-white/[0.02] transition-colors">
+                  <td class="px-6 py-4 text-sm text-[#9090b0]">{row[0]}</td>
+                  <td class="px-6 py-4 text-center text-sm text-white font-semibold" style="background: rgba(124,92,252,0.04);">{row[1]}</td>
+                  <td class="px-6 py-4 text-center text-sm text-[#9090b0]">{row[2]}</td>
+                  <td class="px-6 py-4 text-center text-sm text-[#9090b0]">{row[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TARIFS
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="label-tag mb-3">Tarifs clairs</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Commencez petit.<br/><span class="gradient-text">Grandissez vite.</span></h2>
+        <p class="text-[#9090b0] mt-4 max-w-md mx-auto">Sans engagement de durée. Sans frais cachés. Résiliable chaque mois. Résultat garanti à 90 jours — ou on continue gratuitement.</p>
+      </div>
+
+      <p class="text-[#9090b0] text-sm text-center mb-8 max-w-xl mx-auto">Prix affichés, sans engagement, résiliables chaque mois. Vous savez exactement ce que vous achetez avant de nous contacter.</p>
+
+      <!-- Pack Solo -->
+      <div class="rounded-2xl p-6 md:p-8 mb-6 reveal" style="background: rgba(56,189,248,0.05); border: 1px solid rgba(56,189,248,0.2);">
+        <div class="flex flex-col md:flex-row items-center gap-6 justify-between">
+          <div class="flex items-center gap-5">
+            <div class="text-4xl">🤖</div>
+            <div>
+              <div class="flex items-center gap-3 flex-wrap mb-1">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#38bdf8]">Pour commencer</span>
+                <span class="px-2 py-0.5 rounded text-xs font-bold text-[#34d399]" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">Fonctionne sur votre site existant</span>
+              </div>
+              <h3 class="text-white font-black text-xl mb-1">Pack Solo — Votre site répond pour vous</h3>
+              <p class="text-[#9090b0] text-sm max-w-lg">1 agent IA configuré pour votre métier. Installé sur votre site en 7 jours. Réponses, RDV, qualification — 24h/24, même à 23h.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-6 flex-shrink-0">
+            <div class="text-right">
+              <span class="text-4xl font-black text-white">149€</span>
+              <p class="text-xs text-[#34d399] font-semibold">0€ installation · sans engagement</p>
+            </div>
+            <a href="/contact" class="btn-primary whitespace-nowrap">Démarrer →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 packs principaux -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 reveal">
+
+        <!-- Essentiel -->
+        <div class="glass rounded-3xl p-8 pricing-card">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#8888aa] mb-3">Essentiel</p>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-5xl font-black text-white">349</span>
+            <span class="text-[#8888aa]">€<span class="text-sm">/mois</span></span>
+          </div>
+          <p class="text-xs text-[#8888aa] mb-1">TPE, artisans, professions libérales</p>
+          <p class="text-xs text-[#34d399] font-semibold mb-6">0€ installation · résultat garanti 90 jours</p>
+          <div class="h-px mb-6" style="background: var(--border);"></div>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Nouveau site web 6 pages (design premium)',
+              '2 agents IA configurés pour votre secteur',
+              'Fiche Google Business complète',
+              '3 articles SEO / mois',
+              'Rapport mensuel positions + trafic',
+              'Support email 48h',
+            ].map(f => (
+              <li class="flex items-start gap-3 text-sm text-[#9090b0]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="block text-center py-3.5 rounded-xl glass text-white text-sm font-bold hover:bg-white/10 transition-all">Démarrer →</a>
+        </div>
+
+        <!-- Croissance (featured) -->
+        <div class="rounded-3xl p-8 relative pricing-card" style="background: linear-gradient(145deg, rgba(124,92,252,0.12), rgba(56,189,248,0.06)); border: 1px solid rgba(124,92,252,0.4); box-shadow: 0 0 60px rgba(124,92,252,0.08);">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-xs font-black text-white whitespace-nowrap" style="background: linear-gradient(135deg, #7c5cfc, #38bdf8);">Notre recommandation</div>
+          <p class="text-xs font-bold uppercase tracking-widest text-[#7c5cfc] mb-3">Croissance</p>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-5xl font-black text-white">790</span>
+            <span class="text-[#8888aa]">€<span class="text-sm">/mois</span></span>
+          </div>
+          <p class="text-xs text-[#8888aa] mb-1">PME, e-commerce, agences, B2B</p>
+          <p class="text-xs text-[#34d399] font-semibold mb-6">0€ installation · résultat garanti 90 jours</p>
+          <div class="h-px mb-6" style="background: rgba(124,92,252,0.3);"></div>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Site complet multi-pages + blog intégré',
+              '3 agents IA spécialisés (configurables librement)',
+              '8 articles SEO / mois',
+              'Google Business + posts automatiques 3x/sem.',
+              'Dashboard supervision IA complet',
+              'Audit concurrentiel mensuel',
+              'Support prioritaire 24h ouvrées',
+            ].map(f => (
+              <li class="flex items-start gap-3 text-sm text-white">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="block text-center py-3.5 rounded-xl text-white text-sm font-black transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">Démarrer maintenant →</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="glass rounded-3xl p-8 pricing-card">
+          <p class="text-xs font-bold uppercase tracking-widest text-[#8888aa] mb-3">Pro</p>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-5xl font-black text-white">1 490</span>
+            <span class="text-[#8888aa]">€<span class="text-sm">/mois</span></span>
+          </div>
+          <p class="text-xs text-[#8888aa] mb-1">ETI, multi-sites, grands comptes</p>
+          <p class="text-xs text-[#a78bfa] font-semibold mb-6">0€ installation · 5 agents · 15 articles/mois</p>
+          <div class="h-px mb-6" style="background: var(--border);"></div>
+          <ul class="space-y-3 mb-8">
+            {[
+              '5+ agents IA sur-mesure',
+              '15 articles SEO/mois — stratégie nationale',
+              'Intégrations CRM, ERP, logiciels métier',
+              'Formation équipes (2 sessions/an)',
+              'Account manager dédié',
+              'SLA garanti < 8h ouvrées',
+              'Reporting exécutif temps réel',
+            ].map(f => (
+              <li class="flex items-start gap-3 text-sm text-[#9090b0]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="block text-center py-3.5 rounded-xl glass text-white text-sm font-bold hover:bg-white/10 transition-all">Discutons →</a>
+        </div>
+      </div>
+
+      <!-- Audit one-shot -->
+      <div class="glass rounded-2xl p-6 md:p-7 flex flex-col md:flex-row items-center justify-between gap-5 reveal">
+        <div class="flex items-center gap-4">
+          <span class="text-3xl">🔍</span>
+          <div>
+            <div class="flex items-center gap-3 mb-1 flex-wrap">
+              <h3 class="text-white font-black text-lg">Audit IA complet</h3>
+              <span class="px-2 py-0.5 rounded text-xs font-bold text-[#fbbf24]" style="background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.2);">BPI France → jusqu'à 50% remboursé</span>
+            </div>
+            <p class="text-[#9090b0] text-sm max-w-lg">1 journée d'analyse : processus, SEO, outils, concurrents. Rapport PDF avec ROI projeté par action. Idéal pour cadrer avant de choisir un pack ou convaincre votre direction.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5 flex-shrink-0">
+          <div class="text-right">
+            <span class="text-3xl font-black text-white">590€</span>
+            <p class="text-xs text-[#34d399] font-semibold">→ 295€ net avec BPI</p>
+          </div>
+          <a href="/contact" class="btn-primary whitespace-nowrap">Réserver →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       HONNÊTETÉ
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6" style="background: var(--bg-2);">
+    <div class="max-w-4xl mx-auto text-center reveal">
+      <p class="label-tag mb-3 inline-block">Transparence</p>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-10">IAForge est une agence<br/><span class="gradient-text">qui démarre.</span></h2>
+      <div class="glass rounded-2xl p-10 md:p-14 text-left">
+        <p class="text-[#c0c0e0] text-lg leading-relaxed mb-6">
+          On ne va pas vous montrer des témoignages qu'on aurait inventés. IAForge est une jeune agence, et c'est précisément pour ça qu'on a structuré notre offre différemment des autres.
+        </p>
+        <div class="space-y-4 mb-10">
+          {[
+            'Un audit gratuit de 30 minutes pour que vous jugiez la qualité de notre analyse avant tout engagement.',
+            'Une garantie résultat à 90 jours — si les objectifs définis ensemble ne sont pas atteints, on continue gratuitement.',
+            '0€ de frais d\'installation, parce qu\'on veut que vous testiez sans risque financier.',
+            'Un rapport mensuel clair pour que vous voyiez exactement ce qui progresse — et ce qui ne progresse pas.',
+          ].map(item => (
+            <div class="flex items-start gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <p class="text-[#9090b0] leading-relaxed text-sm">{item}</p>
+            </div>
+          ))}
+        </div>
+        <a href="/contact" class="btn-primary inline-flex items-center gap-2">
+          Demander l'audit gratuit
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-4xl md:text-5xl font-black text-white">Questions <span class="gradient-text">directes</span></h2>
+      </div>
+      <div class="space-y-2 reveal">
+        {[
+          { q: "Je ne connais rien à l'IA. Est-ce que ça marche quand même pour moi ?", a: "Oui. C'est précisément pour ça qu'on existe. Vous n'avez pas besoin de comprendre comment fonctionne l'IA — vous voyez ce qu'elle fait et les résultats qu'elle génère. On s'occupe de tout. Vous vous concentrez sur votre métier." },
+          { q: "Combien de temps avant de voir des résultats concrets ?", a: "Votre assistant IA est opérationnel en 7 à 14 jours. Le référencement Google prend 2 à 4 mois pour remonter sur les premières pages. Mais le contenu est publié dès le premier mois et votre assistant travaille dès le premier jour." },
+          { q: "Quelle est la durée d'engagement ?", a: "Aucun engagement long terme imposé. Vous résiliez chaque mois si vous le souhaitez. On préfère vous garder parce qu'on délivre des résultats, pas parce qu'un contrat vous y oblige." },
+          { q: "Mes données clients sont-elles sécurisées ?", a: "Vos données vous appartiennent entièrement. Pour les secteurs sensibles (santé, juridique, comptabilité), on travaille avec Mistral AI — hébergé en France — pour que vos données ne quittent pas le territoire européen." },
+          { q: "Et si je ne suis pas satisfait après le premier mois ?", a: "On vous rembourse, sans condition. On croit en ce qu'on fait. La meilleure preuve qu'on puisse vous donner, c'est de vous laisser tester sans risque." },
+          { q: "Est-ce que ça marche pour une très petite entreprise ?", a: "Oui, et souvent encore mieux. Les TPE et artisans sont ceux qui gagnent le plus de temps proportionnellement — parce qu'ils font tout seuls. Un assistant virtuel à 199€/mois peut remplacer des heures de gestion administrative quotidienne." },
+        ].map(faq => (
+          <details class="glass rounded-xl group faq-item">
+            <summary class="px-6 py-5 cursor-pointer text-white font-semibold text-sm flex items-center justify-between list-none">
+              <span>{faq.q}</span>
+              <svg class="w-4 h-4 text-[#7c5cfc] transition-transform duration-300 group-open:rotate-180 flex-shrink-0 ml-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CTA FINAL
+  ══════════════════════════════════════ -->
+  <section class="py-24 px-6" style="background: var(--bg-2);">
+    <div class="max-w-5xl mx-auto">
+      <div class="relative glass rounded-3xl p-12 md:p-20 text-center overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div class="blob blob-cta"></div>
+        </div>
+        <div class="relative">
+          <p class="label-tag mb-6 inline-block">On commence quand vous voulez</p>
+          <h2 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            30 minutes pour<br/><span class="gradient-text">changer la donne</span>
+          </h2>
+          <p class="text-[#9090b0] text-lg md:text-xl mb-10 max-w-xl mx-auto">Audit gratuit. On identifie vos 3 plus grands gains de temps et d'argent. Concret, chiffré, sans engagement.</p>
+          <a href="/contact" class="btn-primary inline-flex items-center gap-2 text-lg px-12 py-5">
+            Réserver mon audit gratuit
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <p class="text-xs text-[#8888aa] mt-6">Réponse sous 24h · Gratuit · Sans engagement · France entière</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Blobs animés */
+  .blob { position: absolute; border-radius: 50%; filter: blur(80px); animation: drift 20s infinite ease-in-out; }
+  .blob-1 { width: 600px; height: 600px; top: -15%; left: 5%; background: radial-gradient(circle, rgba(124,92,252,0.2), transparent 70%); }
+  .blob-2 { width: 500px; height: 500px; bottom: -10%; right: 0; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); animation-delay: -8s; }
+  .blob-cta { width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(124,92,252,0.2), transparent 70%); }
+  @keyframes drift { 0%,100% { transform: translate(0,0); } 33% { transform: translate(25px,-30px); } 66% { transform: translate(-15px,15px); } }
+
+  .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(124,92,252,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(124,92,252,0.05) 1px, transparent 1px); background-size: 60px 60px; }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, #080810 80%); }
+
+  /* Pulse dot */
+  .pulse-dot { position: relative; width: 8px; height: 8px; }
+  .pulse-dot::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #38bdf8; animation: ping 1.5s ease-out infinite; }
+  .pulse-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #38bdf8; }
+  @keyframes ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
+
+  /* Label tag */
+  .label-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7c5cfc; }
+
+  /* Buttons */
+  .btn-primary { display: inline-flex; padding: 0.875rem 2rem; border-radius: 0.75rem; color: white; font-weight: 700; font-size: 0.9rem; background: linear-gradient(135deg, #7c5cfc, #5b3fdb); box-shadow: 0 0 40px rgba(124,92,252,0.3); transition: all 0.2s; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 0 60px rgba(124,92,252,0.45); }
+  .btn-ghost { display: inline-flex; padding: 0.875rem 1.75rem; border-radius: 0.75rem; color: white; font-weight: 600; font-size: 0.9rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+  /* Sector tabs */
+  .sector-tab { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #8888aa; border-radius: 9999px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; cursor: pointer; }
+  .sector-tab:hover { background: rgba(124,92,252,0.1); border-color: rgba(124,92,252,0.3); color: white; }
+  .sector-tab.sector-active { background: linear-gradient(135deg, #7c5cfc, #5b3fdb); border-color: transparent; color: white; box-shadow: 0 0 20px rgba(124,92,252,0.3); }
+
+  /* Service cards */
+  .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); transition: border-color 0.3s, background 0.3s; }
+  .service-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(124,92,252,0.2); }
+  .glow-hover { position: absolute; inset: 0; opacity: 0; background: radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--gc) 8%, transparent), transparent 60%); transition: opacity 0.4s; pointer-events: none; z-index: 0; }
+  .service-card:hover .glow-hover { opacity: 1; }
+
+  /* Icon chip */
+  .icon-chip { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--c) 10%, transparent); border: 1px solid color-mix(in srgb, var(--c) 20%, transparent); }
+
+  /* Typing dots */
+  .typing-dot { animation: typingBounce 1s infinite ease-in-out; }
+  @keyframes typingBounce { 0%,100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(-3px); opacity: 1; } }
+
+  /* SEO bars */
+  .seo-bar { width: 0; transition: width 1.2s ease-out; }
+
+  /* FAQ */
+  details summary::-webkit-details-marker { display: none; }
+  details[open] summary { color: #a78bfa; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob, .typing-dot { animation: none; }
+    .pulse-dot::before { animation: none; }
+    * { transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<script>
+  // Scroll reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        (e.target as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        (e.target as HTMLElement).style.opacity = '1';
+        (e.target as HTMLElement).style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-right').forEach(el => {
+    (el as HTMLElement).style.opacity = '0';
+    (el as HTMLElement).style.transform = 'translateY(24px)';
+    io.observe(el);
+  });
+
+  // SEO bars
+  const barIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        (e.target as HTMLElement).style.width = '80%';
+        barIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.seo-bar').forEach(b => barIO.observe(b));
+
+  // ROI bars
+  const roiIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        (e.target as HTMLElement).style.transition = 'width 1.2s ease-out 0.3s';
+        (e.target as HTMLElement).style.width = '80%';
+        roiIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.roi-bar').forEach(b => roiIO.observe(b));
+
+  // Process cards stagger
+  document.querySelectorAll('.process-card').forEach((el, i) => {
+    (el as HTMLElement).style.opacity = '0';
+    (el as HTMLElement).style.transform = 'translateY(20px)';
+    const cardIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => {
+            (e.target as HTMLElement).style.transition = `opacity 0.5s ease ${i * 100}ms, transform 0.5s ease ${i * 100}ms`;
+            (e.target as HTMLElement).style.opacity = '1';
+            (e.target as HTMLElement).style.transform = 'translateY(0)';
+          }, i * 80);
+          cardIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cardIO.observe(el);
+  });
+
+  // Sector tabs
+  const tabs = document.querySelectorAll<HTMLElement>('.sector-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.sector-panel');
+
+  tabs.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('sector-active'));
+      panels.forEach(p => p.classList.add('hidden'));
+      btn.classList.add('sector-active');
+      panels[i].classList.remove('hidden');
+    });
+  });
+</script>

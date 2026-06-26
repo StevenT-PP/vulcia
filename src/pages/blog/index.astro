@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const articles = [
+  {
+    slug: 'agent-ia-pme-roi',
+    title: 'Agent IA pour PME : quel ROI realiste en 2026 ?',
+    excerpt: 'Les agents IA ne sont plus reserves aux grandes entreprises. Voici les chiffres reels : ce que ca coute, ce que ca rapporte, et par ou commencer.',
+    date: '2026-06-15',
+    category: 'Agents IA',
+    readTime: '6 min',
+    color: '#7c5cfc',
+  },
+  {
+    slug: 'seo-ia-vs-seo-traditionnel',
+    title: 'SEO par l\'IA vs SEO traditionnel : comparaison objective',
+    excerpt: 'Peut-on vraiment faire du SEO de qualite avec l\'IA ? On a compare nos resultats sur 12 mois avec des methodes traditionnelles. Les chiffres parlent d\'eux-memes.',
+    date: '2026-06-08',
+    category: 'SEO',
+    readTime: '8 min',
+    color: '#38bdf8',
+  },
+  {
+    slug: 'automatiser-prise-rdv',
+    title: 'Comment automatiser sa prise de RDV avec un agent IA (guide complet)',
+    excerpt: 'Etape par etape : comment un medecin, avocat ou consultant peut recuperer 5h/semaine en automatisant sa prise de rendez-vous avec un agent IA.',
+    date: '2026-06-01',
+    category: 'Automatisation',
+    readTime: '10 min',
+    color: '#a78bfa',
+  },
+  {
+    slug: 'google-business-ia',
+    title: 'Google Business Profile : comment l\'IA triple vos avis et votre visibilite locale',
+    excerpt: 'Google Business est le canal SEO le plus sous-exploite des PME. Voici comment l\'IA peut automatiser vos publications, reponses aux avis et photos.',
+    date: '2026-05-25',
+    category: 'SEO Local',
+    readTime: '7 min',
+    color: '#34d399',
+  },
+  {
+    slug: 'choisir-modele-ia',
+    title: 'GPT-4o vs Claude vs Mistral : lequel choisir pour votre agent IA ?',
+    excerpt: 'Comparaison technique et pratique des trois grands modeles. Prix, performance, confidentialite des donnees - on vous dit tout sans langue de bois.',
+    date: '2026-05-18',
+    category: 'Technique',
+    readTime: '9 min',
+    color: '#fbbf24',
+  },
+  {
+    slug: 'site-web-2026-seo',
+    title: 'Site web en 2026 : pourquoi Astro bat WordPress pour le SEO',
+    excerpt: 'On a mesure. Lighthouse 98 vs 62 en moyenne. Core Web Vitals parfaits vs laborieux. Le choix technique de votre site impacte directement votre position Google.',
+    date: '2026-05-10',
+    category: 'Web & SEO',
+    readTime: '7 min',
+    color: '#f87171',
+  },
+];
+---
+
+<Layout
+  title="Blog IA & SEO | IAForge - Conseils, guides et etudes de cas"
+  description="Le blog IAForge : guides pratiques sur les agents IA, le SEO automatise et les sites web haute performance pour les entreprises françaises."
+>
+  <Nav />
+
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-20">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#7c5cfc] mb-4">Ressources</p>
+        <h1 class="text-5xl md:text-6xl font-black text-white mb-6">
+          Blog <span class="gradient-text">IA & SEO</span>
+        </h1>
+        <p class="text-[#8888aa] max-w-lg mx-auto">Guides concrets, etudes de cas reels et analyses techniques. Pas de theorie, des chiffres et des actions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map(article => (
+          <article class="glass rounded-2xl p-8 hover:bg-white/[0.06] transition-all duration-300 group flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style={`background: ${article.color}15; color: ${article.color}; border: 1px solid ${article.color}30;`}>
+                {article.category}
+              </span>
+              <span class="text-xs text-[#8888aa]">{article.readTime} de lecture</span>
+            </div>
+
+            <h2 class="text-lg font-bold text-white mb-3 leading-snug group-hover:text-[#a78bfa] transition-colors flex-1">
+              <a href={`/blog/${article.slug}`}>{article.title}</a>
+            </h2>
+
+            <p class="text-[#8888aa] text-sm leading-relaxed mb-6 flex-1">{article.excerpt}</p>
+
+            <div class="flex items-center justify-between mt-auto">
+              <time class="text-xs text-[#8888aa]">
+                {new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+              <a href={`/blog/${article.slug}`} class="text-xs font-semibold transition-colors" style={`color: ${article.color};`}>
+                Lire &rarr;
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Notre Methode | IAForge - Comment on travaille"
+  description="Decouvrez la methode IAForge : audit, strategie sur-mesure, deploiement en 3 semaines et optimisation continue. Transparent, sans jargon."
+>
+  <Nav />
+
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-20">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#7c5cfc] mb-4">La methode IAForge</p>
+        <h1 class="text-5xl md:text-6xl font-black text-white mb-6">
+          Simple. Rapide. <span class="gradient-text">Mesurable.</span>
+        </h1>
+        <p class="text-[#8888aa] max-w-xl mx-auto">Pas de processus a rallonge. On va a l'essentiel pour delivrer de la valeur le plus vite possible.</p>
+      </div>
+
+      <div class="space-y-8">
+        {[
+          {
+            n: '01',
+            title: 'Audit gratuit (30 min)',
+            color: '#7c5cfc',
+            content: [
+              "Un appel de 30 minutes pour comprendre votre situation, vos processus, vos outils actuels.",
+              "On analyse votre site, votre positionnement SEO et on identifie les 3 plus grands gains possibles.",
+              "Livrable : email recapitulatif avec ROI projete par action. Toujours gratuit, sans engagement."
+            ],
+            badge: 'Gratuit'
+          },
+          {
+            n: '02',
+            title: 'Proposition sur-mesure (72h)',
+            color: '#9b72fc',
+            content: [
+              "En 72h, on vous envoie une proposition adaptee a votre metier, votre budget et vos objectifs.",
+              "Chaque element est detaille avec un cout, un delai et un gain estime. Pas de template, pas de blabla.",
+              "Vous avez une semaine pour valider, poser des questions, negocier. On reste disponibles."
+            ],
+            badge: '72h'
+          },
+          {
+            n: '03',
+            title: 'Deploiement rapide (3 semaines)',
+            color: '#38bdf8',
+            content: [
+              "Premiere livraison en moins de 3 semaines. Site en ligne, premier agent IA operationnel.",
+              "On travaille en sprints courts avec des validations regulieres. Vous voyez le travail avancer.",
+              "Pas de grande presentation finale apres 3 mois de noir. On livre et on ajuste en continu."
+            ],
+            badge: '< 3 sem.'
+          },
+          {
+            n: '04',
+            title: 'Optimisation continue (mensuel)',
+            color: '#34d399',
+            content: [
+              "Chaque mois : rapport detaille, optimisations SEO, ameliorations des agents, nouvelles idees.",
+              "Vous supervisez via un dashboard simplifie. L'IA fait le travail, vous prenez les decisions.",
+              "On mesure tout : positions SEO, taux de conversion, interactions agents, ROI reel."
+            ],
+            badge: 'Mensuel'
+          },
+        ].map((step, i) => (
+          <div class="glass rounded-2xl p-8 md:p-10">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-black" style={`color: ${step.color}; background: ${step.color}15; border: 1px solid ${step.color}30;`}>
+                  {step.n}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4">
+                  <h2 class="text-xl font-bold text-white">{step.title}</h2>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold" style={`background: ${step.color}15; color: ${step.color}; border: 1px solid ${step.color}30;`}>
+                    {step.badge}
+                  </span>
+                </div>
+                <ul class="space-y-3">
+                  {step.content.map(line => (
+                    <li class="flex items-start gap-3 text-sm text-[#8888aa] leading-relaxed">
+                      <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={`background: ${step.color};`}></div>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-20">
+        <a href="/contact" class="inline-block px-10 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90 hover:scale-[1.02]" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb); box-shadow: 0 0 40px rgba(124,92,252,0.3);">
+          Commencer par l'audit gratuit &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
