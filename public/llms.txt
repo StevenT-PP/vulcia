@@ -46,9 +46,16 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour e-commerce : https://iaforge.fr/ia-pour/ecommerce
 - IA pour immobilier : https://iaforge.fr/ia-pour/immobilier
 - IA pour coachs : https://iaforge.fr/ia-pour/coachs
+- IA pour pharmacies : https://iaforge.fr/ia-pour/pharmacies
+- IA pour garages automobiles : https://iaforge.fr/ia-pour/garages
+- IA pour vétérinaires : https://iaforge.fr/ia-pour/veterinaires
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
+- Article : Chatbot IA pour site web 2026 : https://iaforge.fr/blog/chatbot-site-web-2026
+- Article : Automatiser ses relances clients avec l'IA : https://iaforge.fr/blog/automatiser-relances-clients
+- Article : Agent IA sur WhatsApp Business 2026 : https://iaforge.fr/blog/agent-ia-whatsapp
+- Article : Combien coûte un agent IA en 2026 : https://iaforge.fr/blog/prix-agent-ia-2026
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact

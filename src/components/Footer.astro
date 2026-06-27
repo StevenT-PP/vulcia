@@ -33,11 +33,13 @@ const year = new Date().getFullYear();
         <ul class="space-y-3">
           {[
             ['Agent IA sur-mesure', '/agent-ia'],
-            ['Comparatif IA 2026', '/comparatif-ia'],
             ['IA pour médecins', '/ia-pour/medecins'],
             ['IA pour restaurants', '/ia-pour/restaurants'],
             ['IA pour artisans', '/ia-pour/artisans'],
-            ['Glossaire IA', '/glossaire-ia'],
+            ['IA pour pharmacies', '/ia-pour/pharmacies'],
+            ['IA pour garages', '/ia-pour/garages'],
+            ['IA pour vétérinaires', '/ia-pour/veterinaires'],
+            ['Tous les secteurs', '/ia-pour'],
           ].map(([label, href]) => (
             <li>
               <a href={href} class="text-[#8888aa] hover:text-white text-sm transition-colors">{label}</a>

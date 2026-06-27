@@ -202,6 +202,26 @@ const faqItems = [
     </div>
   </section>
 
+  <!-- ARTICLES LIES -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/chatbot-site-web-2026', title: 'Chatbot IA pour site web en 2026 : tout ce qu\'il faut savoir avant de choisir', cat: 'Agents IA' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA : le guide complet 2026', cat: 'Automatisation' },
+          { href: '/blog/prix-agent-ia-2026', title: 'Combien coûte un agent IA en 2026 ? Prix, packs et ROI expliqués', cat: 'Tarifs' },
+          { href: '/blog/agent-ia-whatsapp', title: 'Agent IA sur WhatsApp Business : guide pratique 2026', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
     <div class="max-w-3xl mx-auto text-center">
