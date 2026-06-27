@@ -1,0 +1,159 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "CRM et IA pour PME : comment automatiser son suivi commercial en 2026",
+  description: "Comment connecter un agent IA à votre CRM pour automatiser le suivi des prospects, les relances et la qualification. Comparatif outils, coûts et mise en place concrète.",
+  date: "2026-06-29",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "crm-ia-pme",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La plupart des PME utilisent un CRM — HubSpot, Pipedrive, Sellsy, Notion ou même un tableur Excel. Mais moins de 30% l'utilisent réellement de façon systématique. La raison principale : la saisie manuelle est fastidieuse, les relances se perdent, et personne ne trouve le temps. L'IA change ça — pas en remplaçant votre CRM, mais en le pilotant automatiquement.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème réel avec les CRM en PME</h2>
+
+  <p>Un CRM sans discipline d'utilisation devient un cimetière de prospects. Les symptômes que nous observons chez nos clients avant déploiement :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Des fiches créées mais jamais mises à jour — l'équipe commerciale ne saisit pas après chaque échange",
+      "Des relances programmées qui ne se font pas — la tâche est dans le CRM mais personne ne la voit",
+      "Des prospects \"chauds\" oubliés pendant 3 semaines parce que le commercial était sur un autre dossier",
+      "Aucune vision de ce qui fonctionne — pas de données fiables sur les taux de conversion par source",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <span class="text-red-400 mt-0.5 flex-shrink-0">×</span>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <p>Ce n'est pas un problème de CRM — c'est un problème de charge cognitive. L'agent IA retire cette charge en automatisant les tâches répétitives.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'agent IA fait dans votre CRM</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        action: "Qualification automatique des nouveaux leads",
+        color: "#7c5cfc",
+        desc: "Chaque nouveau lead qui entre (formulaire, WhatsApp, email, appel) est qualifié par l'agent : secteur, besoin, budget, délai, décideur ou non. La fiche CRM est créée ou mise à jour automatiquement avec ces informations structurées.",
+        gain: "0 min de saisie manuelle par lead",
+      },
+      {
+        action: "Relances planifiées et exécutées automatiquement",
+        color: "#34d399",
+        desc: "L'agent lit votre CRM, détecte les prospects sans activité depuis X jours, et envoie la relance appropriée selon l'étape du pipeline. Il met à jour le statut après chaque envoi et alerte le commercial si le prospect répond.",
+        gain: "+34% de taux de conversion sur devis envoyés",
+      },
+      {
+        action: "Enrichissement des fiches après chaque échange",
+        color: "#38bdf8",
+        desc: "Après un appel ou un échange WhatsApp, l'agent génère un résumé structuré et le pousse dans la fiche CRM. Le commercial n'a plus qu'à valider — plus de prise de notes laborieuses après chaque call.",
+        gain: "Données CRM fiables à 95% au lieu de 40%",
+      },
+      {
+        action: "Scoring et priorisation des prospects",
+        color: "#f59e0b",
+        desc: "L'agent attribue un score à chaque prospect selon vos critères : budget confirmé, délai court, décideur identifié, secteur cible. Le commercial commence sa journée avec une liste priorisée — les 3 prospects à appeler absolument aujourd'hui.",
+        gain: "Focus commercial sur les opportunités à fort potentiel",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <h3 class="text-white font-bold text-base">{item.action}</h3>
+          <span class="text-xs font-bold px-2 py-1 rounded-full flex-shrink-0" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.gain}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Compatibilité CRM en 2026</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["CRM", "API native", "Zapier/Make", "Agent IA natif"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["HubSpot", "✓", "✓", "HubSpot AI (beta)"],
+        ["Pipedrive", "✓", "✓", "Via Zapier"],
+        ["Sellsy", "✓", "✓", "Via Make"],
+        ["Salesforce", "✓", "✓", "Einstein AI"],
+        ["Notion", "Partiel", "✓", "Via Make/n8n"],
+        ["Excel / Sheets", "—", "✓", "Via agent dédié"],
+      ].map(([crm, api, zap, ai]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{crm}</div>
+          <div class={`p-3 border-b border-white/5 text-xs ${api === '✓' ? 'text-[#34d399]' : 'text-[#8888aa]'}`}>{api}</div>
+          <div class={`p-3 border-b border-white/5 text-xs ${zap === '✓' ? 'text-[#34d399]' : 'text-[#8888aa]'}`}>{zap}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{ai}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Architecture concrète : comment ça marche</h2>
+
+  <p>Voici l'architecture que nous déployons pour connecter un agent IA à votre CRM :</p>
+
+  <div class="not-prose my-8 space-y-3">
+    {[
+      { n: "1", title: "Canaux entrants", desc: "Site web, WhatsApp Business, email entrant, Google Business — tous les points de contact sont centralisés dans l'agent.", color: "#7c5cfc" },
+      { n: "2", title: "Qualification par l'agent", desc: "L'agent conduit la conversation, pose les questions de qualification selon votre pipeline et structure les informations.", color: "#38bdf8" },
+      { n: "3", title: "Push vers le CRM", desc: "Via API directe ou Zapier/Make, la fiche est créée ou mise à jour avec les données structurées.", color: "#34d399" },
+      { n: "4", title: "Déclenchement des séquences", desc: "Selon l'étape du pipeline, l'agent programme les relances et les exécute automatiquement au bon moment.", color: "#f59e0b" },
+      { n: "5", title: "Alertes au commercial", desc: "Quand un prospect répond, le commercial est notifié avec le contexte complet. Il prend la main si nécessaire.", color: "#a78bfa" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-4">
+        <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Combien ça coûte et quel ROI ?</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <p class="text-[#8888aa] text-xs uppercase font-bold tracking-wider mb-5">Exemple : PME 5 commerciaux, 50 prospects actifs/mois</p>
+    <div class="space-y-3">
+      {[
+        { item: "Gain sur relances automatisées (+34% de devis signés)", gain: "Dépend de votre panier moyen" },
+        { item: "Temps commercial récupéré (saisie CRM, relances manuelles)", gain: "3 à 5h/semaine par commercial" },
+        { item: "Fiabilité des données CRM (40% → 95%)", gain: "Meilleure priorisation = moins de pertes" },
+        { item: "Coût agent IAForge (CRM + automatisation)", gain: "349€ à 790€/mois selon volume" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class="text-[#8888aa] text-sm">{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-[#9090b0] mt-4 italic">Le ROI concret dépend de votre panier moyen et de votre taux de conversion actuel. <a href="/calculateur-roi" class="text-[#7c5cfc] hover:underline">Calculez-le ici</a>.</p>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par où commencer si vous avez déjà un CRM</h2>
+
+  <p>Si vous avez déjà HubSpot, Pipedrive ou Sellsy, la mise en place est rapide — pas besoin de migrer. On se connecte à votre CRM existant via API et on déploie l'agent en 7 jours.</p>
+
+  <p>Si vous n'avez pas encore de CRM, on recommande de partir de zéro avec un outil simple (Pipedrive ou HubSpot gratuit) couplé à l'agent dès le départ — plutôt que d'adopter un CRM complexe que personne n'utilisera.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Guide relances clients avec l'IA &rarr;</a>
+    <a href="/blog/agent-ia-pme-roi" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">ROI agent IA pour PME &rarr;</a>
+  </div>
+
+</BlogLayout>

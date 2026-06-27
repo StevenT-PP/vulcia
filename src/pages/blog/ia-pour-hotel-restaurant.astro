@@ -1,0 +1,193 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour hôtel et restaurant : réservations, avis et SAV automatisés",
+  description: "Comment les hôtels et restaurants utilisent un agent IA pour automatiser les réservations, répondre aux avis Google et gérer le SAV client 24h/24. Guide pratique 2026.",
+  date: "2026-06-28",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#f59e0b",
+  slug: "ia-pour-hotel-restaurant",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le secteur CHR (cafés, hôtels, restaurants) est l'un de ceux où l'agent IA produit le ROI le plus rapide. La raison : les demandes sont répétitives (disponibilités, prix, menus, allergènes), les horaires étendus génèrent des contacts hors horaires, et la réputation en ligne est critique. Voici ce qui fonctionne concrètement.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 cas d'usage qui transforment un établissement CHR</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        num: "1",
+        titre: "Réservations automatiques 24h/24",
+        color: "#f59e0b",
+        desc: "Un client qui cherche une table à 23h pour samedi soir n'attend pas le lendemain matin. L'agent vérifie les disponibilités en temps réel (The Fork, Zenchef, Sevenrooms, Google Reserve...) et confirme la réservation instantanément — avec envoi d'un email de confirmation et d'un rappel J-1.",
+        chiffre: "+40% de réservations converties hors horaires",
+      },
+      {
+        num: "2",
+        titre: "Réponses aux avis Google sous 4 heures",
+        color: "#34d399",
+        desc: "Google récompense les établissements qui répondent rapidement à leurs avis. L'agent détecte chaque nouvel avis, génère une réponse personnalisée (qui reprend des éléments spécifiques de l'avis) et la soumet pour validation ou la publie directement. Les établissements qui répondent à 100% de leurs avis ont en moyenne +25% de visites de fiche GBP.",
+        chiffre: "+25% de vues sur la fiche Google Business",
+      },
+      {
+        num: "3",
+        titre: "SAV et FAQ automatique",
+        color: "#38bdf8",
+        desc: "\"Avez-vous des menus végétariens ?\", \"Où vous garez-vous ?\", \"Acceptez-vous les animaux ?\", \"Peut-on modifier une réservation ?\" — ces questions représentent 70% des contacts WhatsApp et messages Instagram d'un restaurant. L'agent y répond en 30 secondes, libérant le personnel pour l'accueil physique.",
+        chiffre: "70% des contacts traités sans intervention humaine",
+      },
+      {
+        num: "4",
+        titre: "Relances et upsell automatiques",
+        color: "#a78bfa",
+        desc: "Un client qui a réservé reçoit J-3 un message avec les suggestions du moment (menu du chef, cave à vins, événement spécial). J+1 après sa visite, il reçoit une invitation à laisser un avis Google. Les établissements utilisant cette séquence voient en moyenne +2,3 avis Google par semaine.",
+        chiffre: "+2,3 avis Google par semaine en moyenne",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.num}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <span class="text-xs font-bold px-3 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.chiffre}</span>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Hôtel vs restaurant : ce qui diffère</h2>
+
+  <p>Les deux secteurs partagent les mêmes besoins de base (réservations, FAQ, avis) mais ont des spécificités importantes :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Fonction</div>
+      <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#f59e0b] uppercase tracking-wider text-center">Restaurant</div>
+      <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#38bdf8] uppercase tracking-wider text-center">Hôtel</div>
+      {[
+        ["Système de réservation", "The Fork, Zenchef, Sevenrooms", "Booking, PMS hôtelier (Opera, Protel)"],
+        ["Durée relation client", "1 à 3 heures", "1 à 7 nuits — relation plus longue"],
+        ["Upsell automatique", "Menu du soir, événements", "Surclassement, room service, excursions"],
+        ["Avis à surveiller", "Google, TripAdvisor, The Fork", "Booking, Expedia, Google, TripAdvisor"],
+        ["SAV le plus fréquent", "Allergènes, menus, parking", "Check-in anticipé, bagagerie, navette"],
+        ["Canaux prioritaires", "WhatsApp, SMS, Instagram DM", "Email, WhatsApp, chat site"],
+      ].map(([fn, resto, hotel]) => (
+        <>
+          <div class="p-4 border-b border-white/5 text-xs text-white">{fn}</div>
+          <div class="p-4 border-b border-white/5 text-xs text-[#8888aa] text-center">{resto}</div>
+          <div class="p-4 border-b border-white/5 text-xs text-[#8888aa] text-center">{hotel}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Intégrations logiciels CHR</h2>
+
+  <div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+    {[
+      { cat: "Restaurants", outils: ["The Fork / LaFourchette — API réservations", "Zenchef — synchronisation créneaux", "Lightspeed / Zelty — caisse et stock", "Google Reserve — réservation depuis GBP"] },
+      { cat: "Hôtels", outils: ["Booking.com — alertes et réponses avis", "Opera / Protel — PMS et disponibilités", "Mews / Apaleo — APIs modernes", "Stripe / SumUp — paiements en ligne"] },
+    ].map(block => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-[#f59e0b] text-xs font-bold uppercase tracking-wider mb-3">{block.cat}</p>
+        <ul class="space-y-2">
+          {block.outils.map(o => (
+            <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {o}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Exemple réel : brasserie 80 couverts, Paris</h2>
+
+  <p>Un client de 80 couverts, ouvert 7j/7, service du midi et du soir. Avant le déploiement de l'agent IA :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "15 à 20 appels téléphoniques/jour pour des demandes de réservation",
+      "8 à 12 messages WhatsApp hors horaires sans réponse avant le lendemain",
+      "Taux de réponse aux avis Google : 12% (1 réponse par semaine environ)",
+      "Zéro relance post-visite pour solliciter des avis",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <span class="text-red-400 mt-0.5">×</span>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <p>Après 30 jours avec l'agent IA :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "+40% de réservations converties (les hors-horaires qui partaient chez le voisin)",
+      "Taux de réponse aux avis Google : 100% sous 4 heures",
+      "+9 avis Google en 30 jours (vs 3 le mois précédent)",
+      "2 appels téléphoniques entrants par jour (les cas complexes uniquement)",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'agent ne fait pas</h2>
+
+  <p>Deux limites importantes à poser clairement :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        titre: "Il ne gère pas les litiges complexes",
+        detail: "Un client mécontent qui veut un remboursement ou qui conteste une note doit être pris en charge par un humain. L'agent détecte l'insatisfaction et escalade immédiatement — mais la résolution reste humaine.",
+      },
+      {
+        titre: "Il ne remplace pas le contact humain en salle",
+        detail: "L'agent gère le \"avant\" (réservation, questions pré-visite) et l'\"après\" (avis, relance). L'expérience en salle reste 100% humaine — c'est là que se joue la fidélisation réelle.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.titre}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un restaurant moyen</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <p class="text-[#8888aa] text-xs uppercase font-bold tracking-wider mb-5">Exemple : restaurant 60 couverts, ticket moyen 35€</p>
+    <div class="space-y-3">
+      {[
+        { item: "Réservations hors horaires récupérées (+40%, estimé 15/semaine)", gain: "+15 × 35€ × 4 sem. = +2 100€/mois" },
+        { item: "Avis Google supplémentaires → meilleure visibilité locale", gain: "+10 à 15% de trafic organique à 3 mois" },
+        { item: "Temps personnel libéré (appels → service)", gain: "Équivalent 8h/semaine redirigées vers l'accueil" },
+        { item: "Coût agent IAForge", gain: "149€ à 349€/mois" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class="text-[#8888aa] text-sm">{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/restaurants" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Page secteur restaurants &rarr;</a>
+    <a href="/calculateur-roi" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>
