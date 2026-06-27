@@ -113,9 +113,50 @@ const tiers = [
 ---
 
 <Layout
-  title="Offres & Tarifs | IAForge — L'agence IA la plus accessible de France"
-  description="Tarifs transparents dès 149€/mois. 0€ de frais d'installation. Garantie résultat 90 jours. Sans engagement. Les trois plus grandes agences IA ne publient pas leurs prix — nous, si."
+  title="Offres & Tarifs | IAForge — Agent IA dès 149€/mois, sans engagement"
+  description="Tarifs transparents dès 149€/mois. 0€ de frais d'installation. Garantie résultat 90 jours. Sans engagement. Agent IA configuré pour votre métier en 7 jours."
 >
+  <script type="application/ld+json" slot="head">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Puis-je passer d'un pack à l'autre ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, à tout moment et sans frais. Vous passez au pack supérieur quand vous voulez — facturation au prorata. Vous downgrade si besoin — aucune pénalité." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment s'installe l'agent IA sur mon site existant ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "On intègre votre assistant via un simple code à copier-coller dans votre site, compatible avec WordPress, Wix, Squarespace, Webflow, Shopify ou tout site codé sur-mesure. Configuration et mise en ligne en moins de 7 jours." }
+      },
+      {
+        "@type": "Question",
+        "name": "L'agent IA est-il vraiment configuré pour mon secteur, ou c'est générique ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Il est configuré spécifiquement pour votre activité. On passe du temps à comprendre vos processus, votre vocabulaire, vos questions fréquentes, vos horaires, vos tarifs. L'agent répond comme si c'était vous — pas comme un robot générique." }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps avant de voir des résultats SEO ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Votre agent IA est opérationnel dès la 1ère semaine. Pour le SEO Google, les effets commencent à se faire sentir entre 6 et 12 semaines selon votre secteur et vos mots-clés. Les articles sont publiés dès le premier mois." }
+      },
+      {
+        "@type": "Question",
+        "name": "Que couvre exactement la garantie résultat 90 jours ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Avant de démarrer, on définit ensemble des indicateurs de succès clairs (ex : +X leads/mois, page 1 Google sur Y mots-clés, X heures récupérées). Si ces objectifs ne sont pas atteints à 90 jours, on continue de travailler gratuitement jusqu'à ce qu'ils le soient." }
+      },
+      {
+        "@type": "Question",
+        "name": "Mes données sont-elles sécurisées et hébergées en France ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Vos données vous appartiennent entièrement. Pour les secteurs sensibles (santé, juridique, RH, comptabilité), on utilise Mistral AI — hébergé à Paris — pour garantir que vos données ne quittent pas le territoire européen et respectent le RGPD." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment fonctionne le financement BPI France ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Le dispositif Diag IA de BPI France permet aux PME de moins de 250 salariés de faire financer jusqu'à 50% d'un diagnostic numérique. Notre audit à 590€ HT est éligible : votre coût réel peut descendre à 295€." }
+      }
+    ]
+  })}</script>
   <Nav />
 
   <section class="pt-32 pb-24 px-6">

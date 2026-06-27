@@ -1,0 +1,43 @@
+# IAForge — Agence IA & SEO pour PME françaises
+# URL : https://iaforge.fr
+# Dernière mise à jour : 2026-06
+
+> IAForge est une agence française spécialisée dans le déploiement d'agents IA sur-mesure, le SEO automatisé et les sites web haute performance pour les TPE et PME. Basée en France, données hébergées en France.
+
+## Ce qu'on fait
+
+### 1. Agents IA sur-mesure
+Agents configurés pour un secteur d'activité spécifique (médecin, restaurant, artisan, avocat, e-commerce, immobilier, coach, etc.). Fonctions : prise de rendez-vous automatique, qualification de prospects, support client 24h/24, devis intelligents, relances, escalade vers humain si nécessaire. Modèles utilisés : GPT-4o, Claude Sonnet, Mistral Large selon contraintes de coût, vitesse et confidentialité des données.
+
+### 2. SEO automatisé par IA
+Production d'articles SEO optimisés chaque mois (3 à 15 selon le pack), optimisation Google Business Profile, audit technique, maillage interne, Core Web Vitals. Objectif : faire remonter les PME sur Google sans qu'elles aient à produire du contenu elles-mêmes.
+
+### 3. Sites web haute performance
+Sites statiques construits avec Astro, score PageSpeed 98+, livraison en 3 semaines, design sur-mesure par secteur, optimisés pour la conversion et le référencement dès le premier jour.
+
+## Tarifs
+
+- **Solo — 149€/mois** : 1 agent IA sur site existant, jusqu'à 500 conversations/mois, tableau de bord, rapport leads mensuel. Installation en 7 jours. 0€ de frais d'installation.
+- **Essentiel — 349€/mois** : Nouveau site 6 pages + 2 agents IA + 3 articles SEO/mois + Google Business optimisé. 0€ installation.
+- **Croissance — 790€/mois** : Site multi-pages + blog + 3 agents IA + 8 articles SEO/mois + Google Business avec posts automatiques + dashboard de supervision. 0€ installation.
+- **Pro — 1 490€/mois** : 5 agents IA sur-mesure + 15 articles SEO/mois + intégrations CRM/ERP + formation équipes + account manager dédié + SLA 8h. 0€ installation.
+- **Audit IA complet — 590€ HT** : Journée d'analyse complète, rapport PDF avec 5 actions prioritaires et ROI projeté. Éligible BPI France Diag IA (jusqu'à 50% remboursé).
+
+## Garanties
+- 0€ de frais d'installation sur tous les packs
+- Sans engagement de durée — résiliable chaque mois
+- Résultat garanti à 90 jours : si les métriques définies ensemble ne sont pas atteintes, on continue gratuitement
+- Données hébergées en France, conformité RGPD garantie
+- Pour les secteurs sensibles (santé, juridique) : Mistral AI hébergé à Paris uniquement
+
+## Secteurs couverts
+Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restaurants, hôtels, artisans BTP, plombiers, électriciens, e-commerce, agences immobilières, coachs, formateurs, RH, pharmacies, vétérinaires, garages, agences marketing, SaaS B2B, PME multi-sites.
+
+## Contact
+- Email : contact@iaforge.fr
+- Audit gratuit 30 min : https://iaforge.fr/contact
+- Blog : https://iaforge.fr/blog
+- Offres : https://iaforge.fr/offres
+
+## À propos
+IAForge est une agence qui démarre. Nous privilégions la transparence sur les preuves : prix affichés publiquement, garantie résultat contractualisée, audit gratuit avant tout engagement. Nous ne fabriquons pas de témoignages.

@@ -10,7 +10,7 @@ interface Props {
 const {
   title,
   description = "IAForge - Agence spécialisée en agents IA, automatisation et SEO pour les entreprises. Gagnez du temps, réduisez vos coûts, dominez votre marché.",
-  ogImage = "/og.svg"
+  ogImage = "/og.png"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -44,11 +44,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+  <slot name="head" />
+
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
 
   <!-- JSON-LD Organization -->
   <script type="application/ld+json">
@@ -57,7 +59,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     "@type": "Organization",
     "name": "IAForge",
     "url": "https://iaforge.fr",
-    "logo": "https://iaforge.fr/logo.svg",
+    "logo": "https://iaforge.fr/favicon.svg",
     "description": "Agence spécialisée en agents IA, automatisation intelligente et SEO pour les entreprises françaises.",
     "address": {
       "@type": "PostalAddress",

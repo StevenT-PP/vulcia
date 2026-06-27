@@ -134,9 +134,45 @@ const sectors = [
 ---
 
 <Layout
-  title="IAForge — Agence IA & SEO pour PME | Agents intelligents, résultats en 3 semaines"
-  description="IAForge déploie des agents IA sur-mesure, une stratégie SEO autonome et des sites haute performance pour les PME françaises. Audit gratuit en 30 minutes."
+  title="IAForge — Agent IA pour votre métier | Opérationnel en 7 jours"
+  description="IAForge déploie des agents IA sur-mesure, une stratégie SEO automatisée et des sites haute performance pour les PME françaises. Audit gratuit en 30 minutes."
 >
+  <script type="application/ld+json" slot="head">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Je ne connais rien à l'IA. Est-ce que ça marche quand même pour moi ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui. C'est précisément pour ça qu'on existe. Vous n'avez pas besoin de comprendre comment fonctionne l'IA — vous voyez ce qu'elle fait et les résultats qu'elle génère. On s'occupe de tout. Vous vous concentrez sur votre métier." }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps avant de voir des résultats concrets ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Votre assistant IA est opérationnel en 7 à 14 jours. Le référencement Google prend 2 à 4 mois pour remonter sur les premières pages. Mais le contenu est publié dès le premier mois et votre assistant travaille dès le premier jour." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la durée d'engagement ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Aucun engagement long terme imposé. Vous résiliez chaque mois si vous le souhaitez. On préfère vous garder parce qu'on délivre des résultats, pas parce qu'un contrat vous y oblige." }
+      },
+      {
+        "@type": "Question",
+        "name": "Mes données clients sont-elles sécurisées ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Vos données vous appartiennent entièrement. Pour les secteurs sensibles (santé, juridique, comptabilité), on travaille avec Mistral AI — hébergé en France — pour que vos données ne quittent pas le territoire européen." }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien coûte un agent IA avec IAForge ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Le Pack Solo commence à 149€/mois pour 1 agent IA sur votre site existant. Le Pack Essentiel (site + 2 agents + SEO) est à 349€/mois. Le Pack Croissance (complet) est à 790€/mois. 0€ de frais d'installation sur tous les packs. Sans engagement de durée." }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce que ça marche pour une très petite entreprise ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, et souvent encore mieux. Les TPE et artisans sont ceux qui gagnent le plus de temps proportionnellement — parce qu'ils font tout seuls. Un assistant virtuel à 149€/mois peut remplacer des heures de gestion administrative quotidienne." }
+      }
+    ]
+  })}</script>
   <Nav />
 
   <!-- ══════════════════════════════════════
@@ -156,21 +192,30 @@ const sectors = [
         <div>
           <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass mb-8 reveal">
             <span class="pulse-dot"></span>
-            <span class="text-xs text-[#8888aa] font-medium">Agence IA · France entière · Opérationnel en 3 semaines</span>
+            <span class="text-xs text-[#8888aa] font-medium">Agence IA · France entière · Opérationnel en 7 jours</span>
           </div>
 
           <h1 class="text-[clamp(2.4rem,5vw,4.5rem)] font-black leading-[1.05] tracking-tight mb-6 reveal">
-            <span class="text-white">Votre premier assistant IA,</span><br/>
-            <span class="gradient-text">configuré pour votre métier.</span><br/>
-            <span class="text-white">Opérationnel en 3 semaines.</span>
+            <span class="text-white">Un assistant IA qui répond,</span><br/>
+            <span class="gradient-text">qualifie et réserve pour vous.</span><br/>
+            <span class="text-white">24h/24. Configuré en 7 jours.</span>
           </h1>
 
-          <p class="text-lg text-[#9090b0] leading-relaxed mb-3 max-w-lg reveal">
-            Un assistant virtuel disponible 24h/24 qui répond à vos clients, prend vos rendez-vous et qualifie vos prospects — adapté à votre secteur d'activité, pas à n'importe qui.
+          <p class="text-lg text-[#9090b0] leading-relaxed mb-4 max-w-lg reveal">
+            Votre client écrit sur votre site. L'agent répond en 3 secondes, pose les bonnes questions, prend le rendez-vous ou qualifie la demande — avec votre vocabulaire, vos horaires, vos tarifs. Pas un chatbot générique.
           </p>
-          <p class="text-base leading-relaxed mb-8 max-w-lg reveal">
-            <strong class="text-white font-semibold">Dès 149€/mois. 0€ de frais d'installation. Résultat garanti en 90 jours.</strong>
-          </p>
+          <div class="space-y-2 mb-8 max-w-lg reveal">
+            {[
+              'Disponible 24h/24 — y compris le dimanche à 23h',
+              'Configuré pour votre secteur, pas copié-collé',
+              'Dès 149€/mois · 0€ d\'installation · Garanti 90 jours',
+            ].map(item => (
+              <div class="flex items-center gap-2.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="text-sm text-[#c0c0e0]">{item}</span>
+              </div>
+            ))}
+          </div>
 
           <div class="flex flex-col sm:flex-row gap-3 mb-10 reveal">
             <a href="/contact" class="btn-primary flex items-center justify-center gap-2 group">
@@ -296,21 +341,21 @@ const sectors = [
   <!-- ══════════════════════════════════════
        BARRE DE CONFIANCE
   ══════════════════════════════════════ -->
-  <div class="border-y border-white/5 py-6 px-6" style="background: rgba(255,255,255,0.015);">
+  <div class="border-y border-white/5 py-5 px-6" style="background: rgba(255,255,255,0.015);">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-        <span class="text-xs text-[#8888aa] uppercase tracking-widest font-semibold flex-shrink-0">IA utilisée</span>
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+        <span class="text-[10px] text-[#555570] uppercase tracking-widest font-semibold flex-shrink-0">Propulsé par</span>
         {[
-          { label: 'GPT-4o', logo: '🤖' },
-          { label: 'Claude 3.5', logo: '🧠' },
-          { label: 'Mistral Large', logo: '🌟' },
-          { label: 'Google Gemini', logo: '♊' },
-          { label: 'Hébergement FR', logo: '🇫🇷' },
-          { label: 'Cloudflare', logo: '🔒' },
+          { label: 'GPT-4o', color: '#10a37f' },
+          { label: 'Claude Sonnet', color: '#d97706' },
+          { label: 'Mistral Large', color: '#7c3aed' },
+          { label: 'Gemini Pro', color: '#4285f4' },
+          { label: 'Données FR', color: '#002395' },
+          { label: 'Cloudflare', color: '#f38020' },
         ].map(t => (
-          <div class="flex items-center gap-2 text-[#8888aa] hover:text-white transition-colors">
-            <span class="text-lg">{t.logo}</span>
-            <span class="text-sm font-semibold">{t.label}</span>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style={`background: ${t.color};`}></span>
+            <span class="text-sm font-semibold text-[#8888aa]">{t.label}</span>
           </div>
         ))}
       </div>
