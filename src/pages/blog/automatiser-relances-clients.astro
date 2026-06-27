@@ -1,0 +1,140 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Automatiser ses relances clients avec l'IA : le guide complet 2026",
+  description: "Comment automatiser les relances prospects, devis non signés et paniers abandonnés avec un agent IA. Séquences, timing, taux de conversion observés chez nos clients.",
+  date: "2026-06-24",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#f59e0b",
+  slug: "automatiser-relances-clients",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un prospect qui ne répond pas à un devis n'est pas un prospect perdu — c'est un prospect qui attend la bonne relance au bon moment. En moyenne, 60% des ventes se concluent après la 4ème ou 5ème prise de contact. Pourtant, 92% des commerciaux abandonnent après 2 essais. Un agent IA ne s'épuise pas.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 types de relances que l'IA automatise</h2>
+
+  <div class="space-y-4 not-prose">
+    {[
+      {
+        type: "Relance devis non signé",
+        color: "#f59e0b",
+        timing: "J+2, J+5, J+10, J+21",
+        stats: "+34% de taux de signature",
+        desc: "L'agent suit chaque devis envoyé. Si pas de réponse sous 48h, il envoie un message personnalisé qui rappelle les bénéfices clés et propose d'ajuster si besoin. À J+10, il signale une \"dernière disponibilité\" ou une contrainte de délai réelle.",
+        example: "\"Bonjour Jean, je me permets de revenir vers vous concernant votre projet de rénovation. Avez-vous eu l'occasion de consulter notre proposition ? Je reste disponible pour l'ajuster selon vos priorités.\""
+      },
+      {
+        type: "Relance prospect inactif",
+        color: "#a78bfa",
+        timing: "J+7, J+30, J+90",
+        stats: "+23% de réactivation",
+        desc: "Un lead qui a demandé des infos mais n'a pas donné suite. L'agent relance avec du contenu utile (cas client, guide, astuce sectorielle) plutôt qu'un simple 'Avez-vous avancé ?'.",
+        example: "\"Bonjour Sophie, on a récemment publié un guide sur l'automatisation pour les cabinets comptables — je pensais à vous. Est-ce que vous avez 20 min pour en discuter ?\""
+      },
+      {
+        type: "Panier abandonné (e-commerce)",
+        color: "#38bdf8",
+        timing: "H+1, H+24, J+3",
+        stats: "+18% de récupération",
+        desc: "Le classique du e-commerce. L'agent détecte un panier non finalisé et envoie une séquence email/SMS/WhatsApp avec le bon produit en rappel, parfois une offre de livraison gratuite à J+3.",
+        example: "\"Votre panier vous attend ! Vous avez laissé [produit] en attente — il reste 3 en stock. Livraison offerte si vous finalisez dans les 24h.\""
+      },
+      {
+        type: "Relance client inactif (upsell)",
+        color: "#34d399",
+        timing: "M+3, M+6, M+12",
+        stats: "+41% de réachat",
+        desc: "Un client qui n'a pas commandé depuis 3 mois. L'agent propose une offre complémentaire ou rappelle l'existence d'un nouveau service en s'appuyant sur l'historique d'achat.",
+        example: "\"Bonjour Marc, ça fait 4 mois que vous avez fait appel à nous pour votre chaudière. La saison froide approche — souhaitez-vous planifier l'entretien annuel ?\""
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-6" style={`border-left: 3px solid ${item.color};`}>
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+          <h3 class="text-white font-black text-base">{item.type}</h3>
+          <span class="text-xs font-bold px-2 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15;`}>{item.stats}</span>
+        </div>
+        <p class="text-xs text-[#8888aa] mb-3"><span class="text-white font-semibold">Timing :</span> {item.timing}</p>
+        <p class="text-[#8888aa] text-sm mb-4">{item.desc}</p>
+        <div class="rounded-lg p-3 text-xs text-[#8888aa] italic" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+          Exemple : {item.example}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La règle des 3V pour une relance qui convertit</h2>
+  <p>La différence entre une relance qui énerve et une relance qui convertit tient à 3 principes :</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose">
+    {[
+      { v: "Valeur", desc: "Chaque relance apporte quelque chose : une info utile, un cas client, une offre, une urgence réelle. Pas un simple 'Alors, vous avez décidé ?'", color: "#f59e0b" },
+      { v: "Variété", desc: "Canal différent à chaque relance : email → SMS → WhatsApp → appel. Le même canal répété 3 fois = ignoré.", color: "#a78bfa" },
+      { v: "Vélocité", desc: "Le timing est roi. J+2 pour un devis, H+1 pour un panier. Plus vous attendez, plus le prospect refroidit.", color: "#34d399" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 text-center">
+        <div class="text-3xl font-black mb-2" style={`color: ${item.color};`}>{item.v}</div>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Exemple de séquence complète : artisan BTP</h2>
+
+  <div class="glass rounded-2xl p-6 not-prose">
+    <h3 class="text-white font-bold mb-4 text-sm">Devis de rénovation : 4 200€, envoyé le lundi 9h</h3>
+    <div class="space-y-3">
+      {[
+        { day: "J+1 • 14h", channel: "SMS", msg: "Bonjour M. Martin, avez-vous bien reçu notre devis ? N'hésitez pas si vous avez des questions.", status: "Lu" },
+        { day: "J+3 • 10h", channel: "Email", msg: "Objet: Votre projet — on peut s'adapter. Corps: Si le budget est une question, on peut phaser les travaux...", status: "Ouvert" },
+        { day: "J+7 • 17h", channel: "WhatsApp", msg: "Bonjour, je tenais à vous informer qu'on a une semaine de libre fin juillet qui correspond à votre projet.", status: "Lu + Réponse" },
+        { day: "J+7 • 17h05", channel: "🎯 Résultat", msg: "M. Martin répond : 'Oui ça m'intéresse, on peut se rappeler demain ?'", status: "Signé" },
+      ].map(row => (
+        <div class="flex items-start gap-4 py-2 border-b border-white/5 last:border-0">
+          <span class="text-xs text-[#8888aa] w-24 flex-shrink-0 pt-0.5">{row.day}</span>
+          <span class={`text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${row.channel === '🎯 Résultat' ? 'bg-green-400/20 text-green-400' : 'bg-white/5 text-[#8888aa]'}`}>{row.channel}</span>
+          <span class="text-xs text-[#8888aa] flex-1">{row.msg}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA gère, ce que vous gérez</h2>
+  <p>Une relance IA n'est pas un robot froid. Elle personnalise chaque message avec le prénom, le projet, le contexte. Mais il y a des limites claires :</p>
+
+  <div class="grid grid-cols-2 gap-4 not-prose">
+    <div class="glass rounded-xl p-5">
+      <p class="text-green-400 font-semibold text-sm mb-3">L'IA gère</p>
+      <ul class="space-y-2 text-xs text-[#8888aa]">
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Envoi au bon timing automatique</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Personnalisation prénom/projet</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Multi-canal coordonné</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Arrêt automatique si réponse</li>
+        <li class="flex gap-2"><span class="text-green-400">✓</span> Rapport des relances converties</li>
+      </ul>
+    </div>
+    <div class="glass rounded-xl p-5">
+      <p class="text-[#f59e0b] font-semibold text-sm mb-3">Vous gérez</p>
+      <ul class="space-y-2 text-xs text-[#8888aa]">
+        <li class="flex gap-2"><span class="text-[#f59e0b]">→</span> La négociation finale</li>
+        <li class="flex gap-2"><span class="text-[#f59e0b]">→</span> Les objections complexes</li>
+        <li class="flex gap-2"><span class="text-[#f59e0b]">→</span> La validation des remises</li>
+        <li class="flex gap-2"><span class="text-[#f59e0b]">→</span> La signature du contrat</li>
+        <li class="flex gap-2"><span class="text-[#f59e0b]">→</span> La relation client long terme</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="mt-4">Pour voir comment les relances automatiques s'intègrent dans votre secteur, consultez nos guides <a href="/ia-pour/artisans" class="text-[#f59e0b] hover:text-white transition-colors">artisans</a>, <a href="/ia-pour/immobilier" class="text-[#f59e0b] hover:text-white transition-colors">immobilier</a> ou <a href="/ia-pour/ecommerce" class="text-[#f59e0b] hover:text-white transition-colors">e-commerce</a>.</p>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Vos devis méritent une deuxième chance</h3>
+    <p class="text-[#8888aa] text-sm mb-6">On configure vos séquences de relance en 7 jours. Audit gratuit pour définir les bons timings et canaux pour votre secteur.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #f59e0b, #d97706);">Configurer mes relances &rarr;</a>
+  </div>
+
+</BlogLayout>

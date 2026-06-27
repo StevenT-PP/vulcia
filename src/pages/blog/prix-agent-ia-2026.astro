@@ -1,0 +1,156 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Combien coûte un agent IA en 2026 ? Prix, packs et ROI expliqués",
+  description: "Prix réels d'un agent IA pour PME en 2026 : de 149€ à 1 490€/mois. Ce qui est inclus, ce qui coûte plus cher, et comment calculer si c'est rentable pour vous.",
+  date: "2026-06-20",
+  readTime: "7 min",
+  category: "Tarifs",
+  categoryColor: "#34d399",
+  slug: "prix-agent-ia-2026",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La question qu'on reçoit le plus souvent : "Ça coûte combien, un agent IA ?" La réponse honnête : entre 149€ et 1 490€/mois selon ce que vous voulez automatiser. Voici ce qui se cache derrière ces chiffres — sans langue de bois.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 facteurs qui font varier le prix</h2>
+
+  <div class="space-y-4 not-prose">
+    {[
+      { n: "01", title: "Le volume de conversations", desc: "Un agent qui gère 50 demandes/mois n'a pas le même coût qu'un agent qui en traite 2 000. Les coûts d'API (GPT-4o, Claude, Mistral) varient directement avec le volume." },
+      { n: "02", title: "Le nombre de canaux", desc: "Site web seul = simple. Site + WhatsApp + email + Google Business = plus complexe. Chaque canal d'intégration ajoute de la configuration." },
+      { n: "03", title: "Les intégrations métier", desc: "Connecter l'agent à Doctolib, votre CRM, votre logiciel de caisse ou votre ERP demande un travail technique spécifique." },
+      { n: "04", title: "Le niveau de personnalisation", desc: "Un agent générique qui répond à des FAQ prend 2 jours. Un agent qui qualifie des dossiers complexes, génère des devis et relance les prospects prend 2 semaines." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 flex gap-4">
+        <span class="text-2xl font-black text-[#34d399] flex-shrink-0 leading-none">{item.n}</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
+          <p class="text-[#8888aa] text-sm">{item.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les prix du marché en 2026</h2>
+
+  <div class="glass rounded-2xl p-6 not-prose overflow-x-auto">
+    <table class="w-full text-sm min-w-[500px]">
+      <thead>
+        <tr class="border-b border-white/10">
+          <th class="text-left py-3 pr-6 text-[#8888aa] font-semibold">Type de solution</th>
+          <th class="text-left py-3 pr-6 text-white font-semibold">Prix mensuel</th>
+          <th class="text-left py-3 text-[#8888aa] font-semibold">Pour qui</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ["Chatbot no-code (Tidio, Crisp...)", "0 – 50 €/mois", "Réponses FAQ basiques, sans personnalisation"],
+          ["Agent IA générique (ChatGPT plug-in)", "20 – 100 €/mois", "Entrepreneurs individuels, usage limité"],
+          ["Agent IA sur-mesure entrée de gamme", "149 – 350 €/mois", "TPE, 1 canal, cas d'usage simple"],
+          ["Agent IA sur-mesure standard", "350 – 800 €/mois", "PME, 2-3 canaux, intégrations CRM/agenda"],
+          ["Agent IA sur-mesure avancé", "800 – 1 500 €/mois", "PME multi-sites, 5+ agents, intégrations complexes"],
+          ["Développement sur-mesure (agence dev)", "5 000 – 30 000 € setup + maintenance", "Grandes PME, besoins très spécifiques"],
+        ].map(([type, prix, pour]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-6 text-white text-xs">{type}</td>
+            <td class="py-3 pr-6 text-[#34d399] font-semibold text-xs whitespace-nowrap">{prix}</td>
+            <td class="py-3 text-[#8888aa] text-xs">{pour}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les prix IAForge en détail</h2>
+  <p>Chez IAForge, on pratique la transparence totale sur les prix. Voici ce que chaque pack inclut concrètement :</p>
+
+  <div class="space-y-4 not-prose">
+    {[
+      {
+        name: "Pack Solo", price: "149 €/mois", color: "#34d399",
+        for: "Indépendants et TPE qui veulent un premier agent sans risque",
+        includes: ["1 agent IA sur votre site existant", "Jusqu'à 500 conversations/mois", "Dashboard de supervision", "Rapport leads mensuel", "Déploiement en 7 jours"],
+      },
+      {
+        name: "Pack Essentiel", price: "349 €/mois", color: "#38bdf8",
+        for: "PME avec un site à refaire et 2 sources de contacts à automatiser",
+        includes: ["Nouveau site 6 pages inclus", "2 agents IA (site + email ou WhatsApp)", "3 articles SEO/mois", "Google Business optimisé", "0€ d'installation"],
+      },
+      {
+        name: "Pack Croissance", price: "790 €/mois", color: "#a78bfa",
+        for: "PME qui veulent combiner automatisation IA et visibilité Google",
+        includes: ["Site multi-pages + blog", "3 agents IA sur-mesure", "8 articles SEO/mois", "Posts Google Business automatiques", "Dashboard de supervision avancé"],
+      },
+      {
+        name: "Pack Pro", price: "1 490 €/mois", color: "#7c5cfc",
+        for: "PME avec équipe et processus complexes à automatiser",
+        includes: ["5 agents IA sur-mesure", "15 articles SEO/mois", "Intégrations CRM/ERP", "Formation équipes", "Account manager dédié + SLA 8h"],
+      },
+    ].map(pack => (
+      <div class="glass rounded-xl p-6" style={`border-left: 3px solid ${pack.color};`}>
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-white font-black text-base">{pack.name}</h3>
+          <span class="text-lg font-black" style={`color: ${pack.color};`}>{pack.price}</span>
+        </div>
+        <p class="text-[#8888aa] text-xs mb-4 italic">{pack.for}</p>
+        <ul class="space-y-1.5">
+          {pack.includes.map(item => (
+            <li class="flex items-center gap-2 text-xs text-white">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={pack.color} stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qui n'est jamais inclus (et méfiez-vous si on vous le promet)</h2>
+  <p>Certaines agences vendent des "agents IA illimités" à prix cassé. Voici ce qu'elles cachent généralement dans les conditions :</p>
+  <ul class="space-y-2 not-prose text-sm">
+    {[
+      "Les coûts d'API OpenAI ou Anthropic facturés en plus (peuvent doubler la facture à volume élevé)",
+      "Les frais de setup cachés (\"installation\" à 500-2 000€ que certains facturent séparément)",
+      "Le support : réponse en 72h vs SLA contractualisé — très différent en cas de panne",
+      "Les mises à jour du modèle : un agent GPT-3.5 d'il y a 2 ans n'a plus rien à voir avec GPT-4o aujourd'hui",
+    ].map(item => (
+      <li class="flex items-start gap-2">
+        <span class="text-red-400 flex-shrink-0 mt-0.5">⚠</span>
+        <span class="text-[#8888aa]">{item}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="mt-4">Chez IAForge : 0€ de frais d'installation, coûts d'API inclus dans le volume standard, et prix affichés publiquement. Si on change quoi que ce soit, vous êtes prévenus 30 jours avant.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comment calculer si c'est rentable pour vous</h2>
+  <p>La règle simple : si votre agent IA vous fait économiser plus qu'il ne coûte, c'est rentable. Pour le calculer :</p>
+
+  <div class="glass rounded-2xl p-6 not-prose">
+    <div class="space-y-4">
+      {[
+        { label: "Temps économisé × coût horaire", example: "10h/semaine × 40€ = 1 600€/mois" },
+        { label: "+ CA additionnel (leads récupérés)", example: "5 leads/mois × 300€ = 1 500€/mois" },
+        { label: "− Coût mensuel IAForge", example: "− 349€/mois (Pack Essentiel)" },
+        { label: "= ROI net mensuel", example: "= 2 751€/mois net", highlight: true },
+      ].map(row => (
+        <div class={`flex items-center justify-between py-2 ${row.highlight ? 'border-t border-white/10 pt-4 mt-2' : 'border-b border-white/5'}`}>
+          <span class="text-[#8888aa] text-sm">{row.label}</span>
+          <span class={`text-sm font-bold ${row.highlight ? 'text-green-400 text-base' : 'text-white'}`}>{row.example}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <p class="mt-4">Utilisez notre <a href="/calculateur-roi" class="text-[#34d399] hover:text-white transition-colors">calculateur ROI gratuit</a> pour entrer vos propres chiffres et obtenir une estimation en 2 minutes.</p>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Quel pack pour votre situation ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">En 30 minutes d'audit, on identifie le pack adapté à votre volume, vos canaux et vos objectifs — avec un ROI estimé avant de signer.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #34d399, #059669);">Audit gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

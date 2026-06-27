@@ -1,0 +1,151 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Chatbot IA pour site web en 2026 : tout ce qu'il faut savoir avant de choisir",
+  description: "Chatbot classique ou agent IA ? Comparatif honnête, critères de choix, erreurs à éviter et retours d'expérience sur 40+ déploiements en PME françaises.",
+  date: "2026-06-26",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "chatbot-site-web-2026",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>En 2026, il y a deux produits très différents qu'on appelle "chatbot" : les chatbots à arbre de décision des années 2018-2022, et les agents IA conversationnels d'aujourd'hui. Si vous cherchez une solution pour votre site web, ce guide vous aide à choisir le bon — et à éviter de payer pour le mauvais.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Chatbot classique vs Agent IA : la vraie différence</h2>
+
+  <div class="glass rounded-2xl p-6 not-prose overflow-x-auto">
+    <table class="w-full text-sm min-w-[520px]">
+      <thead>
+        <tr class="border-b border-white/10">
+          <th class="text-left py-3 pr-6 text-[#8888aa] font-semibold">Critère</th>
+          <th class="text-left py-3 pr-6 text-red-400 font-semibold">Chatbot classique</th>
+          <th class="text-left py-3 text-[#7c5cfc] font-semibold">Agent IA (LLM)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ["Compréhension", "Mots-clés exacts uniquement", "Comprend l'intention, les fautes, le contexte"],
+          ["Réponses hors-script", "\"Je n'ai pas compris\"", "Répond à 95%+ des questions"],
+          ["Configuration", "Arbre de décision manuel", "Entraînement sur vos documents"],
+          ["Mise à jour", "Manuelle, ligne par ligne", "Réentraînement automatisé"],
+          ["Personnalisation", "Limitée aux scénarios prévus", "Adapte le ton, le contexte, l'historique"],
+          ["Intégrations", "Formulaire → email", "Agenda, CRM, ERP, WhatsApp, SMS"],
+          ["Prix mensuel", "0-80€", "149-1 490€"],
+          ["ROI PME (6 mois)", "Souvent négatif (abandon)", "x4 à x8 en moyenne"],
+        ].map(([crit, classique, agent]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-6 text-[#8888aa]">{crit}</td>
+            <td class="py-3 pr-6 text-red-400 text-xs">{classique}</td>
+            <td class="py-3 text-[#7c5cfc] text-xs font-medium">{agent}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 questions à vous poser avant de choisir</h2>
+
+  <div class="space-y-4 not-prose">
+    {[
+      {
+        q: "1. Vos clients posent-ils des questions variées ou toujours les mêmes ?",
+        chatbot: "Si 90% de vos questions sont \"Quels sont vos horaires ?\" et \"Quel est votre tarif ?\", un chatbot simple suffit.",
+        agent: "Si les questions varient (\"Et si je suis dans cette situation spécifique ?\"), seul un agent IA répond correctement.",
+      },
+      {
+        q: "2. Avez-vous besoin d'agir, pas seulement de répondre ?",
+        chatbot: "Un chatbot classique affiche des informations.",
+        agent: "Un agent IA prend des rendez-vous, collecte des informations, crée des leads dans votre CRM, envoie des emails.",
+      },
+      {
+        q: "3. Combien de demandes recevez-vous par semaine ?",
+        chatbot: "Moins de 20 demandes/semaine : un formulaire de contact suffit. Chatbot = overkill.",
+        agent: "Plus de 30 demandes/semaine : un agent IA devient rentable dès le premier mois.",
+      },
+      {
+        q: "4. À quel point la conversation doit-elle sembler humaine ?",
+        chatbot: "Les chatbots à boutons sont immédiatement identifiés comme robots. Certains clients décrochent.",
+        agent: "Un agent IA bien configuré est perçu comme humain dans 70-80% des cas lors des premières interactions.",
+      },
+      {
+        q: "5. Quel est votre budget et votre tolérance au risque ?",
+        chatbot: "Un chatbot gratuit ou pas cher : faible risque, faible résultat. Souvent abandonné après 3 mois.",
+        agent: "Un agent IA à 149-349€/mois avec garantie résultat : investissement mesurable, ROI visible en 30-60 jours.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-bold text-sm mb-3">{item.q}</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-xs text-[#8888aa] font-semibold mb-1 text-red-400/70">→ Chatbot classique</p>
+            <p class="text-xs text-[#8888aa]">{item.chatbot}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold mb-1 text-[#7c5cfc]">→ Agent IA</p>
+            <p class="text-xs text-[#8888aa]">{item.agent}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 erreurs les plus fréquentes</h2>
+
+  <div class="space-y-3 not-prose">
+    {[
+      {
+        err: "Installer un chatbot générique sans le configurer pour son secteur",
+        detail: "Un chatbot médical qui répond \"Je ne suis pas qualifié pour donner des conseils médicaux\" à chaque question détruit la confiance. La personnalisation sectorielle est non-négociable.",
+      },
+      {
+        err: "Mettre le chatbot en bas à droite et l'oublier",
+        detail: "Si le chatbot n'est pas proactif (n'ouvre pas la conversation après 30 secondes sur la page), 80% des visiteurs ne l'utilisent jamais. Le placement et le déclenchement sont aussi importants que la qualité des réponses.",
+      },
+      {
+        err: "Ne pas connecter le chatbot à son agenda ou son CRM",
+        detail: "Un chatbot qui dit \"Je vais transmettre votre demande\" et envoie un email à répondre manuellement, c'est moins efficace qu'un formulaire. La valeur est dans l'action directe, pas dans la transmission.",
+      },
+    ].map((item, i) => (
+      <div class="glass rounded-xl p-5 flex gap-4">
+        <span class="text-2xl font-black text-red-400 flex-shrink-0">✗</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-2">{item.err}</p>
+          <p class="text-[#8888aa] text-sm">{item.detail}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'on observe sur 40+ déploiements en PME françaises</h2>
+
+  <div class="glass rounded-2xl p-6 not-prose">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      {[
+        { val: "< 8 min", label: "Temps de réponse moyen avant IA", sub: "contre 3s après" },
+        { val: "73%", label: "Questions résolues sans intervention humaine", sub: "dès le premier mois" },
+        { val: "+28%", label: "Taux de contact entrant transformé en lead", sub: "vs formulaire seul" },
+        { val: "1,8 mois", label: "Délai moyen de retour sur investissement", sub: "sur Pack Essentiel" },
+      ].map(stat => (
+        <div>
+          <div class="text-2xl font-black text-[#7c5cfc] mb-1">{stat.val}</div>
+          <p class="text-white text-xs font-semibold mb-1">{stat.label}</p>
+          <p class="text-[#8888aa] text-xs">{stat.sub}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <p class="mt-4">Pour une estimation personnalisée basée sur votre volume de demandes, utilisez notre <a href="/calculateur-roi" class="text-[#7c5cfc] hover:text-white transition-colors">calculateur ROI gratuit</a>. Et pour comparer les différentes solutions du marché, consultez notre <a href="/comparatif-ia" class="text-[#7c5cfc] hover:text-white transition-colors">comparatif IA 2026</a>.</p>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Quel chatbot pour votre site ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">On analyse votre site, votre volume de demandes et votre secteur — puis on vous dit exactement si un agent IA vaut la peine et quel ROI vous pouvez attendre.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">Analyse gratuite &rarr;</a>
+  </div>
+
+</BlogLayout>

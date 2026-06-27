@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#06b6d4";
+
+const tasks = [
+  "Répond aux questions fréquentes : disponibilité d'un médicament, horaires, ordonnance requise",
+  "Informe sur les génériques disponibles et les équivalences",
+  "Gère les demandes de renouvellement d'ordonnances (redirection vers médecin traitant)",
+  "Répond aux demandes de click & collect et vérifie la disponibilité en temps réel",
+  "Envoie des rappels automatiques pour les traitements chroniques",
+  "Répond sur WhatsApp, site web et Google Business 24h/24",
+  "Gère les avis Google et publie les posts hebdomadaires automatiquement",
+  "Escalade les questions médicales complexes au pharmacien de garde",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il donner des conseils pharmaceutiques ?",
+    a: "L'agent est configuré pour répondre aux questions d'information générale (disponibilité, horaires, génériques) mais redirige systématiquement vers le pharmacien pour tout conseil médicamenteux. Il ne se substitue jamais à l'expertise pharmaceutique.",
+  },
+  {
+    q: "Compatible avec les logiciels de pharmacie (Winpharma, Lgpi, Pharmaland) ?",
+    a: "Oui. On s'intègre aux principaux logiciels de gestion de pharmacie via API pour vérifier les stocks en temps réel. Le patient reçoit une réponse fiable sur la disponibilité d'un médicament sans que le pharmacien ait besoin d'intervenir.",
+  },
+  {
+    q: "Les données de santé sont-elles sécurisées ?",
+    a: "Absolument. On utilise Mistral AI hébergé à Paris pour les pharmacies. Aucune donnée ne quitte le territoire français. L'agent est configuré pour ne pas stocker d'informations médicales — uniquement les coordonnées de contact et les demandes génériques.",
+  },
+  {
+    q: "Comment gérer les urgences pharmaceutiques nocturnes ?",
+    a: "L'agent informe les clients de la pharmacie de garde la plus proche (intégration annuaire de garde) et de votre numéro d'urgence si applicable. Il ne tente jamais de traiter une urgence médicale.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent sur la base de vos 50 questions les plus fréquentes, vos horaires, votre politique de click & collect et vos services spécifiques (vaccination, tests, conseil nutritrion...).",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour pharmacies — Disponibilité médicaments et click & collect automatisés | IAForge"
+  description="Agent IA pour pharmacie : réponses automatiques sur disponibilité médicaments, click & collect, renouvellements. RGPD, hébergé en France. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Pharmacies", "item": "https://iaforge.fr/ia-pour/pharmacies" }
+    ]
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Pharmacies</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour pharmacies</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre pharmacie répond<br/><span class="gradient-text">à chaque question en 3 secondes</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Disponibilité d'un médicament, horaires de garde, click & collect, renouvellement d'ordonnance — votre agent IA répond 24h/24 pendant que vous conseillez vos patients en officine.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">
+              Audit gratuit &rarr;
+            </a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">
+              Calculer mon ROI
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "80%", label: "des questions auxquelles l'agent répond sans pharmacien", color },
+            { val: "-45 min", label: "de temps téléphonique économisé par jour en officine", color: "#34d399" },
+            { val: "24h/24", label: "disponibilité sur WhatsApp, site web et Google Business", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, RGPD-conforme, hébergé en France", color: "#f59e0b" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TACHES -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre pharmacie</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRES -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour une pharmacie de 3 pharmaciens</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3 gap-0">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Appels sur disponibilité médicaments", "~35/jour traités manuellement", "Réponse automatique en temps réel"],
+            ["Questions hors horaires", "Messagerie vocale non traitée", "Réponse instantanée 24h/24"],
+            ["Click & collect", "Appel + vérification manuelle", "Vérification stock auto + confirmation"],
+            ["Interruptions en conseil", "15-20 fois/heure", "< 3 fois/heure (urgences uniquement)"],
+            ["Avis Google", "1 réponse/semaine si disponible", "Réponse sous 4h, 100% des avis"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RGPD -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto glass rounded-2xl p-8">
+      <div class="flex items-start gap-5">
+        <div class="text-3xl flex-shrink-0">🔒</div>
+        <div>
+          <h2 class="text-xl font-black text-white mb-3">Conformité réglementaire pharmacie</h2>
+          <p class="text-[#8888aa] text-sm leading-relaxed mb-4">
+            Les pharmacies sont soumises aux obligations RGPD renforcées sur les données de santé. Chez IAForge, on utilise exclusivement <strong class="text-white">Mistral AI hébergé à Paris</strong> pour tous les déploiements en officine. Vos données et celles de vos patients ne quittent jamais le territoire français.
+          </p>
+          <ul class="space-y-2">
+            {[
+              "Pas de stockage de données médicales ou d'ordonnances",
+              "Chiffrement de bout en bout sur tous les canaux",
+              "Conformité CNIL et HDS (Hébergement Données de Santé)",
+              "DPA (Data Processing Agreement) fourni avec chaque contrat",
+            ].map(item => (
+              <li class="flex items-center gap-2 text-sm text-[#8888aa]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre pharmacie, disponible 24h/24</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos flux actuels, vos questions les plus fréquentes et on vous propose un agent IA adapté à votre officine — RGPD-conforme, opérationnel en 7 jours.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #0891b2);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Données hébergées en France</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
