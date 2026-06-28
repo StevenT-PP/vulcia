@@ -1,0 +1,129 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA et pipeline commercial : automatiser de la prospection à la signature",
+  description: "Comment structurer un pipeline commercial avec l'IA : sourcing, qualification, nurturing, préparation RDV et suivi post-démo. Stack complet et benchmarks pour équipes de vente B2B.",
+  date: "2026-07-09",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pipeline-commercial",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un pipeline commercial sans IA ressemble à une passoire : les leads entrent en haut, mais à chaque étape, des prospects se perdent faute de relance, de qualification rapide ou de préparation suffisante. L'IA ne vend pas à votre place. Elle colmate les fuites — les leads non relancés à temps, les prospects tièdes qui auraient pu être réchauffés, les démos sans briefing préalable.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 étapes du pipeline et ce que l'IA fait à chacune</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        etape: "Étape 1 — Sourcing et enrichissement",
+        color: "#7c5cfc",
+        avant: "Le commercial passe 2h à chercher des contacts qualifiés sur LinkedIn, vérifier les emails, renseigner le CRM",
+        apres: "Outils comme Apollo, Kaspr ou Pharow font le sourcing automatiquement selon des critères prédéfinis (secteur, taille, poste, technologie utilisée). L'IA enrichit les données manquantes (email pro, LinkedIn, CA estimé).",
+        gain: "-2h/jour par commercial sur le sourcing",
+      },
+      {
+        etape: "Étape 2 — Séquences outbound",
+        color: "#34d399",
+        avant: "Email générique envoyé en masse, taux de réponse 2-3%",
+        apres: "Séquences personnalisées par La Growth Machine ou Lemlist : email adapté au profil, relance LinkedIn J+3, email final J+7. Personnalisation automatique : nom, secteur, actualité récente de l'entreprise.",
+        gain: "Taux de réponse de 8 à 15% sur les séquences personnalisées IA",
+      },
+      {
+        etape: "Étape 3 — Qualification inbound",
+        color: "#38bdf8",
+        avant: "Lead entrant reçoit un email de réponse en 4 à 24h. 50% des leads ne rappellent pas après 24h.",
+        apres: "Agent IA répond en < 5 min, qualifie BANT (Budget, Autorité, Besoin, Timing), score le lead et notifie le commercial ou place dans une séquence de nurturing.",
+        gain: "×8 de conversion sur les leads contactés en < 5 min vs > 24h",
+      },
+      {
+        etape: "Étape 4 — Nurturing des leads tièdes",
+        color: "#f59e0b",
+        avant: "Les leads tièdes (budget non défini, projet à 6 mois) sont oubliés ou dans une liste sans suivi",
+        apres: "Séquence automatique sur 3-6 mois : envoi de cas clients sectoriels, invitation à webinar, partage d'une étude, rappel J+90. Le lead revient qualifié quand il est prêt.",
+        gain: "+25% de leads tièdes convertis à 90 jours",
+      },
+      {
+        etape: "Étape 5 — Préparation et suivi des démos",
+        color: "#a78bfa",
+        avant: "Le commercial arrive en démo avec les informations du formulaire de contact. Le lead no-show sans rappel.",
+        apres: "Confirmation J-2 et H-2h automatique. Fiche de briefing complète (informations collectées lors de la qualification, actualités de l'entreprise, compétiteurs identifiés). Email de suivi post-démo envoyé dans l'heure.",
+        gain: "-30% de no-shows sur les démos, +20% de conversion démo → proposition",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-xs font-bold uppercase tracking-wider mb-4" style={`color: ${item.color};`}>{item.etape}</p>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <p class="text-xs text-red-400 font-semibold mb-2">AVANT</p>
+            <p class="text-[#8888aa] text-sm leading-relaxed">{item.avant}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold mb-2" style={`color: ${item.color};`}>APRÈS</p>
+            <p class="text-[#8888aa] text-sm leading-relaxed">{item.apres}</p>
+          </div>
+        </div>
+        <p class="text-xs font-semibold border-l-2 pl-3" style={`color: ${item.color}; border-color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le stack complet pour un pipeline B2B automatisé</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      { outil: "Sourcing outbound", solution: "Apollo.io ou Pharow (sourcing France) + Kaspr (enrichissement LinkedIn)", color: "#7c5cfc" },
+      { outil: "Séquences outbound", solution: "La Growth Machine (multicanal email + LinkedIn) ou Lemlist (email uniquement)", color: "#34d399" },
+      { outil: "Qualification inbound", solution: "Agent IAForge — réponse < 5 min, qualification BANT, scoring automatique", color: "#38bdf8" },
+      { outil: "CRM et pipeline", solution: "HubSpot (recommandé PME) ou Pipedrive — avec scoring IA intégré", color: "#f59e0b" },
+      { outil: "Prise de RDV", solution: "Calendly ou HubSpot Meetings — self-service pour les leads qualifiés", color: "#a78bfa" },
+      { outil: "Signature électronique", solution: "Yousign (français, EIDAS) ou DocuSign — automatisé depuis le CRM", color: "#fbbf24" },
+    ].map(item => (
+      <div class="flex items-start gap-3 glass rounded-xl p-4">
+        <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={`background: ${item.color};`}></div>
+        <div>
+          <p class="text-white text-sm font-semibold">{item.outil}</p>
+          <p class="text-[#8888aa] text-xs mt-0.5">{item.solution}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une équipe de 3 commerciaux B2B</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Métrique", "Avant IA", "Après IA", "Impact"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Délai de qualification lead", "4 à 24h", "< 5 min", "×8 de conversion lead → SQL"],
+        ["Temps sur tâches non-vente", "35% du temps", "12% du temps", "+23% de temps commercial pur"],
+        ["Leads tièdes convertis à 90j", "5 à 8%", "18 à 25%", "+200% de revenus pipeline tiède"],
+        ["No-shows sur les démos", "15 à 20%", "5 à 8%", "+12 démos/mois récupérées"],
+        ["CA additionnel estimé (3 comm.)", "-", "-", "+120 à 180k€/an selon secteur"],
+      ].map(([metrique, avant, apres, impact]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{metrique}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400">{avant}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{apres}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc] font-semibold">{impact}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/ia-b2b-prospection" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA et prospection B2B &rarr;</a>
+    <a href="/blog/crm-ia-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">CRM et IA pour PME &rarr;</a>
+  </div>
+
+</BlogLayout>

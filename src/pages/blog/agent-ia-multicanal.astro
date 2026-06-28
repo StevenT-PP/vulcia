@@ -1,0 +1,152 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA multicanal : email, WhatsApp, chat et SMS en une seule interface",
+  description: "Comment déployer un agent IA sur plusieurs canaux (email, WhatsApp, chat web, SMS) avec une configuration unique et un historique client centralisé. Guide pratique 2026.",
+  date: "2026-07-09",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "agent-ia-multicanal",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un client vous envoie d'abord un email, puis rappelle sur WhatsApp pour avoir une réponse plus rapide, puis revient sur votre chat web deux jours plus tard. Sans approche multicanale, il répète les mêmes informations à chaque fois — et vous perdez du contexte. Un agent IA multicanal centralisé mémorise l'historique client quel que soit le canal utilisé et répond avec la même cohérence partout.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 canaux principaux et leurs caractéristiques</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-5">
+      {["Canal", "Taux d'ouverture", "Délai de réponse attendu", "Meilleur pour", "Coût"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Email", "20-25%", "< 24h", "Documentation, devis, contrats, récapitulatifs", "Quasi-nul"],
+        ["WhatsApp", "98%", "< 5 min", "RDV, relances, confirmations, SAV rapide", "0,02-0,08€/conv."],
+        ["Chat web", "Immédiat", "Immédiat (synchrone)", "Qualification, FAQ, première impression site", "SaaS mensuel"],
+        ["SMS", "95%", "< 1 min", "Rappels critiques (RDV, livraison), urgences", "0,05-0,12€/SMS"],
+      ].map(([canal, taux, delai, pour, cout]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{canal}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{taux}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{delai}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{pour}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#f59e0b]">{cout}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">L'architecture multicanale centralisée</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Une seule base de connaissance pour tous les canaux",
+        color: "#7c5cfc",
+        desc: "L'agent répond avec les mêmes informations qu'il soit sur WhatsApp, votre chat web ou par email. La FAQ, les tarifs, les disponibilités, les procédures — tout est centralisé en un seul endroit que vous mettez à jour une fois. Fini les incohérences entre ce que répond le chat et ce que dit l'email.",
+        gain: "1 seule mise à jour pour tous les canaux",
+      },
+      {
+        n: "2",
+        titre: "Historique client unifié quel que soit le canal",
+        color: "#34d399",
+        desc: "Un client qui pose une question par email, puis revient sur WhatsApp ne repart pas de zéro. L'agent reconnaît le numéro de téléphone ou l'email et accède à l'historique de la conversation. Le contexte est préservé — le client ne répète pas, l'agent ne se contredit pas.",
+        gain: "+40% de satisfaction client sur les interactions multi-canaux",
+      },
+      {
+        n: "3",
+        titre: "Escalade cohérente vers un humain",
+        color: "#38bdf8",
+        desc: "Quand l'agent escalade vers un humain, il transmet le contexte complet : canal d'origine, historique de la conversation, informations collectées, raison de l'escalade. Votre équipe reprend la conversation avec tout le contexte — sans demander au client de tout réexpliquer.",
+        gain: "0 répétition pour le client lors de l'escalade",
+      },
+      {
+        n: "4",
+        titre: "Préférences de canal respectées",
+        color: "#f59e0b",
+        desc: "Certains clients préfèrent WhatsApp, d'autres l'email. L'agent mémorise le canal préféré de chaque client et privilégie ce canal pour les relances et notifications proactives. Un client qui répond systématiquement sur WhatsApp recevra ses rappels de RDV sur WhatsApp — pas par email.",
+        gain: "+25% de taux d'ouverture sur les notifications proactives",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Quel canal pour quel cas d'usage ?</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        cas: "Rappels de RDV",
+        rec: "WhatsApp + SMS",
+        why: "Taux d'ouverture 95-98%. L'email est trop facilement ignoré pour les rappels critiques. WhatsApp si le client l'utilise, SMS en backup.",
+      },
+      {
+        cas: "Qualification de leads entrants",
+        rec: "Chat web + email",
+        why: "Le chat qualifie en temps réel sur votre site. L'email prend le relais pour envoyer la documentation et les devis structurés.",
+      },
+      {
+        cas: "SAV et questions rapides",
+        rec: "WhatsApp",
+        why: "Le contexte conversationnel de WhatsApp est idéal pour le SAV. L'échange rapide et la réponse immédiate reduisent la frustration.",
+      },
+      {
+        cas: "Relances devis et prospects",
+        rec: "Email + WhatsApp",
+        why: "Email pour le premier envoi (devis avec PJ). WhatsApp pour la relance J+3 — taux de réponse 3× supérieur à l'email de relance.",
+      },
+      {
+        cas: "Onboarding nouveau client",
+        rec: "Email",
+        why: "L'onboarding nécessite de la documentation (contrats, guides, accès). L'email avec pièces jointes reste le canal le plus adapté.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-white font-semibold text-sm">{item.cas}</p>
+          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-[#7c5cfc] bg-[#7c5cfc15] border border-[#7c5cfc30]">{item.rec}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.why}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les erreurs classiques du déploiement multicanal</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Déployer sur tous les canaux à la fois sans maîtriser le premier — commencer par le canal où vous avez le plus de trafic entrant",
+      "Avoir des réponses différentes selon le canal — crée de la confusion et nuit à la confiance",
+      "Oublier de configurer l'escalade sur chaque canal — un client bloqué sur WhatsApp doit pouvoir être transféré",
+      "Ne pas communiquer aux clients que vous utilisez un agent IA — obligation EU AI Act et gage de transparence",
+      "Garder le même ton formel sur WhatsApp et sur email — adapter le registre au canal sans changer les informations",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/agent-ia-whatsapp-business" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">WhatsApp Business API &rarr;</a>
+    <a href="/blog/agent-ia-support-client" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA support client &rarr;</a>
+  </div>
+
+</BlogLayout>

@@ -1,0 +1,193 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f87171";
+
+const tasks = [
+  "Réservations de soins et prestations 24h/24 par esthéticienne et type de soin",
+  "Rappels anti no-show J-2 et H-2h avec confirmation ou annulation",
+  "Collecte les informations pré-soin : allergies, traitements en cours, contre-indications",
+  "Relance les clientes non revenues depuis 6 semaines pour la fidélisation",
+  "Gère les abonnements soins et forfaits multi-séances : solde restant, rappel d'expiration",
+  "Répond aux questions sur les prestations : durée, prix, préparation, contre-indications",
+  "Notifie les clientes des promotions, nouveaux soins et offres saisonnières",
+  "Collecte les avis post-soin et redirige les satisfaites vers Google",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il recommander des soins selon le type de peau ou un objectif ?",
+    a: "L'agent peut présenter les soins disponibles et leurs indications générales (soin anti-âge, hydratation, détox, relaxation). Il ne peut pas diagnostiquer un type de peau ou recommander un protocole personnalisé — cela reste le rôle de votre esthéticienne lors de l'entretien pré-soin. L'agent prépare la cliente, l'esthéticienne conseille.",
+  },
+  {
+    q: "Compatible avec Planity, Fresha ou Timely ?",
+    a: "L'agent s'intègre avec Planity et Fresha via API — les deux proposent des intégrations avec des outils tiers. Pour Timely, Mindbody et les logiciels spa/bien-être, une intégration via webhook ou export est disponible. Les instituts sur agenda papier ou Google Calendar s'adaptent avec une intégration simplifiée.",
+  },
+  {
+    q: "Comment gérer les forfaits et abonnements soins ?",
+    a: "L'agent connaît le solde de chaque cliente sur ses forfaits actifs et peut le lui indiquer sur demande. Il envoie une notification quand il reste 1 séance sur un forfait pour proposer le renouvellement, et un rappel d'expiration 30 jours avant la fin de validité.",
+  },
+  {
+    q: "L'agent peut-il gérer les contre-indications (grossesse, maladie, traitement médical) ?",
+    a: "L'agent collecte les informations de contre-indication dans le formulaire de pré-soin et les transmet à l'esthéticienne avant le RDV. Il ne prend pas de décision sur l'admissibilité — c'est votre équipe qui valide. Si une contre-indication majeure est mentionnée, l'agent peut bloquer le RDV et demander un appel de confirmation.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. Configuration avec vos prestations, durées, tarifs, esthéticiennes disponibles et questionnaire pré-soin. Pour les instituts avec une gamme étendue de soins corps, visage et bien-être, prévoir 10 jours pour une configuration complète.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour instituts de beauté et spas — Réservations et fidélisation automatisées | IAForge"
+  description="Agent IA pour centre esthétique : réservations 24h/24, rappels anti no-show, collecte pré-soin, relances clientes, gestion forfaits. Compatible Planity, Fresha. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Centres esthétiques", "item": "https://iaforge.fr/ia-pour/centres-esthetiques" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Centres esthétiques</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour instituts de beauté et spas</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos soins réservés.<br/><span class="gradient-text">Vos clientes fidèles.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Réservations 24h/24, rappels, collecte pré-soin et relances fidélisation — pendant que votre équipe prend soin de vos clientes.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-55%", label: "de no-shows grâce aux rappels J-2 et H-2h avec confirmation ou annulation", color },
+            { val: "+40%", label: "de réservations hors horaires — clientes qui réservent le soir ou le week-end", color: "#f59e0b" },
+            { val: "+30%", label: "de retour client grâce aux relances de fidélisation à 6 semaines", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à vos prestations et votre agenda", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre institut</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">La séquence de fidélisation beauté</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Une cliente qui revient régulièrement vaut 5× plus qu'une nouvelle cliente. La fidélisation automatisée garantit que vous ne perdez personne par manque de relance.</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[
+          { step: "J+1 après soin", label: "Remerciement", msg: "\"Merci pour votre visite [Prénom] ! J'espère que vous profitez encore du soin. Si vous avez un moment, votre avis sur Google nous aide beaucoup.\"", color },
+          { step: "J+14", label: "Rappel résultats", msg: "\"Comment se sent votre peau 2 semaines après votre soin [Nom du soin] ? N'hésitez pas si vous avez des questions. Votre prochaine séance idéale dans 4 semaines !\"", color: "#f59e0b" },
+          { step: "J+42 (6 sem)", label: "Proposition revisit", msg: "\"C'est le bon moment pour renouveler votre [soin]. Nos prochaines disponibilités : [créneaux disponibles]. Vous pouvez réserver directement ici.\"", color: "#a78bfa" },
+          { step: "J+90", label: "Offre de retour", msg: "\"Ça fait 3 mois, vous nous manquez ! Pour votre prochain rendez-vous, nous vous offrons [soin offert/réduction] — valable jusqu'au [date].\"", color: "#34d399" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-5">
+            <div class="text-xs font-bold mb-1" style={`color: ${item.color};`}>{item.step}</div>
+            <p class="text-white font-bold text-sm mb-2">{item.label}</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed italic">{item.msg}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/coiffeurs', title: 'Agent IA pour salons de coiffure — réservations et fidélisation', cat: 'Secteur' },
+          { href: '/ia-pour/studios-yoga', title: 'Agent IA pour studios yoga et bien-être', cat: 'Secteur' },
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : guide pratique', cat: 'Automatisation' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vos clientes reviennent. Votre agenda est plein.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse votre taux de no-shows, votre taux de fidélisation et vos clientes inactives pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #dc2626);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
