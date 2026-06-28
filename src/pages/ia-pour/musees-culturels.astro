@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Répond aux questions sur les horaires, tarifs, expositions en cours et collections permanentes",
+  "Informe sur les tarifs réduits, gratuités et pass culture (étudiants, familles, groupes scolaires)",
+  "Programme les visites guidées, ateliers pédagogiques et événements culturels",
+  "Gère les réservations de groupes scolaires et touristiques avec les informations logistiques",
+  "Informe sur les conditions d'accès aux personnes à mobilité réduite",
+  "Répond en plusieurs langues aux touristes internationaux (français, anglais, espagnol, allemand)",
+  "Rappelle les événements culturels à venir aux abonnés et membres fidèles",
+  "Collecte les retours de visite et contribue à l'amélioration de l'expérience culturelle",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il présenter les expositions et collections de manière engageante ?",
+    a: "Oui. L'agent connaît vos expositions en cours, les oeuvres phares et les collections permanentes. Il peut donner un avant-goût des oeuvres à ne pas manquer, les histoires qui se cachent derrière certaines pièces, et les coups de coeur de vos médiateurs — pour donner envie avant la visite.",
+  },
+  {
+    q: "L'agent peut-il gérer les réservations de groupes scolaires ?",
+    a: "Oui. Pour les visites scolaires, l'agent collecte les informations de la demande (établissement, niveau de classe, effectif, date souhaitée, thématique pédagogique, besoins d'accompagnement) et la transmet à votre équipe des publics. Il peut aussi envoyer les formulaires de réservation et les confirmations.",
+  },
+  {
+    q: "L'agent peut-il répondre en plusieurs langues aux touristes internationaux ?",
+    a: "Oui. L'agent détecte la langue du visiteur et répond dans sa langue : français, anglais, espagnol, allemand, japonais, mandarin... Pour les langues moins courantes, il peut proposer une réponse en anglais si la langue n'est pas configurée. Cette fonctionnalité est particulièrement précieuse pour les musées recevant une clientèle touristique internationale.",
+  },
+  {
+    q: "L'agent peut-il informer sur les dispositifs Pass Culture et gratuités ?",
+    a: "Oui. L'agent connaît les conditions d'accès aux dispositifs en vigueur : gratuité pour les moins de 26 ans ans EU, tarifs réduits, pass culture applicables, carte musée, modalités pour les groupes scolaires. Il met à jour ces informations dès que votre tarification évolue.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, horaires, expositions en cours et prise de réservations standard. Pour la gestion des groupes scolaires et la réponse multilingue avancée, prévoir 14 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour musées et centres culturels — Visites, réservations groupes et accueil multilingue | IAForge"
+  description="Agent IA pour musée : FAQ expositions, réservations groupes scolaires, informations tarifaires Pass Culture, accueil touristique multilingue — sans alourdir votre équipe d'accueil. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Musées & Centres culturels", "item": "https://iaforge.fr/ia-pour/musees-culturels" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Musées & Centres culturels</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour musées et centres culturels</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Chaque visiteur accueilli.<br/><span class="gradient-text">Dans sa langue. À toute heure.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            FAQ expositions, réservations groupes scolaires, informations Pass Culture, accueil multilingue et rappels d'événements — l'agent enrichit l'expérience culturelle avant même l'entrée dans vos murs.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-55%", label: "d'appels entrants pour les horaires, tarifs et questions d'exposition courantes", color },
+            { val: "+30%", label: "de réservations groupes scolaires grâce à la prise en charge immédiate 24h/24", color: "#34d399" },
+            { val: "6+", label: "langues gérées simultanément pour l'accueil des visiteurs internationaux", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel avec vos expositions, tarifs et FAQ visiteurs", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre institution</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Tarifs et dispositifs : ce que l'agent maîtrise</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Les questions tarifaires représentent 30-40% des demandes entrantes. L'agent les traite toutes, dans toutes les situations.</p>
+      <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          {["Public", "Tarif type", "Conditions"].map(h => (
+            <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+          ))}
+          {[
+            ["Moins de 26 ans (UE)", "Gratuit", "Justificatif d'identité à l'entrée"],
+            ["Adulte plein tarif", "Selon votre grille", "Sans condition"],
+            ["Tarif réduit (étudiant, demandeur emploi)", "Selon votre grille", "Justificatif à présenter"],
+            ["Pass Culture", "Selon offre partenaire", "Réservation via l'app Pass Culture"],
+            ["Groupes scolaires", "Tarif de groupe", "Réservation obligatoire minimum 15 jours"],
+            ["Amis du musée / abonnés", "Accès illimité", "Présentation de la carte"],
+            ["Personnes handicapées", "Gratuit (accompagnateur inclus)", "Selon politique de l'institution"],
+          ].map(([p, t, c]) => (
+            <>
+              <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{p}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#a78bfa] font-semibold">{t}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{c}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/agent-ia-secteur-public', title: 'Agent IA pour le secteur public et les collectivités', cat: 'Agents IA' },
+          { href: '/blog/ia-pour-association', title: 'IA pour associations : gérer membres et bénévoles', cat: 'Guide' },
+          { href: '/ia-pour/ecoles-privees', title: 'IA pour écoles privées : inscriptions et dossiers', cat: 'Secteur' },
+          { href: '/blog/ia-base-connaissance', title: 'Construire une base de connaissance IA : le guide', cat: 'Agents IA' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre équipe dans les salles. L'agent à l'accueil numérique.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos demandes entrantes, vos questions les plus fréquentes et vos réservations groupes pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -85,6 +85,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour boulangeries et pâtisseries : https://iaforge.fr/ia-pour/boulangers
 - IA pour bijouteries et horlogeries : https://iaforge.fr/ia-pour/bijoutiers
 - IA pour clubs sportifs : https://iaforge.fr/ia-pour/clubs-sportifs
+- IA pour musées et centres culturels : https://iaforge.fr/ia-pour/musees-culturels
+- IA pour écoles et instituts de langues : https://iaforge.fr/ia-pour/instituts-langues
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -122,6 +124,7 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA et prospection B2B : https://iaforge.fr/blog/ia-b2b-prospection
 - Article : WhatsApp Business API pour PME : https://iaforge.fr/blog/agent-ia-whatsapp-business
 - Article : Agent IA pour expert-comptable : https://iaforge.fr/blog/ia-pour-expert-comptable
+- Article : IA pour agence de communication : https://iaforge.fr/blog/ia-agence-communication
 - Article : IA pour club sportif : https://iaforge.fr/blog/ia-pour-club-sportif
 - Article : IA pour les RH internes : https://iaforge.fr/blog/ia-ressources-humaines-internes
 - Article : IA pour conseiller en gestion de patrimoine : https://iaforge.fr/blog/ia-gestion-patrimoine

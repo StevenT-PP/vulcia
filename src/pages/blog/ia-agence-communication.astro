@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour agence de communication et marketing : automatiser le flux commercial",
+  description: "Comment une agence de communication, webdesign ou marketing digital utilise un agent IA pour qualifier les prospects, automatiser les briefs et relancer les devis sans y consacrer 30% du temps.",
+  date: "2026-07-14",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "ia-agence-communication",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Une agence de communication ou de marketing digital a une double contrainte : elle est censée être experte en acquisition et conversion — mais son propre funnel commercial est souvent chaotique. Les prospects arrivent par tous les canaux, les briefs sont incomplets, les devis partent sans relance. L'IA peut corriger ce paradoxe en structurant le flux commercial de l'agence elle-même.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème du "cordonnier mal chaussé"</h2>
+
+  <p>La plupart des agences créatives n'ont pas de processus commercial structuré pour elles-mêmes. Elles répondent aux demandes quand elles ont le temps, envoient des devis et espèrent une réponse, oublient de relancer. Le résultat : un taux de closing sur les devis de 15-25%, alors que la même agence obtient 40-60% de closing pour ses clients avec des funnels bien pensés.</p>
+
+  <p>Un agent IA appliqué à son propre pipeline commercial permet d'atteindre le niveau de performance que l'agence vend à ses clients.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 automatisations prioritaires pour une agence</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Brief automatique avant toute réunion",
+        desc: "Dès qu'un prospect prend contact, l'agent lui envoie un questionnaire de brief structuré : secteur, positionnement actuel, cible, objectifs (notoriété ? leads ? conversion ?), budget indicatif, délai, éléments existants (charte, CMS, comptes sociaux). Vous arrivez en réunion avec un dossier complet — pas avec une feuille blanche.",
+        gain: "30-45 min gagnées par réunion de découverte",
+        color: "#7c5cfc",
+      },
+      {
+        n: "2",
+        titre: "Qualification du budget avant de proposer un RDV",
+        desc: "La question du budget est souvent esquivée par peur d'être maladroit. L'agent la pose de manière naturelle et non-agressive dans le questionnaire de brief. Les prospects sans budget ou avec des attentes hors marché sont filtrés avant que vous y consacriez du temps.",
+        gain: "-40% de temps perdu sur des prospects non qualifiés",
+        color: "#34d399",
+      },
+      {
+        n: "3",
+        titre: "Relances systématiques des devis",
+        desc: "J+3, J+7, J+21 — l'agent relance chaque devis envoyé avec des messages différenciés. Le premier demande si le devis est clair. Le second partage une réalisation pertinente pour le secteur du prospect. Le troisième mentionne la disponibilité de l'équipe. Taux de closing qui passe de 20% à 35%.",
+        gain: "+15 points de taux de closing",
+        color: "#38bdf8",
+      },
+      {
+        n: "4",
+        titre: "Collecte des témoignages et études de cas",
+        desc: "J+30 après la livraison d'un projet, l'agent demande au client un retour : NPS, témoignage, accord pour une étude de cas. Les études de cas sont la meilleure arme commerciale d'une agence — mais elles ne se font jamais par manque de temps pour les relancer.",
+        gain: "×3 à ×5 d'études de cas produites par an",
+        color: "#fbbf24",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex gap-4 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style={`background: ${item.color}20; color: ${item.color}; border: 1px solid ${item.color}40;`}>{item.n}</div>
+          <p class="text-white font-bold text-base leading-tight pt-1">{item.titre}</p>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <div class="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le brief idéal : les questions que l'agent pose</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { cat: "Contexte", qs: ["Décrivez votre activité en 2-3 phrases", "Quel est votre positionnement actuel ?", "Qui sont vos principaux concurrents ?", "Quelle est votre cible (B2B, B2C, secteur, taille) ?"], color: "#7c5cfc" },
+      { cat: "Projet", qs: ["Quel est l'objectif principal de ce projet ?", "Qu'est-ce qui doit absolument apparaître ou disparaître ?", "Avez-vous des exemples qui vous inspirent ?", "Y a-t-il des contraintes techniques ou graphiques ?"], color: "#38bdf8" },
+      { cat: "Cadrage commercial", qs: ["Quel est votre budget indicatif pour ce projet ?", "Dans quel délai souhaitez-vous démarrer ?", "Qui prend la décision finale de votre côté ?", "Avez-vous déjà travaillé avec une agence sur ce type de projet ?"], color: "#f59e0b" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-sm font-bold mb-3" style={`color: ${item.color};`}>{item.cat}</p>
+        <div class="space-y-1">
+          {item.qs.map(q => (
+            <div class="flex items-start gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              <p class="text-[#8888aa] text-xs">{q}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne fait pas à votre place</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "La proposition créative — elle vient de votre équipe, pas d'un algorithme",
+      "La relation client — la confiance se construit dans les échanges humains",
+      "La stratégie — l'analyse du contexte concurrentiel et les recommandations restent votre valeur ajoutée",
+      "La production — copywriting, design, développement, c'est votre coeur de métier",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b21b6);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/ia-pour-agence-marketing" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour agences marketing &rarr;</a>
+    <a href="/blog/ia-pour-consultant" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour consultants &rarr;</a>
+  </div>
+
+</BlogLayout>
