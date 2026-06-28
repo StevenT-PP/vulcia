@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Répond aux questions sur la disponibilité de titres en stock 24h/24",
+  "Gère les demandes de réservation de livres et notifie à l'arrivée des commandes",
+  "Informe sur les commandes spéciales, délais de livraison éditeur et disponibilité en réimpression",
+  "Rappelle les clients qui ont mis des titres en liste de souhaits quand ils sont disponibles",
+  "Répond aux questions sur les horaires, accès, stationnement et événements en librairie",
+  "Informe sur les clubs de lecture, dédicaces et animations littéraires à venir",
+  "Gère les cartes de fidélité : solde de points, avantages et utilisation",
+  "Collecte les demandes de catalogues scolaires et fournitures papeterie pour les établissements",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il donner des conseils de lecture personnalisés ?",
+    a: "L'agent peut présenter des titres selon un genre, un auteur ou une collection en s'appuyant sur votre sélection. Pour les recommandations vraiment personnalisées (\"j'ai aimé X, qu'est-ce que vous me conseillez ?\"), l'agent invite le client à venir en librairie ou à contacter votre équipe — le conseil littéraire reste un atout humain irremplaçable.",
+  },
+  {
+    q: "Compatible avec les logiciels de gestion de librairie (Symphonie, Livres Hebdo) ?",
+    a: "L'agent peut interroger votre base de stock si vous lui fournissez un accès à votre catalogue (export CSV quotidien ou API). La plupart des logiciels de gestion de librairie proposent un export de stock que nous pouvons intégrer pour que l'agent réponde en temps réel aux questions de disponibilité.",
+  },
+  {
+    q: "Comment gérer les fournitures scolaires pour les établissements ?",
+    a: "L'agent collecte les demandes de listes scolaires (établissement, classe, nombre d'élèves), vérifie votre capacité à fournir et transmet au responsable commercial. Pour les commandes récurrentes d'établissements partenaires, il peut générer des demandes de devis directement.",
+  },
+  {
+    q: "L'agent peut-il communiquer sur les événements (dédicaces, salons) ?",
+    a: "Oui. L'agent connaît votre calendrier d'événements et peut répondre aux questions (\"Quand vient [Auteur] ?\", \"Y a-t-il une dédicace ce mois-ci ?\"). Il peut aussi envoyer des rappels aux clients inscrits la veille d'une dédicace ou d'un événement.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent de base avec FAQ, horaires et événements. Pour l'intégration avec votre logiciel de stock (requêtes de disponibilité en temps réel), prévoir 14 jours selon votre système.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour librairies et papeteries — FAQ, stock et événements automatisés | IAForge"
+  description="Agent IA pour librairie : disponibilité des titres en stock, réservations, événements et dédicaces, cartes de fidélité — sans remplacer le conseil humain. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Librairies & Papeteries", "item": "https://iaforge.fr/ia-pour/librairies" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Librairies & Papeteries</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour librairies et papeteries</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos clients servis.<br/><span class="gradient-text">Votre conseil préservé.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Disponibilité de titres, réservations, événements et cartes de fidélité — pendant que votre équipe offre le conseil littéraire que les clients ne trouvent nulle part ailleurs.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-50%", label: "d'appels pour des questions de disponibilité et d'horaires", color },
+            { val: "+35%", label: "de taux de retrait des commandes réservées grâce aux notifications d'arrivée", color: "#34d399" },
+            { val: "+25%", label: "de participation aux événements grâce aux rappels automatiques J-1", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel avec votre catalogue, vos horaires et vos événements", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre librairie</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Ce que l'agent ne fera jamais à votre place</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">La librairie indépendante se distingue des plateformes par son conseil humain. L'agent complète, il ne remplace pas.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { titre: "Ce que l'agent fait", items: ["\"Oui, ce titre est disponible en stock\"", "\"Nous organisons une dédicace le 15 novembre à 17h\"", "\"Votre commande de [Titre] est arrivée — vous pouvez venir la récupérer\"", "\"Nous sommes ouverts du mardi au samedi de 10h à 19h\""], color },
+          { titre: "Ce qui reste votre valeur ajoutée", items: ["\"Pour quelqu'un qui a aimé Modiano, je vous conseille...\"", "\"Ce roman est techniquement bien mais franchement, lisez plutôt...\"", "\"Pour un cadeau à votre mère qui aime les polars, voici ce que je ferais\"", "La sélection, les coups de cœur, la table de rentrée"], color: "#34d399" },
+        ].map(col => (
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm font-bold mb-4" style={`color: ${col.color};`}>{col.titre}</p>
+            <div class="space-y-2">
+              {col.items.map(item => (
+                <div class="flex items-start gap-2">
+                  <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={`background: ${col.color};`}></div>
+                  <p class="text-[#8888aa] text-xs leading-relaxed italic">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-retail-magasin', title: 'IA pour commerce de détail : automatiser sans perdre le contact humain', cat: 'Guide' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques : collecter et répondre avec l\'IA', cat: 'SEO Local' },
+          { href: '/blog/seo-local-ia-pme', title: 'SEO local et IA pour PME : dominer Google Maps', cat: 'SEO Local' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre librairie disponible. Votre conseil unique.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos questions répétitives, vos réservations non retirées et vos événements sous-fréquentés pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
