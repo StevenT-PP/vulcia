@@ -1,0 +1,143 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour médecin spécialiste : automatiser les RDV sans compromettre le secret médical",
+  description: "Comment un cabinet de médecine spécialisée déploie un agent IA pour les RDV, no-shows, patients chroniques et FAQ administrative — par spécialité (cardiologie, dermatologie, ophtalmologie). RGPD HDS.",
+  date: "2026-07-09",
+  readTime: "9 min",
+  category: "Santé",
+  categoryColor: "#34d399",
+  slug: "ia-pour-medecin-specialiste",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un médecin spécialiste est soumis à une tension permanente : des délais de RDV qui s'allongent (3 à 6 mois pour un dermatologue en zone urbaine), des patients qui appellent pour des informations administratives, et des secrétariats débordés. L'agent IA ne raccourcit pas les délais par magie. Mais il optimise chaque créneaux disponible, élimine les no-shows et libère le secrétariat des appels répétitifs — pour que les places ouvertes aillent aux patients qui en ont besoin.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La frontière à ne jamais franchir</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Tâche</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">Agent IA peut faire</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-red-400 uppercase tracking-wider text-center">Médecin uniquement</div>
+      {[
+        ["Prise de RDV", "Gérer l'agenda, lire les disponibilités, confirmer le créneau", "Prioriser un cas urgent, modifier le planning médical"],
+        ["Motif de consultation", "Collecter le motif déclaré par le patient", "Interpréter le motif, évaluer l'urgence clinique"],
+        ["Ordonnances chroniques", "Rappeler la date d'expiration et inviter à prendre RDV", "Décider du renouvellement et rédiger l'ordonnance"],
+        ["Résultats d'examens", "Notifier que les résultats sont disponibles et à venir récupérer", "Interpréter les résultats, communiquer le diagnostic"],
+        ["FAQ médicale", "Informer sur le déroulement d'un examen (préparation, durée)", "Répondre à des questions sur un traitement ou un symptôme"],
+      ].map(([tache, peut, non]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{tache}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{peut}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400 text-center">{non}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Configuration spécifique par spécialité</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        spec: "Cardiologie",
+        color: "#f87171",
+        config: "Collecte : tension habituelle, traitement anticoagulant (INR à apporter), motif (douleur thoracique, palpitations, bilan annuel, suivi post-IDM). Rappel automatique 30 jours avant l'expiration des anticoagulants. Protocole urgence : douleur thoracique intense → redirection SAMU 15 immédiate.",
+        gain: "-55% de no-shows, 0 patient chronique sans rappel de bilan annuel",
+      },
+      {
+        spec: "Dermatologie",
+        color: "#f59e0b",
+        config: "Collecte : motif précis (lésion suspecte, acné, eczéma, cosmétique), localisation, durée des symptômes. Photos acceptées par email pour optimiser la consultation (non diagnostiquées par l'IA). Délais longs gérés avec liste d'attente active et notification en cas d'annulation.",
+        gain: "+30% de taux de remplissage des créneaux grâce à la liste d'attente automatique",
+      },
+      {
+        spec: "Ophtalmologie",
+        color: "#38bdf8",
+        config: "Collecte : motif (baisse de vision, contrôle de vue, renouvellement ordonnance, urgence rouge). Documents à apporter : ancienne ordonnance de verres, liste des médicaments. Urgences rouges (corps étranger, perte de vision soudaine) → redirection CHU ou ophtalmologue de garde.",
+        gain: "-60% d'appels pour des questions sur le matériel à apporter",
+      },
+      {
+        spec: "Rhumatologie",
+        color: "#a78bfa",
+        config: "Collecte : articulation concernée, type de douleur, bilan sanguin récent, imagerie disponible (radio, IRM, échographie). Rappel de renouvellement pour les patients sous traitement de fond (méthotrexate, biothérapie) avec rappel de bilan de suivi associé.",
+        gain: "0 consultation sans bilan préalable disponible",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="px-3 py-1 rounded-full text-xs font-bold" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.spec}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.config}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">RGPD et données de santé : ce qui est requis</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Hébergeur certifié HDS (Hébergement Données de Santé) si l'agent stocke des données médicales",
+      "Pour IAForge : Mistral AI hébergé à Paris, certification HDS disponible pour les cabinets qui le requièrent",
+      "L'agent n'a accès à aucun dossier médical — uniquement à l'agenda et aux données de contact",
+      "Mentions légales sur votre site web : information sur le traitement automatisé et les droits des patients",
+      "DPA signé entre IAForge et le cabinet, avec sous-traitants identifiés",
+      "Durée de conservation des conversations : 13 mois maximum, puis suppression automatique",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Compatibilité avec les logiciels de cabinet spécialisé</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { logiciel: "Doctolib", compat: "Intégration native via API. L'agent lit les disponibilités en temps réel et peut créer des RDV directement.", color: "#34d399" },
+      { logiciel: "Maiia (ex-Médimail)", compat: "Intégration API disponible. Synchronisation bidirectionnelle de l'agenda.", color: "#34d399" },
+      { logiciel: "IRIX / Vision+ (ophtalmologie)", compat: "Intégration via export d'agenda. L'agent crée les RDV côté agenda, synchronisation manuelle ou semi-automatique.", color: "#f59e0b" },
+      { logiciel: "DermSuite (dermatologie)", compat: "Intégration webhook disponible. Synchronisation des créneaux, transmission du motif de consultation.", color: "#f59e0b" },
+      { logiciel: "Logiciels propriétaires CHU / clinique", compat: "Intégration sur devis selon l'API disponible. La plupart des logiciels hospitaliers modernes exposent une API REST.", color: "#8888aa" },
+    ].map(item => (
+      <div class="flex items-center justify-between gap-4 glass rounded-xl p-4">
+        <p class="text-white font-semibold text-sm">{item.logiciel}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed flex-1 text-right">{item.compat}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un cabinet de 2 médecins spécialistes</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Réduction no-shows (-55%) : 8 créneaux/mois récupérés × 80€ de consultation moyenne", gain: "+640€/mois" },
+        { item: "Remplissage des créneaux libérés via liste d'attente automatique", gain: "+320€/mois (4 créneaux supplémentaires)" },
+        { item: "Temps secrétariat récupéré : -2h/jour sur les appels répétitifs", gain: "+40h/mois de travail à valeur ajoutée" },
+        { item: "Patients chroniques sans rappel de bilan : 0 perte de suivi", gain: "Fidélisation + conformité réglementaire" },
+        { item: "Coût agent IAForge (pack Essentiel)", gain: "-349€/mois" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class="text-sm text-[#8888aa]">{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 4 ? 'text-red-400' : 'text-[#34d399]'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/medecins-specialistes" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Page médecins spécialistes &rarr;</a>
+    <a href="/blog/ia-medecin-generaliste" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour médecin généraliste &rarr;</a>
+  </div>
+
+</BlogLayout>

@@ -68,6 +68,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour courtiers en assurance : https://iaforge.fr/ia-pour/assurances
 - IA pour écoles privées : https://iaforge.fr/ia-pour/ecoles-privees
 - IA pour traiteurs et événementiel : https://iaforge.fr/ia-pour/traiteurs
+- IA pour médecins spécialistes : https://iaforge.fr/ia-pour/medecins-specialistes
+- IA pour cabinets RH et recrutement : https://iaforge.fr/ia-pour/cabinets-rh
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -108,6 +110,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA pour association : https://iaforge.fr/blog/ia-pour-association
 - Article : Avis Google automatiques avec l'IA : https://iaforge.fr/blog/ia-avis-google-automatique
 - Article : Automatiser son SAV avec l'IA : https://iaforge.fr/blog/automatiser-service-apres-vente
+- Article : IA pour médecin spécialiste : https://iaforge.fr/blog/ia-pour-medecin-specialiste
+- Article : EU AI Act et PME françaises : https://iaforge.fr/blog/reglementation-ia-europe
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact

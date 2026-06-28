@@ -1,0 +1,150 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "EU AI Act et PME françaises : ce qui change concrètement en 2026",
+  description: "Le règlement européen sur l'IA (EU AI Act) est entré en vigueur. Quelles obligations pour les PME françaises qui utilisent ou déploient des agents IA ? Guide pratique sans jargon.",
+  date: "2026-07-09",
+  readTime: "8 min",
+  category: "Technique",
+  categoryColor: "#fbbf24",
+  slug: "reglementation-ia-europe",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>L'EU AI Act (Règlement UE 2024/1689) est entré pleinement en vigueur en 2025. C'est la première réglementation mondiale contraignante sur l'intelligence artificielle. Pour les PME françaises, la question n'est pas "est-ce que ça nous concerne ?" — si vous utilisez un agent IA pour parler à vos clients, ça vous concerne. La bonne nouvelle : la plupart des cas d'usage PME sont dans la catégorie "risque limité", avec des obligations réalistes.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 niveaux de risque de l'EU AI Act</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        niveau: "Risque inacceptable — Interdit",
+        color: "#f87171",
+        exemples: ["Systèmes de notation sociale", "Manipulation comportementale subliminale", "Reconnaissance faciale en temps réel dans les espaces publics", "Exploitation des vulnérabilités d'un groupe (enfants, personnes âgées, handicapées)"],
+        impact: "Interdit depuis août 2024. Amendes jusqu'à 35M€ ou 7% du CA mondial.",
+      },
+      {
+        niveau: "Risque élevé — Obligations renforcées",
+        color: "#f59e0b",
+        exemples: ["IA utilisée dans le recrutement (tri automatique de CV)", "IA médicale (diagnostic, triage)", "IA pour l'attribution de crédit bancaire", "IA dans l'éducation (notation automatique)"],
+        impact: "Conformité RGPD renforcée, supervision humaine obligatoire, documentation des données d'entraînement, audit de conformité.",
+      },
+      {
+        niveau: "Risque limité — Obligations de transparence",
+        color: "#fbbf24",
+        exemples: ["Chatbots et agents IA conversationnels", "Deepfakes (avec divulgation obligatoire)", "IA générant du contenu (texte, images, audio)"],
+        impact: "Obligation d'informer les utilisateurs qu'ils interagissent avec une IA. Divulgation que le contenu est généré par IA.",
+      },
+      {
+        niveau: "Risque minimal — Aucune obligation spécifique",
+        color: "#34d399",
+        exemples: ["Filtres anti-spam", "IA de recommandation de contenu (sans risque pour les droits)", "Jeux vidéo utilisant l'IA", "Traitement automatisé de données non personnelles"],
+        impact: "Pas d'obligations EU AI Act. Les obligations RGPD habituelles s'appliquent si données personnelles.",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-xs font-bold uppercase tracking-wider mb-3" style={`color: ${item.color};`}>{item.niveau}</p>
+        <ul class="space-y-1 mb-4">
+          {item.exemples.map(ex => (
+            <li class="flex items-start gap-2 text-sm text-[#8888aa]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              {ex}
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs font-semibold border-l-2 pl-3" style={`color: ${item.color}; border-color: ${item.color};`}>{item.impact}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Pour un agent IA PME standard : les obligations concrètes</h2>
+
+  <p>Un agent IA de type "accueil client, prise de RDV, FAQ" pour une PME est classé <strong class="text-white">risque limité</strong>. Les obligations sont réalistes :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        obligation: "1. Informer que le client interagit avec une IA",
+        comment: "L'agent doit se présenter comme un assistant automatisé dès le premier message, ou dans sa présentation sur votre site. Pas obligé de mentionner \"intelligence artificielle\" explicitement — \"assistant automatisé\", \"chatbot\" ou \"assistant virtuel\" suffisent.",
+        facile: true,
+      },
+      {
+        obligation: "2. Permettre le transfert vers un humain",
+        comment: "Le client doit pouvoir demander à parler à une personne réelle à tout moment. L'agent doit accepter cette demande et escalader. Ce n'est pas une obligation d'avoir un humain disponible 24h/24 — mais de ne pas bloquer la demande.",
+        facile: true,
+      },
+      {
+        obligation: "3. Ne pas manipuler le comportement de l'utilisateur",
+        comment: "L'agent ne peut pas utiliser des techniques de manipulation psychologique : fausses urgences, pression sociale artificielle, exploitation d'émotions. La persuasion commerciale normale (offres limitées réelles, avantages objectifs) reste autorisée.",
+        facile: true,
+      },
+      {
+        obligation: "4. Conserver des logs des interactions (RGPD)",
+        comment: "Pas spécifique à l'EU AI Act mais combiné avec le RGPD : les conversations doivent être enregistrées et accessibles en cas de réclamation ou de contrôle. Durée de conservation : limitée à ce qui est nécessaire (généralement 13 mois).",
+        facile: true,
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <div class="flex items-center gap-3 mb-2">
+          <p class="text-white font-semibold text-sm">{item.obligation}</p>
+          {item.facile && <span class="text-xs px-2 py-0.5 rounded-full text-[#34d399] bg-[#34d39915] border border-[#34d39930]">Facile à mettre en place</span>}
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.comment}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Secteurs avec obligations renforcées</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Secteur", "Risque EU AI Act", "Obligations spécifiques"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Santé (médecins, cliniques)", "Risque élevé si aide au diagnostic", "Supervision médicale obligatoire, documentation, audit. Agent purement administratif = risque limité."],
+        ["RH et recrutement", "Risque élevé si tri automatique de CV", "Supervision humaine de toute décision. Un agent qui collecte et transmet = risque limité."],
+        ["Crédit et assurance", "Risque élevé si décision d'octroi", "Un agent qui collecte des informations et redirige = risque limité. Décision finale humaine obligatoire."],
+        ["Éducation", "Risque élevé si notation automatique", "Un agent qui gère les inscriptions et la FAQ = risque limité. La note reste humaine."],
+        ["Sécurité et surveillance", "Risque élevé", "Réglementé séparément. La plupart des PME non concernées."],
+      ].map(([secteur, risque, obligations]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{secteur}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#f59e0b]">{risque}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{obligations}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que IAForge a mis en place pour vous</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Identification automatique de l'agent en début de conversation (\"Je suis un assistant automatisé\")",
+      "Bouton d'escalade vers humain disponible à tout moment dans l'interface",
+      "Aucune technique de manipulation psychologique dans les scripts d'agent",
+      "Logs de conversation conservés 13 mois maximum, accessibles sur demande",
+      "DPA (Data Processing Agreement) signé et conforme RGPD + EU AI Act",
+      "Hébergement Mistral AI à Paris pour les données sensibles (santé, juridique)",
+      "Documentation des cas d'usage transmise avec chaque déploiement",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #fbbf24, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/ia-securite-rgpd-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA et RGPD pour les PME &rarr;</a>
+    <a href="/blog/choisir-modele-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Choisir son modèle IA &rarr;</a>
+  </div>
+
+</BlogLayout>
