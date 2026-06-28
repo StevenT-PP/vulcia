@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f59e0b";
+
+const tasks = [
+  "Informe sur les horaires d'ouverture, jours de fermeture et disponibilité des produits",
+  "Prend les commandes de pains spéciaux, viennoiseries et pâtisseries à retirer",
+  "Gère les commandes de gâteaux sur mesure : collecte des informations (date, nombre de personnes, goûts, allergies, message)",
+  "Rappelle les clients à J-1 pour les commandes à retirer et réduit les oublis",
+  "Gère les commandes récurrentes des professionnels (restaurants, hôtels, traiteurs)",
+  "Informe sur les spécialités du moment, les pains du jour et les promotions",
+  "Collecte les avis Google après chaque commande événementielle",
+  "Répond aux questions sur les allergènes et les ingrédients selon le règlement EU 1169/2011",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il gérer les commandes de pièces montées et gâteaux de mariage ?",
+    a: "Oui. Pour les commandes de gâteaux d'exception, l'agent collecte toutes les informations nécessaires : date de l'événement, nombre de personnes, saveurs, allergènes à éviter, décorations souhaitées, budget indicatif. Il programme ensuite un rendez-vous de dégustation si nécessaire. Le devis final reste établi par votre équipe.",
+  },
+  {
+    q: "L'agent peut-il informer sur les allergènes ?",
+    a: "Oui. L'agent est configuré avec la liste des 14 allergènes réglementaires (gluten, oeufs, lait, fruits à coque, etc.) présents dans chacun de vos produits. Il peut répondre aux questions \"Votre pain complet contient-il du gluten ?\" ou \"Avez-vous des viennoiseries sans lactose ?\". Pour les clients avec des allergies sévères, il recommande de contacter directement la boutique.",
+  },
+  {
+    q: "L'agent peut-il gérer les commandes professionnelles récurrentes ?",
+    a: "Oui. Pour les restaurants, hôtels ou collectivités qui commandent régulièrement, l'agent peut gérer les confirmations de commande hebdomadaires, les modifications ponctuelles (\"Je prends 10 baguettes de plus cette semaine\") et les alertes de fermeture exceptionnelle. Une intégration avec votre logiciel de facturation permet d'automatiser la génération des bons de livraison.",
+  },
+  {
+    q: "L'agent peut-il communiquer sur les nouveautés et spécialités du moment ?",
+    a: "Oui. Votre base de connaissance est mise à jour avec les produits du moment : spécialités saisonnières, galettes des rois en janvier, bûches en décembre, pain de Noël, etc. L'agent peut aussi annoncer les nouveaux produits et les promotions de la semaine.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, horaires, catalogue et prise de commandes. Pour la gestion des commandes professionnelles récurrentes et l'intégration allergènes complète, prévoir 10-14 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour boulangeries et pâtisseries — Commandes, allergènes et gâteaux sur mesure | IAForge"
+  description="Agent IA pour boulangerie : prise de commandes 24h/24, gâteaux de mariage sur mesure, informations allergènes réglementaires, commandes pro récurrentes — Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Boulangeries & Pâtisseries", "item": "https://iaforge.fr/ia-pour/boulangers" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Boulangeries & Pâtisseries</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour boulangeries et pâtisseries</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Commandes prises la nuit.<br/><span class="gradient-text">Produits prêts le matin.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Commandes de pains spéciaux, gâteaux sur mesure, informations allergènes et clients professionnels — l'agent prend les demandes quand votre équipe est en production.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+30%", label: "de commandes sur mesure (gâteaux, pains spéciaux) grâce à la prise de commande 24h/24", color },
+            { val: "-40%", label: "d'oublis de retrait de commandes grâce aux rappels automatiques J-1", color: "#34d399" },
+            { val: "-50%", label: "d'appels pour les questions d'horaires, allergènes et prix récurrentes", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel avec votre catalogue, allergènes et prise de commandes", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre boulangerie</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Commande de gâteau sur mesure — le formulaire automatisé</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">L'agent collecte toutes les informations en une conversation — vous recevez un dossier complet, pas un email vague "je veux un gâteau pour 10 personnes".</p>
+      <div class="not-prose my-6 space-y-3">
+        {[
+          { champ: "Date de retrait ou livraison", options: "L'agent vérifie si votre planning le permet et prévient si la date est trop courte", color },
+          { champ: "Type d'événement et nombre de personnes", options: "Mariage, anniversaire, communion, professionnel — le contexte conditionne le design et la taille", color: "#34d399" },
+          { champ: "Saveurs et composition", options: "Parfum de la génoise, garniture, nombre d'étages — les choix de base structurent le devis", color: "#38bdf8" },
+          { champ: "Allergènes et régimes", options: "Sans gluten, sans lactose, sans oeufs — collecté systématiquement pour éviter les incidents", color: "#a78bfa" },
+          { champ: "Décoration et message", options: "Couleurs, thème, message à inscrire, photos de référence encouragées", color: "#fbbf24" },
+          { champ: "Budget indicatif", options: "Permet de cadrer les attentes et d'éviter un devis inadapté à la découverte", color: "#f87171" },
+        ].map(item => (
+          <div class="glass rounded-xl p-4 flex gap-4 items-start">
+            <div class="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={`background: ${item.color};`}></div>
+            <div>
+              <p class="text-white font-semibold text-sm mb-1">{item.champ}</p>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{item.options}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-retail-magasin', title: 'IA pour commerce de détail : automatiser sans perdre le lien humain', cat: 'Guide' },
+          { href: '/ia-pour/fleuristes', title: 'IA pour fleuristes : commandes et rappels d\'occasions', cat: 'Secteur' },
+          { href: '/ia-pour/traiteurs', title: 'IA pour traiteurs et événementiel', cat: 'Secteur' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques avec l\'IA', cat: 'SEO Local' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#f59e0b] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vous à la production. L'agent aux commandes.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos commandes manquées hors horaires, vos oublis de retrait et votre potentiel client professionnel pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #d97706);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

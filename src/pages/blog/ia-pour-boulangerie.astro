@@ -1,0 +1,114 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour boulangerie : commandes sur mesure, allergènes et clients professionnels automatisés",
+  description: "Comment une boulangerie-pâtisserie déploie un agent IA pour les commandes de gâteaux sur mesure, les informations allergènes et la gestion des clients restaurants et hôtels. Guide 2026.",
+  date: "2026-07-13",
+  readTime: "6 min",
+  category: "Commerce",
+  categoryColor: "#f59e0b",
+  slug: "ia-pour-boulangerie",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Une boulangerie artisanale reçoit des dizaines de demandes identiques chaque semaine — "Vous avez des croissants sans beurre ?", "À quelle heure vous fermez le samedi ?", "Vous faites les gâteaux sur commande ?" — pendant que l'équipe est en production ou en vente. Ces questions méritent une réponse rapide mais n'ont aucune valeur ajoutée pour votre équipe. L'IA les prend en charge.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le vrai enjeu : les commandes sur mesure non prises faute de temps</h2>
+
+  <p>Les gâteaux d'anniversaire, pièces montées et gâteaux de mariage représentent souvent 20-30% du CA d'une pâtisserie artisanale — avec des marges bien supérieures au pain quotidien. Mais ces commandes arrivent souvent à des moments impossibles : pendant le coup de feu du matin, quand le téléphone sonne et que vous avez les mains dans la farine. Résultat : vous ne répondez pas, le client commande ailleurs.</p>
+
+  <p>Un agent IA qui répond en moins de 2 minutes à toute heure, qui collecte toutes les informations de la commande de manière structurée, et qui vous transmet un dossier complet à votre retour — c'est le seul moyen de ne plus rater ces opportunités.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les informations allergènes : une obligation légale souvent gérée à la va-vite</h2>
+
+  <p>Le règlement européen EU 1169/2011 impose de fournir les informations sur les 14 allergènes réglementaires pour tous vos produits. Dans la pratique, beaucoup de boulangeries artisanales gèrent ça avec une feuille plastifiée au comptoir — pas toujours à jour, pas accessible en ligne, pas disponible à 22h quand un client allergique cherche à commander.</p>
+
+  <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Allergène", "Présent dans", "Variante sans (si disponible)"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Gluten (blé, seigle, orge)", "Pains, viennoiseries, la plupart des gâteaux", "Pain sans gluten sur commande"],
+        ["Lait et dérivés", "Viennoiseries, crèmes, ganaches", "Options vegan sur demande"],
+        ["Oeufs", "Brioches, génoises, crèmes", "Certaines recettes vegan possibles"],
+        ["Fruits à coque", "Tartes, financiers, pralinés", "Sans selon composition"],
+        ["Graines de sésame", "Pains spéciaux garnis", "Version sans disponible"],
+      ].map(([a, p, v]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{a}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{p}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#f59e0b]">{v}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <p>L'agent peut répondre à ces questions 24h/24, avec précision, pour chacun de vos produits — et recommander de contacter directement la boutique pour les clients avec des allergies sévères.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les clients professionnels : le filon sous-exploité</h2>
+
+  <p>Restaurants, hôtels, collectivités, entreprises — ils commandent régulièrement, en volume, et avec des marges raisonnables. Mais ils ont un défaut : ils appellent souvent au mauvais moment, changent leur commande à la dernière minute, et attendent des confirmations rapides.</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { scenario: "Commande hebdomadaire restaurant", problème: "Le chef appelle le lundi à 7h pour confirmer les pains de la semaine — vous êtes en fournée.", solution: "L'agent reçoit la commande, la confirme, et vous la transmet à 8h avec le résumé de la semaine.", color: "#f59e0b" },
+      { scenario: "Modification de dernière minute hôtel", problème: "\"Je prends 20 croissants de plus pour le buffet de demain\" — message laissé le dimanche soir.", solution: "L'agent reçoit la modification, vérifie votre capacité de production selon votre planning, et confirme ou propose une alternative.", color: "#34d399" },
+      { scenario: "Fermeture exceptionnelle", problème: "Vous fermez une semaine pour congés — vos clients pros ne sont pas prévenus à l'avance.", solution: "L'agent notifie automatiquement tous vos clients professionnels avec le bon délai et leur propose un plan B si possible.", color: "#38bdf8" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-xs font-bold uppercase tracking-wider mb-3" style={`color: ${item.color};`}>{item.scenario}</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <p class="text-xs font-semibold text-[#8888aa] mb-1">Sans agent</p>
+            <p class="text-[#8888aa] text-xs">{item.problème}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold mb-1" style={`color: ${item.color};`}>Avec agent</p>
+            <p class="text-[#8888aa] text-xs">{item.solution}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une boulangerie artisanale</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Situation type</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· CA mensuel : 25 000-45 000€</p>
+          <p>· 5-8 gâteaux sur mesure/mois à 80-250€</p>
+          <p>· 3 clients professionnels récurrents</p>
+          <p>· 2-3 commandes manquées/semaine hors horaires</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#f59e0b] uppercase tracking-wider mb-3">Avec l'agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· +3 gâteaux/mois capturés = <span class="text-[#f59e0b] font-semibold">+400-600€</span></p>
+          <p>· Commandes hors horaires récupérées = <span class="text-[#f59e0b] font-semibold">+200-400€</span></p>
+          <p>· Admin pro réduit à 30 min/sem</p>
+          <p>· Coût agent : 149€/mois</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/10 text-center">
+      <p class="text-[#f59e0b] font-bold text-sm">ROI estimé : +450-850€/mois net · Payé en moins d'une semaine</p>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/boulangers" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour boulangeries &rarr;</a>
+    <a href="/ia-pour/traiteurs" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour traiteurs &rarr;</a>
+  </div>
+
+</BlogLayout>

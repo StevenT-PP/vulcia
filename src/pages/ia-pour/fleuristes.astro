@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f87171";
+
+const tasks = [
+  "Répond aux demandes de commandes et devis 24h/24 (mariage, deuil, entreprise, occasions)",
+  "Qualifie les commandes événementielles : date, type d'événement, budget, style floral souhaité",
+  "Programme les rendez-vous de consultation pour les mariages et grands événements",
+  "Informe sur la disponibilité des fleurs de saison et propose des alternatives si rupture",
+  "Gère les commandes récurrentes pour les professionnels (restaurants, hôtels, entreprises)",
+  "Rappelle les occasions importantes aux clients fidèles (anniversaire, fête des mères, Saint-Valentin)",
+  "Envoie les confirmations de commande et les récapitulatifs de livraison",
+  "Collecte les avis clients après livraison pour améliorer la réputation en ligne",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il gérer les commandes de mariage avec un budget élevé ?",
+    a: "Oui. Pour les mariages, l'agent collecte les informations clés (date, lieu, nombre de tables, style souhaité, budget indicatif) et programme une consultation avec votre fleuriste-conseil. Les commandes au-dessus d'un certain montant sont automatiquement escaladées pour un rendez-vous humain — l'agent ne finalise pas les devis mariage seul.",
+  },
+  {
+    q: "L'agent peut-il répondre sur la disponibilité des fleurs en temps réel ?",
+    a: "L'agent connaît votre catalogue de fleurs de saison et peut indiquer les disponibilités générales. Pour les stocks en temps réel, une intégration avec votre logiciel de gestion ou votre fournisseur est nécessaire. À défaut, l'agent peut présenter les fleurs de saison et indiquer que la disponibilité exacte sera confirmée à la commande.",
+  },
+  {
+    q: "Comment gérer les commandes funéraires avec délicatesse ?",
+    a: "L'agent est configuré avec un registre de langue approprié pour les demandes funéraires : ton sobre et respectueux, questions minimalistes (budget, type de composition, date de la cérémonie, adresse de livraison). Il ne pose pas de questions sur le défunt. Les commandes funéraires sont traitées en priorité avec une confirmation rapide.",
+  },
+  {
+    q: "L'agent peut-il gérer les abonnements fleurs pour les entreprises ?",
+    a: "Oui. Pour les clients entreprises avec des livraisons récurrentes (semaine, quinzaine), l'agent peut gérer les confirmations de livraison, les demandes de modification ponctuelles et les renouvellements de contrat annuel. Une intégration avec votre logiciel de facturation permet aussi de déclencher les factures automatiquement.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec catalogue de base, prise de commandes et FAQ. Pour les rappels personnalisés d'occasions et les intégrations avec votre logiciel de gestion, prévoir 14 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour fleuristes — Commandes, mariages et rappels occasions automatisés | IAForge"
+  description="Agent IA pour fleuriste : prise de commandes 24h/24, devis événementiels, rappels fête des mères et Saint-Valentin, gestion abonnements entreprises — Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Fleuristes", "item": "https://iaforge.fr/ia-pour/fleuristes" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Fleuristes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour fleuristes</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Commandes prises.<br/><span class="gradient-text">Occasions jamais ratées.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Commandes 24h/24, devis mariage et événementiel, rappels Saint-Valentin et fête des mères, gestion des abonnements entreprises — pendant que vous créez.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-55%", label: "d'appels entrants pour les questions de prix, disponibilité et horaires", color },
+            { val: "+40%", label: "de commandes en ligne grâce à la prise de commande 24h/24 sur le site", color: "#34d399" },
+            { val: "+25%", label: "de chiffre d'affaires sur les occasions grâce aux rappels automatiques clients", color: "#fbbf24" },
+            { val: "7 jours", label: "pour être opérationnel avec votre catalogue, tarifs et prise de commande", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre boutique</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Le calendrier commercial automatisé</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Les grandes occasions représentent 35-40% du CA annuel d'une fleuriste. L'agent les anticipe pour vous.</p>
+      <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-4">
+          {["Occasion", "Alerte clients", "Message type", "Délai de rappel"].map(h => (
+            <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+          ))}
+          {[
+            ["Saint-Valentin (14/02)", "Clients récurrents", "\"Pensez à commander à l'avance — nos roses sont déjà réservées à 60%\"", "J-10 et J-5"],
+            ["Fête des Mères (mai)", "Tous les clients", "\"Découvrez nos compositions fête des mères — commande possible jusqu'au vendredi midi\"", "J-14 et J-7"],
+            ["Toussaint (01/11)", "Clients ayant commandé l'an dernier", "\"Chrysanthèmes disponibles — commande et livraison avant le 31 octobre\"", "J-10"],
+            ["Anniversaires clients fidèles", "Client ciblé", "\"L'anniversaire de [Prénom] approche — souhaitez-vous un bouquet livré chez lui ?\"", "J-7"],
+            ["Fête des Pères (juin)", "Clients récurrents", "\"Une idée originale pour la fête des pères ? Découvrez nos compositions masculines\"", "J-10"],
+          ].map(([occ, clients, msg, del]) => (
+            <>
+              <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{occ}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{clients}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#8888aa] italic">{msg}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#f87171]">{del}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-retail-magasin', title: 'IA pour commerce de détail : automatiser sans perdre le contact humain', cat: 'Guide' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques avec l\'IA', cat: 'SEO Local' },
+          { href: '/ia-pour/librairies', title: 'IA pour librairies et papeteries', cat: 'Secteur' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#f87171] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre talent dans les bouquets. L'agent dans les commandes.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos commandes manquées la nuit et le week-end, vos occasions ratées et votre potentiel abonnement entreprise pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #dc2626);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

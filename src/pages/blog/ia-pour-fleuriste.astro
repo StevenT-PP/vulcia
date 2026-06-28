@@ -1,0 +1,99 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour fleuriste : ne plus rater une commande la nuit ou le week-end",
+  description: "Comment une fleuriste déploie un agent IA pour prendre les commandes 24h/24, rappeler les occasions importantes aux clients et gérer les abonnements entreprises automatiquement.",
+  date: "2026-07-13",
+  readTime: "6 min",
+  category: "Commerce",
+  categoryColor: "#f87171",
+  slug: "ia-pour-fleuriste",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Une fleuriste génère une part significative de son chiffre d'affaires sur quelques périodes clés — Saint-Valentin, fête des Mères, Toussaint — et sur des commandes événementielles qui se décident souvent le soir ou le week-end, quand la boutique est fermée. Sans système de prise de commande asynchrone, ces demandes tombent dans le vide ou partent chez un concurrent qui vend en ligne. Voici comment l'IA change ce rapport de force.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème du "fermé quand les clients commandent"</h2>
+
+  <p>Les données le montrent : 40% des recherches liées aux fleurs ont lieu entre 19h et 22h — quand la grande majorité des boutiques sont fermées. Un couple qui décide de commander des fleurs pour leur anniversaire de mariage un dimanche soir a trois options : attendre lundi, commander sur un site e-commerce industriel, ou trouver une fleuriste qui répond.</p>
+
+  <p>L'agent IA résout ce problème sans que vous ayez à rester disponible. Il prend la commande, la structure, et vous la transmet avec tout ce qu'il faut pour la préparer le lendemain matin.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 flux à automatiser en priorité</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Prise de commande hors horaires",
+        desc: "Commandes de bouquets standard, pains fleuris, couronnes, plantes — l'agent collecte les informations (budget, occasion, date de retrait ou livraison, message éventuel) et transmet la commande validée. Le client reçoit une confirmation immédiate et vous, un récapitulatif structuré pour la préparation.",
+        gain: "+30 à 50% de commandes hors heures d'ouverture",
+        color: "#f87171",
+      },
+      {
+        n: "2",
+        titre: "Rappels d'occasions pour les clients fidèles",
+        desc: "Vous connaissez l'anniversaire de mariage de madame Dupont parce qu'elle vous a commandé des fleurs chaque année. L'agent peut automatiser ce rappel : \"Bonjour, l'anniversaire de mariage de votre cliente approche — souhaitez-vous qu'elle reçoive un message ?\" C'est du CRM de proximité que les grandes enseignes ne peuvent pas faire.",
+        gain: "+25% de CA sur les occasions récurrentes",
+        color: "#34d399",
+      },
+      {
+        n: "3",
+        titre: "Gestion des commandes professionnelles",
+        desc: "Le restaurant du coin qui prend une composition fraîche chaque lundi, l'hôtel qui renouvelle ses bouquets d'accueil tous les 15 jours — ces clients sont rentables mais chronophages. L'agent gère les confirmations hebdomadaires, les modifications ponctuelles et les alertes de fermeture sans que vous ayez à envoyer un email.",
+        gain: "3-4h économisées/semaine sur le suivi pro",
+        color: "#38bdf8",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex gap-4 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style={`background: ${item.color}20; color: ${item.color}; border: 1px solid ${item.color}40;`}>{item.n}</div>
+          <p class="text-white font-bold text-base leading-tight pt-1">{item.titre}</p>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <div class="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le calendrier commercial que l'agent anticipe pour vous</h2>
+
+  <p>Voici les dates à configurer une fois, et que l'agent gère automatiquement chaque année :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      { date: "14 février — Saint-Valentin", action: "Alerte J-10 aux clients récurrents, mention de stock limité à J-5" },
+      { date: "Dernier dimanche de mai — Fête des Mères", action: "Campagne J-14 et J-7, clôture commandes annoncée J-3" },
+      { date: "3ème dimanche de juin — Fête des Pères", action: "Alerte aux clients ayant commandé pour la fête des mères" },
+      { date: "1er novembre — Toussaint", action: "Rappel clients année précédente dès J-10, chrysanthèmes mis en avant" },
+      { date: "Décembre — Noël et Nouvel An", action: "Campagne compositions hivernales, clôture commandes annoncée J-5" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex gap-4 items-start">
+        <div class="flex-shrink-0 px-2 py-1 rounded text-xs font-bold whitespace-nowrap" style="background: #f87171 20; color: #f87171; border: 1px solid #f8717140;">📅</div>
+        <div>
+          <p class="text-white font-semibold text-sm">{item.date}</p>
+          <p class="text-[#8888aa] text-xs mt-0.5">{item.action}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne remplacera jamais</h2>
+
+  <p>La valeur d'une fleuriste indépendante n'est pas dans la prise de commande — c'est dans la composition, dans le choix des fleurs qui correspondent à la personne et à l'occasion, dans le geste de reconnaissance quand on sait que la cliente va traverser quelque chose de difficile. L'agent prend les informations brutes. Vous, vous créez quelque chose d'unique avec.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f87171, #dc2626);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/fleuristes" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour fleuristes &rarr;</a>
+    <a href="/blog/ia-retail-magasin" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour commerces &rarr;</a>
+  </div>
+
+</BlogLayout>

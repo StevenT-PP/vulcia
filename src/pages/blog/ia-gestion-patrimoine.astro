@@ -1,0 +1,110 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour conseiller en gestion de patrimoine : qualifier les prospects et automatiser le suivi",
+  description: "Comment un conseiller en gestion de patrimoine ou un family office utilise un agent IA pour qualifier les prospects, automatiser le suivi réglementaire et préparer les rendez-vous de conseil.",
+  date: "2026-07-13",
+  readTime: "8 min",
+  category: "Finance",
+  categoryColor: "#38bdf8",
+  slug: "ia-gestion-patrimoine",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La gestion de patrimoine repose sur une relation de confiance longue durée avec des clients à fort potentiel. Mais avant d'arriver à ce stade, il y a un entonnoir de qualification souvent chronophage : prospects peu qualifiés, rendez-vous de découverte sans suite, relances de dossiers incomplets. L'IA peut traiter ce flux amont sans compromettre la qualité de la relation — à condition de bien délimiter son rôle.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La frontière réglementaire : ce que l'IA peut faire en gestion de patrimoine</h2>
+
+  <p>La gestion de patrimoine est un secteur réglementé (CIF, IOBSP, AMF). L'agent IA ne peut pas donner de conseil en investissement, de recommandation de produit financier ou d'analyse de portefeuille. Mais il peut faire beaucoup sans jamais franchir cette ligne.</p>
+
+  <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Tâche", "IA seule", "IA + validation conseiller"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Réponse aux questions sur les prestations du cabinet", "✓ Oui", "—"],
+        ["Prise de rendez-vous de découverte", "✓ Oui", "—"],
+        ["Collecte du profil de risque initial (questionnaire)", "✓ Oui", "Analyse par le conseiller"],
+        ["Envoi de documents explicatifs généraux (livret A, PEA, SCPI)", "✓ Oui si générique", "—"],
+        ["Qualification du patrimoine et des objectifs", "✓ Questions uniquement", "Analyse par le conseiller"],
+        ["Recommandation de produits financiers spécifiques", "✗ Jamais", "Conseiller uniquement"],
+        ["Analyse de portefeuille", "✗ Jamais", "Conseiller uniquement"],
+        ["Relance pour documents réglementaires (KYC, justificatifs)", "✓ Oui", "—"],
+      ].map(([t, ia, val]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{t}</div>
+          <div class="p-3 border-b border-white/5 text-xs font-semibold" style={`color: ${ia.startsWith('✓') ? '#34d399' : '#f87171'};`}>{ia}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{val}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 automatisations à fort impact</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        titre: "Qualification patrimoniale initiale",
+        desc: "Avant le premier rendez-vous, l'agent envoie un questionnaire structuré : tranche de patrimoine à gérer, âge et situation familiale, objectifs (retraite, transmission, défiscalisation, revenus complémentaires), horizon de placement, tolérance au risque indicative. Le conseiller arrive au RDV avec un dossier pré-rempli — pas avec une feuille blanche.",
+        impact: "30-45 min gagnées par rendez-vous de découverte",
+        color: "#38bdf8",
+      },
+      {
+        titre: "Relance des documents KYC incomplets",
+        desc: "La conformité KYC (Know Your Customer) impose la collecte de justificatifs pour tout nouveau client. Ces relances sont chronophages et répétitives. L'agent envoie automatiquement les relances à J+3, J+7 et J+14 si les documents ne sont pas reçus — avec une liste précise de ce qui manque.",
+        impact: "2-3h économisées/semaine par conseiller",
+        color: "#34d399",
+      },
+      {
+        titre: "Suivi des rendez-vous annuels de revue de portefeuille",
+        desc: "Les clients en suivi doivent être revus régulièrement (point annuel ou semestriel selon les contrats). L'agent rappelle automatiquement les clients dont le prochain point de revue approche et leur propose un créneau. Zéro client oublié, zéro rendez-vous manqué.",
+        impact: "+30% de rendez-vous annuels effectivement réalisés",
+        color: "#a78bfa",
+      },
+      {
+        titre: "FAQ sur les enveloppes fiscales et produits courants",
+        desc: "\"Quelle est la différence entre un PEA et un compte-titres ?\", \"Comment fonctionne le plafond du livret A ?\", \"C'est quoi une SCPI ?\" — ce sont des questions d'information générale, pas de conseil. L'agent peut y répondre avec des fiches pédagogiques neutres. Le client arrive au RDV avec un niveau de compréhension supérieur.",
+        impact: "Moins de temps de RDV passé sur les bases",
+        color: "#fbbf24",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2" style={`color: ${item.color};`}>{item.titre}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <div class="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.impact}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Contraintes spécifiques au secteur</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      { point: "Secret professionnel et confidentialité", detail: "Les données patrimoniales sont extrêmement sensibles. L'hébergement doit être en France ou en UE, et les données ne doivent jamais transiter par des modèles IA entraînés sur des données clients. IAForge utilise Mistral AI hébergé à Paris pour les secteurs sensibles.", color: "#38bdf8" },
+      { point: "Mention obligatoire IA (EU AI Act 2025)", detail: "L'agent doit se présenter comme un système automatisé dès le premier contact. Aucune tromperie sur la nature de l'interlocuteur n'est légalement admissible.", color: "#fbbf24" },
+      { point: "Traçabilité des échanges", detail: "En cas de litige réglementaire, les échanges avec les clients doivent être archivés. L'agent conserve un historique horodaté de chaque conversation, exportable pour les contrôles AMF ou ACPR.", color: "#a78bfa" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4">
+        <p class="text-sm font-bold mb-1" style={`color: ${item.color};`}>{item.point}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #38bdf8, #0284c7);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/assurances" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour courtiers assurance &rarr;</a>
+    <a href="/blog/ia-pour-cabinet-comptable" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour cabinet comptable &rarr;</a>
+  </div>
+
+</BlogLayout>
