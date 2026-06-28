@@ -1,0 +1,220 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f87171";
+
+const tasks = [
+  "Gère la prise de RDV 24h/24 pour toutes les spécialités de la clinique",
+  "Oriente les patients vers la bonne spécialité selon leurs symptômes et motifs",
+  "Rappelle les consultations J-2 et J-1 pour réduire les no-shows",
+  "Gère les admissions pré-hospitalières : collecte des documents et antécédents",
+  "Répond aux questions sur les mutuelles, dépassements d'honoraires et tarifs",
+  "Notifie les patients des résultats d'examens disponibles",
+  "Gère les demandes de second avis et les orientations internes",
+  "Collecte les retours patients post-consultation pour améliorer la qualité",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il orienter vers la bonne spécialité sans risque médical ?",
+    a: "L'agent oriente sur la base des informations déclarées par le patient (type de motif, spécialité souhaitée, urgence perçue). Il ne fait jamais de triage médical — si un patient décrit des symptômes d'urgence, l'agent le dirige vers le 15 (SAMU) ou les urgences. L'orientation vers une spécialité reste informative, la décision médicale appartient au médecin.",
+  },
+  {
+    q: "Comment gérer plusieurs spécialités avec des agendas distincts ?",
+    a: "L'agent connaît les disponibilités de chaque praticien et spécialité. Un patient peut demander un cardiologue disponible cette semaine — l'agent consulte les agendas en temps réel et propose les créneaux disponibles. Chaque praticien conserve la gestion de son agenda.",
+  },
+  {
+    q: "L'agent peut-il gérer les demandes de résultats d'examens ?",
+    a: "L'agent informe les patients de la disponibilité de leurs résultats (selon la notification que vous lui transmettez) et les dirige vers votre portail patient ou votre secrétariat. Il n'a jamais accès aux résultats eux-mêmes — la confidentialité médicale est préservée.",
+  },
+  {
+    q: "Compatible avec les logiciels de gestion clinique (Mediboard, Crossway, Dx-Care) ?",
+    a: "L'agent s'intègre aux agendas via API ou export pour la lecture des disponibilités. Pour les dossiers patients, il ne s'y connecte jamais. La collecte d'informations pré-admission se fait via formulaire sécurisé et arrive dans votre boîte mail ou votre logiciel admissions.",
+  },
+  {
+    q: "Quelle est la conformité HDS pour une clinique ?",
+    a: "Pour les cliniques, l'architecture est identique au secteur médical : Mistral AI hébergé à Paris, hébergement HDS certifié, DPA signé, aucune donnée médicale stockée chez l'agent. La configuration prend 10 jours ouvrés au lieu de 7 pour les vérifications supplémentaires.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour cliniques et centres médicaux — RDV et admissions automatisés | IAForge"
+  description="Agent IA pour clinique : prise de RDV multi-spécialités 24h/24, orientation patients, admissions pré-hospitalières, rappels anti no-show. RGPD HDS. Dès 349€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Cliniques", "item": "https://iaforge.fr/ia-pour/cliniques" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Cliniques & Centres médicaux</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour cliniques</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Toutes vos spécialités.<br/><span class="gradient-text">Un seul agent.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            RDV multi-spécialités 24h/24, orientation patients, collecte pré-admission et rappels automatiques — sans jamais toucher aux données médicales.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-55%", label: "de no-shows grâce aux rappels J-2 et J-1 multi-canaux", color },
+            { val: "+30%", label: "de RDV pris hors horaires — secrétariat soulagé dès la 1ère semaine", color: "#34d399" },
+            { val: "0 patient", label: "orienté vers le mauvais service — qualification automatique du motif", color: "#a78bfa" },
+            { val: "10 jours", label: "pour être opérationnel, conforme HDS et validé par votre équipe", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre clinique</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Architecture HDS : la sécurité adaptée aux établissements de santé</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-8">Pour les cliniques et centres médicaux, nous déployons une architecture renforcée conforme aux exigences de l'hébergement de données de santé.</p>
+      <div class="space-y-2">
+        {[
+          "Modèle IA exclusivement Mistral AI hébergé à Paris — aucune donnée hors UE",
+          "Hébergeur certifié HDS (Hébergeur de Données de Santé) pour toute donnée à caractère personnel de santé",
+          "L'agent ne dispose d'aucun accès aux dossiers patients, résultats d'examens ou prescriptions",
+          "Formulaires pré-admission chiffrés — les données arrivent dans votre système, jamais stockées chez l'agent",
+          "DPA (Data Processing Agreement) signé, conforme au cadre RGPD renforcé santé",
+          "Audit de conformité inclus dans le déploiement — rapport CNIL disponible",
+        ].map(item => (
+          <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour une clinique de 15 praticiens</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Orientation vers la bonne spécialité", "Appel + mise en attente + transfert", "Qualification en 3 questions, créneau direct"],
+            ["Demandes hors horaires (soir, week-end)", "Répondeur — 35% de perdus", "RDV en ligne 24h/24, confirmation immédiate"],
+            ["Collecte pré-admission", "Formulaire papier en salle d'attente", "Envoi automatique J-5, récupéré avant la venue"],
+            ["No-shows (15% en moyenne)", "Créneau perdu, praticien disponible", "Rappels J-2, J-1 + liste d'attente auto"],
+            ["Questions mutuelles / dépassements", "Secrétariat = 20 min/appel", "FAQ automatique, patient arrive informé"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/medecins', title: 'Agent IA pour médecins — RDV et rappels automatiques', cat: 'Secteur' },
+          { href: '/ia-pour/kinesitherapeutes', title: 'Agent IA pour kinésithérapeutes — -55% de no-shows', cat: 'Secteur' },
+          { href: '/blog/ia-medecin-generaliste', title: 'IA pour médecin généraliste : automatiser sans déshumaniser', cat: 'Guide' },
+          { href: '/blog/ia-securite-rgpd-pme', title: 'IA et RGPD pour les PME : ce qu\'il faut vraiment savoir', cat: 'Technique' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre accueil patient transformé en 10 jours</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos flux de demandes, vos no-shows et votre charge secrétariat pour vous chiffrer le gain réel par mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #dc2626);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Conforme HDS</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

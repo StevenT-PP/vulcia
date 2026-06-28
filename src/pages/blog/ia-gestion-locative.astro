@@ -1,0 +1,115 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour la gestion locative : automatiser sans perdre le lien propriétaire-locataire",
+  description: "Comment un gestionnaire de biens ou une agence immobilière utilise l'IA pour automatiser les quittances, relances de loyer, demandes de travaux et états des lieux. Guide pratique 2026.",
+  date: "2026-07-07",
+  readTime: "7 min",
+  category: "Automatisation",
+  categoryColor: "#a78bfa",
+  slug: "ia-gestion-locative",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La gestion locative est un secteur d'activité où la charge administrative est disproportionnée par rapport à la marge. Envoyer les quittances, relancer les loyers impayés, traiter les demandes de travaux, coordonner les états des lieux, répondre aux locataires qui appellent pour des questions simples — un gestionnaire traite en moyenne 45 minutes d'administratif par lot géré et par mois. Un agent IA peut absorber 60 à 70% de cette charge.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 automatisations qui changent la gestion locative</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Envoi automatique des quittances de loyer",
+        color: "#a78bfa",
+        desc: "Le 1er de chaque mois, l'agent envoie automatiquement les quittances à tous les locataires. En cas de retard de paiement constaté au J+5, il déclenche la première relance (ton courtois). Au J+10, la deuxième relance (ton ferme). Au J+15, alerte au gestionnaire pour action manuelle.",
+        gain: "0 quittance oubliée, -8h/mois de gestion loyers",
+      },
+      {
+        n: "2",
+        titre: "Gestion des demandes de travaux",
+        color: "#34d399",
+        desc: "Un locataire signale un problème (fuite, panne, dégradation) — l'agent collecte les informations (description, photos si possible, urgence, coordonnées), crée un ticket structuré et notifie le propriétaire et le prestataire concerné. Il suit l'avancement et notifie le locataire quand l'intervention est planifiée.",
+        gain: "-45 min par demande de travaux traitée",
+      },
+      {
+        n: "3",
+        titre: "Planification et suivi des états des lieux",
+        color: "#38bdf8",
+        desc: "Entrée ou sortie de locataire : l'agent envoie les convocations, confirme les disponibilités des deux parties, rappelle J-2 et J-1. Après l'état des lieux, il suit la restitution du dépôt de garantie et les délais légaux (max 1 mois si pas de dégradation, 2 mois sinon).",
+        gain: "0 retard légal sur dépôt de garantie",
+      },
+      {
+        n: "4",
+        titre: "FAQ locataire et propriétaire",
+        color: "#f59e0b",
+        desc: "\"Quel est le montant de la prochaine révision de loyer ?\", \"Quand expire le bail ?\", \"Puis-je sous-louer ?\", \"Quels sont les diagnostics obligatoires lors de la vente ?\" — des questions répétitives auxquelles l'agent répond 24h/24 avec les informations spécifiques au dossier concerné.",
+        gain: "30 à 40 appels évités par semaine",
+      },
+      {
+        n: "5",
+        titre: "Relances et suivi des renouvellements de bail",
+        color: "#7c5cfc",
+        desc: "6 mois avant l'échéance d'un bail, l'agent alerte le gestionnaire. 3 mois avant, il contacte le locataire pour connaître ses intentions (renouvellement ou congé). 1 mois avant la date légale de préavis propriétaire, il rappelle les délais pour éviter les erreurs de procédure.",
+        gain: "0 erreur de procédure sur les baux",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un gestionnaire de 80 lots</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <p class="text-[#8888aa] text-xs uppercase font-bold tracking-wider mb-5">Exemple : gestionnaire indépendant, 80 lots, honoraires moyens 7% des loyers</p>
+    <div class="space-y-3">
+      {[
+        { item: "Temps administratif récupéré (15h/mois)", gain: "+15h × 45€/h = +675€/mois" },
+        { item: "Réduction des impayés (taux de recouvrement J+15 : de 70% à 92%)", gain: "+5 loyers récupérés × 800€ = +4 000€/mois sur le portefeuille propriétaire" },
+        { item: "Capacité à gérer +20 lots supplémentaires (sans recrutement)", gain: "+20 × honoraires moyens = +1 400€/mois" },
+        { item: "Total gain mensuel estimé", gain: "+2 075€/mois (gestion directe)" },
+        { item: "Coût agent IAForge", gain: "-149€/mois" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class={`text-sm ${i === 3 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-[#a78bfa]' : i === 4 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Compatibilité avec les logiciels de gestion locative</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Rentila — intégration agenda et export locataires pour les relances automatiques",
+      "Bellman — connexion aux notifications de paiement pour déclenchement des relances",
+      "ImmoPad / Sgrm — synchronisation des états des lieux et convocations",
+      "Netty / Apimo — connexion au CRM pour le suivi propriétaires",
+      "Fichiers Excel / exports CSV — compatibilité universelle pour les petits portefeuilles",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/agences-immobilieres" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour agences immobilières &rarr;</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Automatiser ses relances &rarr;</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>

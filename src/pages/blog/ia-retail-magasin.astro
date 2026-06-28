@@ -1,0 +1,120 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour commerce de détail : automatiser sans perdre le contact humain en 2026",
+  description: "Comment un magasin ou réseau de points de vente utilise l'IA pour automatiser le SAV, les questions stock, la fidélisation et les avis Google — sans remplacer l'expérience en magasin.",
+  date: "2026-07-07",
+  readTime: "7 min",
+  category: "Automatisation",
+  categoryColor: "#f59e0b",
+  slug: "ia-retail-magasin",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le commerce de détail est sous pression de deux côtés : les pure players e-commerce sur le prix, et les grandes surfaces sur le volume. L'avantage du commerce de proximité, c'est l'expérience humaine — le conseil personnalisé, la relation de confiance, la flexibilité. L'IA ne doit pas remplacer ça. Elle doit s'occuper de tout ce qui n'est pas de l'expérience humaine : les questions répétitives, les horaires, le stock, la fidélisation automatique.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA automatise dans un commerce de détail</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        tache: "Questions répétitives sur les horaires, stock et retours",
+        color: "#f59e0b",
+        desc: "\"Êtes-vous ouvert le dimanche ?\", \"Avez-vous ce modèle en taille 42 ?\", \"Quel est votre délai de retour ?\" — ces questions représentent 60 à 70% des contacts entrants dans un commerce de détail. L'agent répond 24h/24 sans que votre équipe en magasin lève les yeux de leurs clients.",
+        gain: "-60% de temps téléphonique en magasin",
+      },
+      {
+        tache: "Fidélisation et relances anniversaire / inactifs",
+        color: "#34d399",
+        desc: "Programme de fidélité automatisé : message d'anniversaire avec bon de réduction, relance des clients inactifs depuis 3 mois, rappel des promotions personnalisées selon l'historique d'achat. Sans CRM complexe — l'agent gère ça avec un simple fichier client.",
+        gain: "+22% de fréquence de retour",
+      },
+      {
+        tache: "Click & collect et réservation de produits",
+        color: "#38bdf8",
+        desc: "Un client voit un produit en ligne et veut le réserver pour l'essayer en magasin. L'agent gère la réservation, envoie la confirmation et rappelle J-1. Le client arrive, le produit est prêt. Taux de conversion en magasin : 78% vs 31% pour le e-commerce pur.",
+        gain: "+47 points de taux de conversion",
+      },
+      {
+        tache: "SAV et gestion des réclamations",
+        color: "#a78bfa",
+        desc: "Retours, échanges, réclamations, demandes de SAV sous garantie — l'agent collecte les informations (référence produit, date d'achat, nature du problème) et qualifie avant l'intervention humaine. Les cas simples sont résolus en autonomie, les cas complexes arrivent avec tout le contexte.",
+        gain: "-45 min de traitement par réclamation",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-white font-bold text-base">{item.tache}</h3>
+          <span class="text-xs font-bold flex-shrink-0 ml-3 px-2 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.gain}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par type de commerce : les cas d'usage spécifiques</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { type: "Prêt-à-porter et mode", use: "Questions sur les tailles, disponibilité couleurs, politique de retour, relances sur les paniers abandonnés en ligne, alertes restockage", color: "#f59e0b" },
+      { type: "Jardinerie et bricolage", use: "Questions techniques sur les produits, disponibilité de pépinières saisonnières, réservation d'outillage en location, conseils entretien basiques", color: "#34d399" },
+      { type: "Épicerie fine et alimentation spécialisée", use: "Disponibilité produits saisonniers, composition des produits (allergènes), commandes pour événements, horaires et livraison locale", color: "#fb923c" },
+      { type: "Sport et loisirs", use: "Disponibilité tailles et modèles, réservation de cours, programme de fidélité, SAV équipements techniques", color: "#38bdf8" },
+      { type: "Décoration et ameublement", use: "Délais de livraison, dimensions des produits, disponibilité en showroom, SAV et réclamations livraison", color: "#a78bfa" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={`background: ${item.color};`}></div>
+        <div>
+          <p class="text-white font-semibold text-xs mb-1">{item.type}</p>
+          <p class="text-[#8888aa] text-xs leading-relaxed">{item.use}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne doit pas faire dans un commerce de détail</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { non: "Remplacer le conseil en magasin", raison: "L'IA répond aux questions factuelles. Le conseil personnalisé — \"ce modèle vous ira mieux que l'autre\" ou \"pour votre usage, je vous recommande plutôt X\" — reste humain. C'est votre différence concurrentielle." },
+      { non: "Gérer les réclamations complexes ou les clients très mécontents", raison: "Un client en colère qui revient pour la 3ème fois avec le même problème ne doit pas parler à un bot. L'agent détecte les signaux de forte insatisfaction et escalade immédiatement vers un responsable humain." },
+      { non: "Faire semblant d'être un humain", raison: "En France, présenter un agent IA comme un vendeur humain est contraire aux règles DGCCRF et à la confiance client. L'agent se présente clairement comme un assistant numérique du magasin." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-red-400 text-xs font-semibold mb-1">Ne pas faire : {item.non}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.raison}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un commerce de 3 vendeurs (250K€ de CA annuel)</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Temps vendeurs récupéré (2h/jour sur questions répétitives)", gain: "+2h × 20j × 16€/h = +640€/mois de productivité" },
+        { item: "Fidélisation (relances anniversaire, +8% de clients actifs)", gain: "+8% × 15 clients × 80€ panier = +960€/mois" },
+        { item: "Click & collect (+10 réservations/semaine converties en magasin)", gain: "+10 × 80€ × 4 sem. = +3 200€/mois" },
+        { item: "Total gains mensuels estimés", gain: "+4 800€/mois" },
+        { item: "Coût agent IAForge", gain: "-149€/mois" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class={`text-sm ${i === 3 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-[#f59e0b]' : i === 4 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/ia-ecommerce-shopify" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour e-commerce Shopify &rarr;</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Automatiser ses relances &rarr;</a>
+  </div>
+
+</BlogLayout>
