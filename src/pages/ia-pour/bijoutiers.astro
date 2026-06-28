@@ -1,0 +1,196 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#fbbf24";
+
+const tasks = [
+  "Répond aux demandes de renseignements sur les collections, matières, prix et délais 24h/24",
+  "Programme les rendez-vous pour les créations sur mesure, les réparations et les expertises",
+  "Qualifie les projets de bijoux sur mesure : budget, occasion, pierre souhaitée, métal, délai",
+  "Relance les clients qui ont demandé un devis sans réponse pour une création personnalisée",
+  "Rappelle les occasions importantes (anniversaire de mariage, fête des mères) aux clients fidèles",
+  "Informe sur les garanties, les certifications (or 750, argent 925) et les services de nettoyage",
+  "Gère les prises de RDV pour les réparations et envoie les confirmations de devis atelier",
+  "Collecte les avis Google et témoignages après livraison d'une création sur mesure",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il faire des recommandations de bijoux selon un budget et une occasion ?",
+    a: "Oui. L'agent connaît votre catalogue avec les descriptions, matières, prix et disponibilités. Il peut présenter des pièces adaptées au budget et à l'occasion décrite par le client (\"Bague de fiançailles, budget 2 000€, style minimaliste\"). Il envoie les liens vers les photos et invite à venir en boutique pour une découverte physique.",
+  },
+  {
+    q: "L'agent peut-il gérer les projets de bague de fiançailles et alliances ?",
+    a: "Oui. Pour les créations sur mesure majeures (bague de fiançailles, alliances de mariage), l'agent collecte les informations de base (budget, style, métal, pierre souhaitée, délai souhaité) et programme une consultation avec votre joaillier. La création sur mesure reste entièrement entre les mains de votre équipe.",
+  },
+  {
+    q: "L'agent peut-il informer sur les certifications des pierres et métaux ?",
+    a: "Oui. L'agent peut expliquer les certifications courantes : titre de l'or (750, 585, 375), argent 925, certifications diamant (GIA, HRD, IGI), labels éthiques (RJC, Fairmined). Pour les expertises et valuations, il redirige vers un rendez-vous avec un expert.",
+  },
+  {
+    q: "Comment gérer les réparations et remises en état ?",
+    a: "L'agent collecte la description du bijou et du problème (chaîne cassée, pierre perdue, bague à retailler, nettoyage), estime si c'est un devis standard ou à évaluer en boutique, et programme le RDV. Il informe sur les délais habituels selon le type de réparation.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec catalogue, FAQ, prise de RDV et informations de base. Pour les rappels personnalisés d'occasions et l'intégration avec votre logiciel de caisse ou ERP, prévoir 14 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour bijouteries et horlogeries — Créations sur mesure et RDV automatisés | IAForge"
+  description="Agent IA pour bijoutier : présentation catalogue, qualification projets sur mesure, rappels occasions anniversaire, prises de RDV réparation et expertise — Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Bijouteries & Horlogeries", "item": "https://iaforge.fr/ia-pour/bijoutiers" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Bijouteries & Horlogeries</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour bijouteries et horlogeries</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Occasions saisies.<br/><span class="gradient-text">Projets sur mesure qualifiés.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Catalogue présenté 24h/24, projets de bague de fiançailles ou alliances qualifiés, rappels anniversaire de mariage, réparations programmées — pendant que vous créez et conseilllez.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+35%", label: "de projets sur mesure qualifiés grâce à la réponse immédiate 24h/24", color },
+            { val: "+30%", label: "de CA sur les occasions grâce aux rappels personnalisés aux clients fidèles", color: "#34d399" },
+            { val: "-50%", label: "d'appels entrants pour les questions de prix, horaires et disponibilités", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel avec votre catalogue, certifications et prises de RDV", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre boutique</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Séquence bague de fiançailles — de la demande à la consultation</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Le plus grand projet d'achat de bijou d'une vie. L'agent prépare le terrain pour que la consultation soit un moment d'exception.</p>
+      <div class="not-prose my-6 space-y-3">
+        {[
+          { etape: "Contact initial", timing: "J0 — réponse < 2 min", desc: "L'agent accueille le prospect avec un ton doux et enthousiasmé. Il demande le projet, le délai (avant une date de demande en mariage ?) et le budget indicatif.", color },
+          { etape: "Présentation des styles", timing: "J0 — automatique", desc: "Selon le style décrit (classique, moderne, vintage, solitaire, pavé), l'agent envoie les liens vers les créations correspondantes dans votre portfolio.", color: "#34d399" },
+          { etape: "Qualification complète", timing: "J0 à J2", desc: "L'agent collecte : métal (or jaune, blanc, rose), pierre (diamant, saphir, émeraude), forme de la bague, taille du doigt si connue, budget précis.", color: "#38bdf8" },
+          { etape: "Prise de RDV consultation", timing: "Dès qualification", desc: "L'agent programme la consultation dans l'agenda du joaillier. Il envoie une confirmation avec l'adresse, les informations de parking et un rappel des informations collectées.", color: "#a78bfa" },
+          { etape: "Rappel et suivi", timing: "J-1 et J+7 post-RDV", desc: "Rappel le veille du RDV. Une semaine après, si aucune commande n'a été passée, l'agent relance avec un message bienveillant.", color: "#fbbf24" },
+        ].map(item => (
+          <div class="glass rounded-xl p-5 flex gap-4 items-start">
+            <div class="flex-shrink-0 px-2 py-1 rounded text-xs font-bold whitespace-nowrap" style={`background: ${item.color}20; color: ${item.color}; border: 1px solid ${item.color}40;`}>{item.timing}</div>
+            <div>
+              <p class="text-white font-semibold text-sm mb-1">{item.etape}</p>
+              <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-retail-magasin', title: 'IA pour commerce de détail : automatiser sans perdre le lien humain', cat: 'Guide' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA', cat: 'Automatisation' },
+          { href: '/ia-pour/fleuristes', title: 'IA pour fleuristes : commandes et rappels d\'occasions', cat: 'Secteur' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques avec l\'IA', cat: 'SEO Local' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#fbbf24] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre savoir-faire dans les bijoux. L'agent dans les demandes.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos demandes manquées hors horaires, vos projets sur mesure non relancés et vos clients fidèles à remercier pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #d97706);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

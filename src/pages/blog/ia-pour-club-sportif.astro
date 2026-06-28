@@ -1,0 +1,108 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour club sportif : gérer les inscriptions et relancer les membres sans bénévoles épuisés",
+  description: "Comment un club de football, tennis ou natation déploie un agent IA pour les inscriptions, les rappels d'entraînement et les renouvellements d'adhésion — sans surcharger l'équipe bénévole.",
+  date: "2026-07-14",
+  readTime: "7 min",
+  category: "Agents IA",
+  categoryColor: "#f97316",
+  slug: "ia-pour-club-sportif",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un club sportif associatif a une particularité qui le distingue de toute autre structure : son fonctionnement repose essentiellement sur des bénévoles qui consacrent leur temps libre à la gestion administrative — inscriptions, communication, suivi des membres, relances. Quand le volume augmente, soit les bénévoles s'épuisent, soit des opportunités sont ratées. L'IA peut prendre en charge le flux répétitif pour que les bénévoles se consacrent à ce qui compte vraiment.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème du club sportif qui grandit</h2>
+
+  <p>En dessous de 100 membres, une équipe de 2-3 bénévoles motivés peut gérer le club. Au-delà, les demandes explosent : des prospects qui posent les mêmes questions, des membres qui oublient de renouveler, des parents qui cherchent les horaires d'entraînement à 22h30 le dimanche. Sans système, soit vous recrutez des bénévoles administratifs (difficile), soit vous perdez des membres et des inscriptions.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 situations où l'IA fait le plus de différence</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        situation: "La vague d'inscriptions de septembre",
+        problème: "En 3 semaines, 80% des nouvelles inscriptions arrivent. Les bénévoles répondent à des centaines de messages identiques.",
+        solution: "L'agent répond 24h/24 à toutes les questions : tarifs, niveaux, horaires, licences. Il collecte les informations et génère les fiches d'inscription pré-remplies.",
+        impact: "0 bénévole épuisé, 0 inscription manquée faute de réponse",
+        color: "#f97316",
+      },
+      {
+        situation: "Les rappels d'entraînement annulés",
+        problème: "Le terrain est détrempé, l'éducateur est absent — vous devez notifier 30 familles en moins d'une heure.",
+        solution: "Un message WhatsApp ou SMS automatique à tous les membres de la section concernée, déclenché en 2 clics par le responsable de section.",
+        impact: "-80% de familles qui se déplacent pour rien",
+        color: "#34d399",
+      },
+      {
+        situation: "Les renouvellements d'adhésion",
+        problème: "Chaque année, 15-20% des membres ne renouvellent pas — non par désintérêt, mais par oubli ou manque de relance.",
+        solution: "L'agent envoie 3 rappels à 2 mois, 1 mois et 15 jours de l'échéance. Le taux de renouvellement remonte de 10-15 points.",
+        impact: "+15 points de taux de renouvellement",
+        color: "#38bdf8",
+      },
+      {
+        situation: "Les demandes de parrainage entreprise",
+        problème: "Le trésorier envoie des emails manuels aux entreprises locales pour les partenariats. 1 réponse sur 10.",
+        solution: "L'agent identifie les demandes entrantes de sponsoring, collecte les informations de l'entreprise et présente les formules disponibles avant de transmettre au responsable.",
+        impact: "+40% de partenaires entreprises contactés et suivis",
+        color: "#a78bfa",
+      },
+      {
+        situation: "Les questions parents à 22h",
+        problème: "\"À quelle heure est l'entraînement jeudi ?\" envoyé sur la page Facebook à 22h30. Sans réponse, le parent s'inquiète.",
+        solution: "L'agent répond immédiatement avec le planning à jour. Le responsable n'a pas à ouvrir son téléphone le soir.",
+        impact: "100% des questions standard répondues en < 2 min",
+        color: "#fbbf24",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-xs font-bold uppercase tracking-wider mb-3" style={`color: ${item.color};`}>{item.situation}</p>
+        <div class="grid grid-cols-2 gap-4 mb-3">
+          <div>
+            <p class="text-xs font-semibold text-[#8888aa] mb-1">Sans agent IA</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed">{item.problème}</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold mb-1" style={`color: ${item.color};`}>Avec agent IA</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed">{item.solution}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-3 border-t border-white/10">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.impact}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que les bénévoles peuvent faire pendant ce temps</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Former les jeunes éducateurs et transmettre les valeurs du club",
+      "Nouer des relations avec les familles et créer une vraie communauté autour du club",
+      "Développer des partenariats avec les écoles et les collectivités locales",
+      "Améliorer l'expérience sportive plutôt que de gérer les emails",
+      "Se retrouver après les matchs sans avoir la tête dans leur téléphone",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/clubs-sportifs" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour clubs sportifs &rarr;</a>
+    <a href="/blog/ia-pour-association" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour associations &rarr;</a>
+  </div>
+
+</BlogLayout>

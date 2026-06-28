@@ -1,0 +1,123 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour les RH internes : onboarding, FAQ employés et gestion des demandes automatisés",
+  description: "Comment une PME déploie un agent IA pour automatiser les demandes RH répétitives : FAQ employés, onboarding nouveaux salariés, congés et notes de frais — sans surcharger l'équipe RH.",
+  date: "2026-07-14",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "ia-ressources-humaines-internes",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Dans une PME de 30 à 200 salariés, l'équipe RH passe une proportion étonnante de son temps sur des demandes récurrentes et prévisibles : "J'ai combien de jours de congé restants ?", "Où je dépose mes notes de frais ?", "Quelle est la procédure pour une maladie professionnelle ?" Ce sont des questions légitimes qui méritent une réponse rapide — mais qui ne nécessitent pas qu'un responsable RH qualifié s'en occupe. L'IA peut prendre en charge ce flux sans jamais remplacer la RH humaine sur les sujets sensibles.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'agent RH peut traiter automatiquement</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Demande", "Traitement agent", "Escalade humaine si"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Solde de congés payés", "Consultation SIRH et réponse immédiate", "Litige ou désaccord sur le solde"],
+        ["Procédure de pose de congés", "Explication + lien formulaire / SIRH", "Cas particulier (longue durée, situation spéciale)"],
+        ["Soumettre des notes de frais", "Explication procédure + lien outil", "Litige sur un remboursement refusé"],
+        ["Attestation employeur", "Génération automatique si SIRH connecté", "Attestation spéciale ou urgente"],
+        ["Politique télétravail", "Rappel des règles en vigueur", "Demande dérogatoire"],
+        ["Procédure en cas d'arrêt maladie", "Étapes claires (médecin → CPAM → employeur)", "Cas de maladie professionnelle ou accident"],
+        ["Accès aux avantages salariés", "Information sur mutuelle, tickets restaurant, PE", "Problème d'adhésion ou de remboursement"],
+        ["Onboarding nouveau salarié", "Séquence de bienvenue structurée", "Question nécessitant une décision managériale"],
+      ].map(([d, t, e]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{d}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{t}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{e}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">L'onboarding automatisé : le cas d'usage le plus transformateur</h2>
+
+  <p>L'onboarding est l'un des moments les plus critiques — et les plus chronophages — de la vie d'un salarié. Un mauvais onboarding coûte en moyenne 25% du salaire annuel si le nouvel employé part dans les 12 premiers mois. Un agent IA bien configuré peut orchestrer les premières semaines sans surcharger le manager ou les RH.</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { jour: "J-7 (avant l'arrivée)", actions: ["Envoi du welcome pack (organigramme, valeurs, dress code, adresse exacte)", "Informations pratiques (parking, transport, badge, première journée)", "Formulaire de collecte des informations administratives à compléter avant l'arrivée"], color: "#7c5cfc" },
+      { jour: "J0 — Jour d'arrivée", actions: ["Message de bienvenue personnalisé le matin", "Programme de la journée (qui rencontrer, où déjeuner, accès aux outils)", "Lien vers le règlement intérieur et la charte informatique"], color: "#34d399" },
+      { jour: "J+3 à J+7", actions: ["Check-in de fin de première semaine : comment ça se passe ?", "FAQ disponible 24h/24 pour les questions pratiques courantes", "Rappel des formations obligatoires et de leur planning"], color: "#38bdf8" },
+      { jour: "J+30", actions: ["Bilan du premier mois : l'agent collecte le ressenti et alerte si signaux d'alarme", "Rappel de la période d'essai et des points clés à valider", "Invitation à une réunion de suivi avec le manager si pas encore programmée"], color: "#fbbf24" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-sm font-bold mb-3" style={`color: ${item.color};`}>{item.jour}</p>
+        <div class="space-y-1">
+          {item.actions.map(a => (
+            <div class="flex items-start gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              <p class="text-[#8888aa] text-xs">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne doit PAS faire en RH interne</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Rendre des décisions disciplinaires ou des avertissements — ces actes ont une valeur juridique et doivent être faits par une personne habilitée",
+      "Gérer les situations de harcèlement ou de souffrance au travail — elles nécessitent une intervention humaine qualifiée et confidentielle",
+      "Négocier des salaires, avantages ou conditions particulières — tout ce qui crée des engagements contractuels",
+      "Accéder ou partager des données personnelles de salariés entre collègues — violation RGPD",
+      "Communiquer sur les restructurations, plans sociaux ou décisions stratégiques — risque de fuite et de panique",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une PME de 50 salariés</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Avant agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· ~40 demandes RH répétitives/semaine</p>
+          <p>· 2-4h/semaine du responsable RH sur ces questions</p>
+          <p>· Onboarding mal structuré : 15% de turn-over Y1</p>
+          <p>· Réponses parfois tardives : insatisfaction salariés</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#7c5cfc] uppercase tracking-wider mb-3">Avec agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· 35 demandes traitées automatiquement</p>
+          <p>· RH libérée pour les sujets à valeur ajoutée</p>
+          <p>· Onboarding structuré : turn-over Y1 divisé par 2</p>
+          <p>· Réponse en < 2 min à toute heure</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/10 text-center">
+      <p class="text-[#7c5cfc] font-bold text-sm">Économie de rétention : 1 départ évité = 15-25% du salaire annuel économisé</p>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b21b6);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/ia-recrutement-rh" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour le recrutement &rarr;</a>
+    <a href="/ia-pour/cabinets-rh" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour cabinets RH &rarr;</a>
+  </div>
+
+</BlogLayout>
