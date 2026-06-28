@@ -53,6 +53,7 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour hôtels : https://iaforge.fr/ia-pour/hotels
 - IA pour salles de sport : https://iaforge.fr/ia-pour/salles-sport
 - IA pour agences immobilières : https://iaforge.fr/ia-pour/agences-immobilieres
+- IA pour notaires : https://iaforge.fr/ia-pour/notaires
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -71,6 +72,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : SEO local et IA pour PME : https://iaforge.fr/blog/seo-local-ia-pme
 - Article : Agent IA pour le support client : https://iaforge.fr/blog/agent-ia-support-client
 - Article : Agent IA pour cabinet comptable : https://iaforge.fr/blog/ia-pour-cabinet-comptable
+- Article : IA et RGPD pour les PME : https://iaforge.fr/blog/ia-securite-rgpd-pme
+- Article : Réduire les no-shows avec l'IA : https://iaforge.fr/blog/reduire-no-shows-ia
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact

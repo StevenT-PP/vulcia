@@ -1,0 +1,157 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA et RGPD pour les PME : ce qu'il faut vraiment savoir en 2026",
+  description: "Quelles sont les obligations RGPD quand une PME déploie un agent IA ? Bases légales, hébergement des données, DPA, secteurs sensibles. Guide pratique sans jargon.",
+  date: "2026-07-02",
+  readTime: "8 min",
+  category: "Technique",
+  categoryColor: "#fbbf24",
+  slug: "ia-securite-rgpd-pme",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>\"Est-ce que c'est RGPD-conforme ?\" — c'est la première question que posent 80% des dirigeants de PME avant de déployer un agent IA. La réponse courte : oui, à condition de faire les choses dans l'ordre. Voici ce que vous devez savoir, sans le jargon juridique inutile.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que le RGPD impose concrètement pour un agent IA</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        obligation: "1. Avoir une base légale pour traiter les données",
+        color: "#fbbf24",
+        desc: "Avant de déployer un agent IA qui collecte des données (nom, email, numéro de téléphone, besoins), vous devez avoir une raison légale de le faire. Pour la plupart des PME, c'est l'une de ces trois bases :",
+        items: [
+          "Intérêt légitime : vous êtes un prestataire de services, et répondre à une demande client est légitime",
+          "Consentement explicite : l'utilisateur a accepté d'être contacté (formulaire avec case à cocher)",
+          "Exécution d'un contrat : l'agent gère une relation commerciale existante",
+        ],
+      },
+      {
+        obligation: "2. Informer les personnes de la collecte",
+        color: "#34d399",
+        desc: "Dès que votre agent IA collecte des données, vous devez l'indiquer clairement — dans la première interaction ou dans la politique de confidentialité liée au widget de chat.",
+        items: [
+          "Qui collecte les données (votre entreprise)",
+          "Pourquoi (traitement des demandes clients)",
+          "Combien de temps elles sont conservées",
+          "Comment exercer ses droits (suppression, accès, portabilité)",
+        ],
+      },
+      {
+        obligation: "3. Signer un DPA avec votre prestataire IA",
+        color: "#7c5cfc",
+        desc: "Quand vous utilisez un outil IA tiers (Mistral, OpenAI, Anthropic) pour traiter des données client, ce prestataire est un sous-traitant. Vous devez signer un DPA (Data Processing Agreement) qui définit ses obligations envers vous.",
+        items: [
+          "Tous les grands fournisseurs proposent un DPA standardisé",
+          "IAForge fournit un DPA avec chaque déploiement",
+          "Sans DPA, vous êtes en infraction RGPD même si le traitement est légitime",
+        ],
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="font-bold text-base mb-3" style={`color: ${item.color};`}>{item.obligation}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <ul class="space-y-1">
+          {item.items.map(i => (
+            <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {i}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Hébergement des données : France, UE ou USA ?</h2>
+
+  <p>Le RGPD n'interdit pas l'hébergement hors UE — mais il impose des garanties spécifiques. En pratique :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Hébergement", "Conformité RGPD", "Pour les données sensibles", "Exemple"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["France", "Maximale", "Recommandé", "Mistral AI, OVH"],
+        ["UE (Allemagne, Irlande)", "Bonne", "Acceptable", "AWS Frankfurt, Azure Amsterdam"],
+        ["USA avec clauses SCC", "Acceptable", "À éviter pour santé/finance", "OpenAI, Anthropic"],
+        ["USA sans garanties", "Non conforme", "Interdit", "Outils non certifiés"],
+      ].map(([heb, conf, sens, ex]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{heb}</div>
+          <div class={`p-3 border-b border-white/5 text-xs ${conf === 'Maximale' ? 'text-[#34d399]' : conf === 'Bonne' ? 'text-[#fbbf24]' : conf === 'Acceptable' ? 'text-[#f59e0b]' : 'text-red-400'}`}>{conf}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{sens}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{ex}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les secteurs avec des obligations renforcées</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { secteur: "Santé (médecins, kinés, pharmacies, dentistes)", color: "#34d399", obligation: "Données de santé = catégorie spéciale RGPD. Hébergement HDS (Hébergement Données de Santé) obligatoire. Nous utilisons Mistral AI Paris + certification HDS." },
+      { secteur: "Juridique (avocats, notaires, huissiers)", color: "#7c5cfc", obligation: "Secret professionnel renforcé. Les données de dossiers ne doivent jamais transiter via des serveurs hors UE. Notre agent ne traite que les données de contact — jamais le contenu des dossiers." },
+      { secteur: "Finance (comptables, banques, assurances)", color: "#f59e0b", obligation: "Données financières sensibles. Hébergement France recommandé. DPA obligatoire avec chaque prestataire. Audit de sécurité avant déploiement." },
+      { secteur: "Ressources humaines", color: "#38bdf8", obligation: "Données de salariés et de candidats = données sensibles. Consentement explicite requis. Conservation limitée dans le temps (6 mois pour les candidatures non retenues)." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="font-bold text-sm mb-2" style={`color: ${item.color};`}>{item.secteur}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.obligation}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que vous devez mettre en place avant le déploiement</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      { n: "1", action: "Mise à jour de la politique de confidentialité de votre site (mention de l'IA)", fait: true },
+      { n: "2", action: "Bandeau de consentement sur le widget de chat si collecte de données personnelles", fait: true },
+      { n: "3", action: "Signature du DPA avec IAForge (fourni avec chaque contrat)", fait: true },
+      { n: "4", action: "Registre des traitements mis à jour (obligation RGPD pour toutes les organisations)", fait: false },
+      { n: "5", action: "Procédure de réponse aux demandes de droits RGPD (suppression, accès, portabilité)", fait: false },
+    ].map(item => (
+      <div class="flex items-center gap-3 glass rounded-xl p-3">
+        <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0" style="background: #fbbf24;">{item.n}</span>
+        <p class="text-[#8888aa] text-sm flex-1">{item.action}</p>
+        <span class={`text-xs font-bold flex-shrink-0 ${item.fait ? 'text-[#34d399]' : 'text-[#fbbf24]'}`}>{item.fait ? 'IAForge fournit' : 'À faire'}</span>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les risques réels en cas de non-conformité</h2>
+
+  <p>La CNIL a prononcé des amendes allant de <strong class="text-white">3 000€ pour une PME</strong> à plusieurs millions pour les grandes entreprises. Pour les PME, les risques les plus courants sont :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Mise en demeure de la CNIL (délai de mise en conformité imposé)",
+      "Amende jusqu'à 2% du CA mondial (ou 10M€ si plus élevé) pour les violations mineures",
+      "Amende jusqu'à 4% du CA mondial (ou 20M€) pour les violations graves",
+      "Réputation endommagée si l'infraction est rendue publique",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <span class="text-[#fbbf24] mt-0.5 flex-shrink-0">!</span>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <p>En pratique, la CNIL préfère l'accompagnement à la sanction pour les PME de bonne foi. Les 5 points de la checklist ci-dessus suffisent pour être en conformité de base.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #fbbf24, #d97706);">
+      Audit conformité gratuit &rarr;
+    </a>
+    <a href="/blog/choisir-modele-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Choisir son modèle IA &rarr;</a>
+    <a href="/glossaire-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Glossaire IA &rarr;</a>
+  </div>
+
+</BlogLayout>
