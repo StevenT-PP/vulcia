@@ -1,0 +1,131 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour réseau de franchise : cohérence nationale, réactivité locale",
+  description: "Comment un réseau de franchise déploie des agents IA cohérents sur tous les points de vente tout en permettant des adaptations locales. Architecture, gouvernance et ROI.",
+  date: "2026-07-10",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pour-franchise",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un réseau de franchise a un problème spécifique que les PME indépendantes n'ont pas : maintenir une cohérence nationale sur des centaines ou des milliers de points de vente, tout en permettant les adaptations locales légitimes. L'agent IA d'une franchise doit savoir parler de la même marque partout, avec les mêmes prix et les mêmes politiques — tout en sachant que les horaires du franchisé de Bordeaux ne sont pas ceux de Lyon.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Architecture : national vs local</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Donnée</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#7c5cfc] uppercase tracking-wider text-center">Gérée au niveau national</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">Gérée au niveau local</div>
+      {[
+        ["Marque et positionnement", "Toujours", "Jamais (cohérence obligatoire)"],
+        ["Prix catalogue", "Prix nationaux définis par le réseau", "Prix locaux selon les remises autorisées"],
+        ["Politique de retour / garantie", "Toujours", "Jamais"],
+        ["Horaires d'ouverture", "Non", "Oui — chaque point de vente définit les siens"],
+        ["Équipe et contacts locaux", "Non", "Oui — nom du responsable, téléphone direct"],
+        ["Promotions et opérations", "Opérations nationales", "Opérations locales autorisées"],
+        ["FAQ produit", "Base nationale partagée", "Spécificités locales ajoutées"],
+      ].map(([donnee, national, local]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{donnee}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc] text-center">{national}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{local}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 cas d'usage prioritaires pour les franchises</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Accueil et FAQ multisite avec base nationale",
+        color: "#7c5cfc",
+        desc: "La base de connaissance produit est partagée entre tous les points de vente. Un client qui contacte le franchisé de Nantes reçoit la même réponse sur les caractéristiques d'un produit que celui de Strasbourg. Chaque franchisé complète ensuite sa fiche locale : horaires, adresse, contacts, événements en cours.",
+        gain: "100% de cohérence sur les informations produit et politique réseau",
+      },
+      {
+        n: "2",
+        titre: "Prise de RDV et orientation vers le bon point de vente",
+        color: "#34d399",
+        desc: "Un prospect qui contacte le réseau sans connaître le bon point de vente est orienté selon sa localisation. L'agent identifie le franchisé le plus proche, vérifie les disponibilités et transfère la prise de RDV. Le prospect ne tombe jamais sur \"nous ne couvrons pas votre zone\" — il est renvoyé vers le bon interlocuteur.",
+        gain: "+30% de leads exploités (zéro perte par mauvaise orientation)",
+      },
+      {
+        n: "3",
+        titre: "Remontée des réclamations au franchiseur",
+        color: "#38bdf8",
+        desc: "Quand un client remonte une réclamation qui dépasse la compétence du franchisé (défaut produit, litige livraison, problème de facturation réseau), l'agent collecte toutes les informations et génère un ticket structuré envoyé au service client du franchiseur. Le franchisé est informé et peut suivre le dossier.",
+        gain: "Traçabilité totale des réclamations réseau, délai de résolution -40%",
+      },
+      {
+        n: "4",
+        titre: "Formation et mise à jour des franchisés",
+        color: "#f59e0b",
+        desc: "La tête de réseau peut diffuser des mises à jour de base de connaissance à tous les agents du réseau en une seule action. Nouveau produit, nouvelle politique, changement de tarif — tous les points de vente ont l'information correcte simultanément, sans dépendre de la lecture d'un email par 200 franchisés.",
+        gain: "0 franchisé donnant des informations périmées après une mise à jour réseau",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Gouvernance : qui contrôle quoi ?</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { niveau: "Franchiseur (siège)", droits: "Définit la base nationale, valide les mises à jour, accède aux métriques de tout le réseau, configure les règles d'escalade vers le siège", color: "#7c5cfc" },
+      { niveau: "Franchisé", droits: "Complète ses informations locales (horaires, équipe, événements), accède aux conversations de son point de vente, peut escalader vers le siège", color: "#34d399" },
+      { niveau: "Agent IA (chaque point de vente)", droits: "Répond avec la base nationale + les données locales du franchisé. Ne peut pas modifier la base nationale.", color: "#38bdf8" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="font-bold text-sm mb-2" style={`color: ${item.color};`}>{item.niveau}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.droits}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un réseau de 50 franchisés</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "50 franchisés × 3h/semaine de questions répétitives économisées", gain: "+150h/semaine libérées dans le réseau" },
+        { item: "Cohérence nationale : 0 client mal informé par un franchisé", gain: "Protection de la marque et réduction des litiges réseau" },
+        { item: "Mise à jour simultanée des 50 points de vente en 1 action", gain: "vs 2-3 jours pour que l'email soit lu par tous" },
+        { item: "+30% de leads captés (orientation correcte systématique)", gain: "+X leads × panier moyen selon secteur" },
+        { item: "Coût réseau IAForge (pack Croissance × 50 franchisés)", gain: "-790€ × 50 = -39 500€/mois (tarif réseau disponible)" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class="text-sm text-[#8888aa]">{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 4 ? 'text-red-400' : 'text-[#7c5cfc]'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-[#8888aa] mt-4 border-t border-white/10 pt-3">Des tarifs réseau spécifiques sont disponibles pour les franchiseurs déployant sur plus de 10 points de vente. Contactez-nous pour un devis personnalisé.</p>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit réseau gratuit &rarr;
+    </a>
+    <a href="/blog/agent-ia-multisite" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour PME multi-sites &rarr;</a>
+    <a href="/blog/ia-base-connaissance" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Construire une base de connaissance IA &rarr;</a>
+  </div>
+
+</BlogLayout>

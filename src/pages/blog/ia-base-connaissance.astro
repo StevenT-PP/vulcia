@@ -1,0 +1,138 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Construire une base de connaissance IA : le guide complet 2026",
+  description: "Comment construire et maintenir une base de connaissance pour un agent IA : structure, sources, mises à jour et erreurs à éviter. La qualité de la base détermine 80% des résultats de l'agent.",
+  date: "2026-07-10",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "ia-base-connaissance",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Lorsqu'un agent IA répond à côté, donne une information incorrecte ou se retrouve bloqué sur une question simple, la cause est presque toujours la même : une base de connaissance insuffisante. L'agent IA n'est pas intelligent de lui-même — il est aussi bon que les informations qu'on lui a données. Construire une base de connaissance solide, c'est 80% du travail pour qu'un agent fonctionne bien.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Qu'est-ce qu'une base de connaissance IA ?</h2>
+
+  <p>La base de connaissance est l'ensemble des informations que vous transmettez à votre agent pour qu'il puisse répondre aux questions de vos clients. Contrairement à une FAQ classique, elle n'est pas structurée pour être lue par des humains — elle est conçue pour être consultée et synthétisée par l'agent à chaque conversation.</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { type: "Informations factuelles", exemples: "Horaires, tarifs, adresse, modes de paiement, délais de livraison, politique d'annulation", essential: true },
+      { type: "Catalogue produits/services", exemples: "Description de chaque offre, caractéristiques techniques, conditions d'utilisation, comparaisons", essential: true },
+      { type: "Procédures et processus", exemples: "Comment prendre RDV, comment retourner un produit, comment accéder à son espace client", essential: true },
+      { type: "FAQ compilée", exemples: "Les 50 questions les plus posées à votre équipe, avec les réponses validées", essential: true },
+      { type: "Règles métier spécifiques", exemples: "Cas particuliers, exceptions, politiques internes, conditions particulières", essential: false },
+      { type: "Contenu externe validé", exemples: "Réglementations applicables, normes sectorielles, informations officielles pertinentes", essential: false },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 flex items-start gap-4">
+        <div class={`px-2 py-0.5 rounded-full text-xs font-bold flex-shrink-0 mt-0.5 ${item.essential ? 'text-[#34d399] bg-[#34d39915] border border-[#34d39930]' : 'text-[#f59e0b] bg-[#f59e0b15] border border-[#f59e0b30]'}`}>
+          {item.essential ? 'Essentiel' : 'Optionnel'}
+        </div>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.type}</p>
+          <p class="text-[#8888aa] text-xs leading-relaxed">{item.exemples}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La méthode pour construire votre base en 5 étapes</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Collecter 3 mois de questions réelles",
+        color: "#7c5cfc",
+        desc: "Exportez 3 mois d'emails, de tickets support, de messages WhatsApp ou de questions en boutique. Listez toutes les questions uniques posées par vos clients. Ne filtrez pas à cette étape — vous voulez la vraie réalité, pas votre représentation de ce que les clients demandent.",
+        conseil: "La plupart des entreprises surestiment leur variété de questions. En réalité, 20 types de questions représentent 80% du volume.",
+      },
+      {
+        n: "2",
+        titre: "Identifier les 20 questions qui font 80% du volume",
+        color: "#34d399",
+        desc: "Classez les questions par fréquence. Les 20 premières sont vos priorités absolues. Rédigez une réponse complète, validée par votre équipe, pour chacune. Ces réponses deviendront les réponses de référence de votre agent.",
+        conseil: "\"Où êtes-vous situés ?\", \"Quels sont vos horaires ?\", \"Acceptez-vous les CB ?\" — basique, mais c'est souvent ce qui mobilise le plus de temps.",
+      },
+      {
+        n: "3",
+        titre: "Documenter les procédures étape par étape",
+        color: "#38bdf8",
+        desc: "Pour chaque processus client (réservation, commande, retour, réclamation), rédigez les étapes dans le bon ordre. L'agent ne peut pas deviner votre processus — il faut l'écrire. Incluez les variantes (\"si le client n'a pas reçu de confirmation\" = vérifier d'abord les spams, puis contacter par email).",
+        conseil: "Les processus incomplets sont la première source d'erreurs. L'agent s'arrête là où votre documentation s'arrête.",
+      },
+      {
+        n: "4",
+        titre: "Documenter les cas particuliers et exceptions",
+        color: "#f59e0b",
+        desc: "Chaque exception non documentée devient un trou dans votre agent. Client VIP avec conditions spéciales, produit discontinué, promotion en cours, zone de livraison non desservie — tout ce qui déroge à la règle générale doit être écrit explicitement.",
+        conseil: "Commencez par les 10 exceptions les plus fréquentes. Vous compléterez au fil des conversations que l'agent ne réussit pas à traiter.",
+      },
+      {
+        n: "5",
+        titre: "Mettre à jour mensuellement",
+        color: "#a78bfa",
+        desc: "La base de connaissance est vivante. Nouveaux produits, nouveaux tarifs, nouvelles politiques, nouvelles questions fréquentes — tout changement doit être répercuté. Un agent non mis à jour donnera des informations incorrectes, ce qui est pire que de ne pas répondre.",
+        conseil: "Assignez une personne responsable des mises à jour. Sans responsable désigné, la base se dégrade en 3 à 4 mois.",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs border-l-2 pl-3 text-white font-medium" style={`border-color: ${item.color};`}>{item.conseil}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les erreurs qui font échouer une base de connaissance</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Rédiger pour les humains, pas pour l'IA — utilisez des formulations claires et directes, sans rhétorique",
+      "Ne pas documenter les cas de refus — l'agent doit savoir quand dire non et comment",
+      "Inclure des informations contradictoires — si votre base dit A à un endroit et B à un autre, l'agent choisira aléatoirement",
+      "Ne pas documenter le ton souhaité — formel ou décontracté, tutoiement ou vouvoiement, doit être explicite",
+      "Couvrir trop de sujets mal plutôt que les sujets essentiels bien — profondeur avant largeur",
+      "Oublier de documenter ce que l'agent ne peut pas faire — une réponse claire vaut mieux qu'une approximation",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comment mesurer la qualité de votre base</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { metrique: "Taux de résolution sans escalade", cible: "> 65%", signal: "Si < 50% : la base ne couvre pas assez de cas fréquents" },
+      { metrique: "Taux de réponses incorrectes détectées", cible: "< 3%", signal: "Si > 5% : informations contradictoires ou périmées dans la base" },
+      { metrique: "Questions sans réponse (agent dit 'je ne sais pas')", cible: "< 10%", signal: "Si > 20% : base incomplète sur les cas fréquents" },
+      { metrique: "Score CSAT post-interaction agent", cible: "> 4.0/5", signal: "Si < 3.5 : les réponses sont techniquement incorrectes ou pas assez utiles" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 grid grid-cols-3 gap-3 items-center">
+        <p class="text-white text-sm font-medium">{item.metrique}</p>
+        <p class="text-[#34d399] text-sm font-bold text-center">{item.cible}</p>
+        <p class="text-[#8888aa] text-xs">{item.signal}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/agent-ia-support-client" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour le support client &rarr;</a>
+    <a href="/blog/automatiser-service-apres-vente" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Automatiser son SAV &rarr;</a>
+  </div>
+
+</BlogLayout>

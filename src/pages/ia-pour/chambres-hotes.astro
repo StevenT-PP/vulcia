@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f59e0b";
+
+const tasks = [
+  "Réponses aux demandes de disponibilités et de réservation 24h/24",
+  "Collecte les informations voyageur : nombre de personnes, régimes alimentaires, heure d'arrivée",
+  "Envoie les confirmations de réservation avec les informations pratiques (accès, code, parking)",
+  "Rappels pré-séjour J-3 et J-1 avec toutes les informations d'accueil",
+  "Répond aux questions sur les activités locales, restaurants, sites touristiques",
+  "Relance les anciens clients pour les anniversaires de leur séjour et la basse saison",
+  "Collecte les avis post-séjour et redirige vers Booking, Airbnb ou Google",
+  "Gère les demandes de devis groupes, séminaires résidentiels et événements familiaux",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il gérer les réservations sur Booking et Airbnb ?",
+    a: "L'agent gère les demandes de réservation directes (formulaire de votre site, email, WhatsApp). Il ne peut pas modifier directement les calendriers Booking ou Airbnb — ces plateformes nécessitent des autorisations spécifiques. En revanche, l'agent peut informer sur vos disponibilités selon les données que vous lui communiquez et rediriger vers la plateforme de votre choix.",
+  },
+  {
+    q: "Comment gérer l'arrivée autonome (self check-in) ?",
+    a: "L'agent envoie automatiquement le code de boîte à clé ou d'accès au logement la veille du séjour à l'heure que vous définissez. Il rappelle l'heure d'arrivée souhaitée, les consignes de stationnement et les instructions de première nuit. Pour les arrivées tardives, un message adapté est configuré.",
+  },
+  {
+    q: "L'agent peut-il recommander des activités locales ?",
+    a: "Oui, c'est une des forces de l'agent pour les chambres d'hôtes. Vous définissez une liste d'activités locales recommandées (randonnées, vignobles, musées, restaurants), et l'agent les partage avec les voyageurs en répondant à leurs questions. Les recommandations restent les vôtres — l'agent ne génère pas de suggestions génériques.",
+  },
+  {
+    q: "Comment relancer les anciens clients sans être intrusif ?",
+    a: "L'agent utilise des approches contextuelles : rappel à la même période l'année suivante (\"L'automne dernier, vous étiez chez nous... nos disponibilités pour ce mois-ci\"), offre basse saison ciblée, carte de vœux à Noël avec rappel des disponibilités. Maximum 2-3 messages par an pour ne pas saturer.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. Configuration avec votre description de chambres, tarifs, disponibilités indicatives, informations pratiques d'accès et activités locales recommandées. Pour l'intégration avec votre channel manager, prévoir 10 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour chambres d'hôtes et gîtes — Réservations et accueil automatisés | IAForge"
+  description="Agent IA pour chambre d'hôtes : réservations directes, informations pratiques, self check-in, rappels séjour, avis post-séjour et relances anciens clients. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Chambres d'hôtes", "item": "https://iaforge.fr/ia-pour/chambres-hotes" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Chambres d'hôtes & gîtes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour chambres d'hôtes et gîtes</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos voyageurs accueillis.<br/><span class="gradient-text">Votre expérience préservée.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Réservations directes, informations pratiques, self check-in et avis post-séjour — pendant que vous offrez une expérience authentique à vos hôtes.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+35%", label: "de réservations directes (sans commission) grâce aux réponses 24h/24", color },
+            { val: "-60%", label: "de questions répétitives sur l'accès, le parking, les activités locales", color: "#34d399" },
+            { val: "+25%", label: "de retour clients grâce aux relances personnalisées basse saison", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à votre hébergement et vos activités locales", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre hébergement</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Le séquence voyageur automatisée</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">De la réservation au retour à la maison — chaque point de contact est automatisé et personnalisé.</p>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+        {[
+          { step: "Réservation", label: "Confirmation immédiate", msg: "Confirmation avec récapitulatif du séjour, coordonnées, politique d'annulation et informations pratiques générales.", color },
+          { step: "J-3", label: "Rappel pré-séjour", msg: "Comment venir (GPS, signalétique), stationnement, heure d'arrivée souhaitée, contacts d'urgence, météo locale.", color: "#f59e0b" },
+          { step: "J-1", label: "Accès et check-in", msg: "Code boîte à clé ou instructions d'accès, WiFi, règlement intérieur, numéro en cas de problème la nuit.", color: "#a78bfa" },
+          { step: "J+0 soir", label: "Bienvenue personnalisée", msg: "\"Bonne arrivée ! N'hésitez pas si vous avez besoin de quoi que ce soit. Voici nos 5 coups de cœur pour demain.\"", color: "#34d399" },
+          { step: "J+1 après départ", label: "Demande d'avis", msg: "\"Merci pour votre séjour. Votre avis sur [Booking / Google] nous aide beaucoup. 2 minutes, un lien direct.\"", color: "#38bdf8" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-4">
+            <div class="text-xs font-bold mb-1" style={`color: ${item.color};`}>{item.step}</div>
+            <p class="text-white font-bold text-sm mb-2">{item.label}</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed">{item.msg}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/hotels', title: 'Agent IA pour hôtels — réservations et avis automatisés', cat: 'Secteur' },
+          { href: '/ia-pour/agences-voyage', title: 'Agent IA pour agences de voyage', cat: 'Secteur' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques : collecter et répondre avec l\'IA', cat: 'SEO Local' },
+          { href: '/blog/ia-pour-hotel-restaurant', title: 'Agent IA pour hôtel et restaurant : guide complet', cat: 'Guide' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vos voyageurs enchantés. Votre réputation qui grandit.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos réservations directes vs plateformes, votre taux d'avis collectés et vos anciens clients non relancés pour vous chiffrer ce que vous récupéreriez chaque saison.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #d97706);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
