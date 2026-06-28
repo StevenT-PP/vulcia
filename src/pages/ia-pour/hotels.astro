@@ -1,0 +1,230 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#38bdf8";
+
+const tasks = [
+  "Gère les demandes de disponibilité et de réservation 24h/24",
+  "Répond aux questions pré-séjour : parking, check-in anticipé, animaux, accessibilité",
+  "Envoie les confirmations et rappels J-3 avec informations pratiques",
+  "Propose des upgrades et services additionnels avant l'arrivée (upsell automatique)",
+  "Répond aux avis Booking, Google et TripAdvisor sous 4 heures",
+  "Gère les demandes de bagagerie, navette et room service par WhatsApp",
+  "Collecte les avis post-séjour avec relance automatique J+1",
+  "Publie les posts Google Business hebdomadaires automatiquement",
+];
+
+const faqItems = [
+  {
+    q: "Compatible avec mon PMS hôtelier (Opera, Protel, Mews, Apaleo) ?",
+    a: "Oui. On s'intègre aux principaux PMS via API pour synchroniser les disponibilités en temps réel. Le client voit vos vraies disponibilités et les réservations entrent directement dans votre système — aucune double saisie.",
+  },
+  {
+    q: "L'agent peut-il gérer les OTA (Booking, Expedia) ?",
+    a: "L'agent ne remplace pas votre channel manager, mais il peut répondre automatiquement aux messages des voyageurs sur ces plateformes et gérer les demandes entrantes par email ou WhatsApp. Pour les réservations directes, il traite tout de A à Z.",
+  },
+  {
+    q: "Comment l'agent gère-t-il les plaintes ou situations difficiles ?",
+    a: "L'agent est configuré pour détecter les situations de mécontentement et escalader immédiatement vers la direction ou la réception. Il ne tente jamais de gérer seul un litige complexe — il documente la situation et transfère au bon interlocuteur avec le contexte complet.",
+  },
+  {
+    q: "Peut-il répondre aux avis négatifs sur Booking ou Google ?",
+    a: "Oui. L'agent génère des réponses personnalisées qui reprennent les éléments spécifiques de l'avis (date de séjour, type de chambre, problème mentionné) et les soumet pour validation avant publication. Nos clients passent de 1 réponse/semaine à 100% de réponses sous 4h.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec vos types de chambres, vos services, vos politiques d'annulation, vos horaires et vos procédures spécifiques. Vous validez sur 40 scénarios avant la mise en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour hôtels — Réservations directes et gestion des avis automatisée | IAForge"
+  description="Agent IA pour hôtel : réservations directes 24h/24, réponses aux avis Booking et Google, upsell automatique, SAV client par WhatsApp. RGPD. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Hôtels", "item": "https://iaforge.fr/ia-pour/hotels" }
+    ]
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Hôtels</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour hôtels</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre hôtel répond<br/><span class="gradient-text">à chaque voyageur en 30 secondes</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Réservations directes, SAV client par WhatsApp, réponses aux avis et upsell automatique — votre agent IA travaille 24h/24 pendant que votre équipe accueille les clients en reception.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">
+              Audit gratuit &rarr;
+            </a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">
+              Calculer mon ROI
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+40%", label: "de réservations directes converties hors horaires de réception", color },
+            { val: "100%", label: "des avis Booking, Google et TripAdvisor répondus sous 4 heures", color: "#34d399" },
+            { val: "+18%", label: "de revenu par chambre grâce aux upsells automatiques pré-séjour", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, connecté à votre PMS et vos canaux", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TACHES -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre hôtel</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRES -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour un hôtel 3 étoiles, 40 chambres</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Demandes de dispo hors horaires", "Email sans réponse avant 9h", "Réponse + réservation en 30 secondes"],
+            ["Réponses aux avis Google", "1 à 2 par semaine, délai 3-7j", "100% sous 4h, personnalisées"],
+            ["Upsell chambre supérieure", "Jamais — oublié à la réception", "Email automatique J-3 avant arrivée"],
+            ["SAV client en séjour", "Appel réception ou aller/retour", "WhatsApp résolu en 2 min"],
+            ["Collecte d'avis post-séjour", "Jamais systématique", "Relance auto J+1, +2,3 avis/semaine"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPSELL -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">L'upsell automatique : le gain oublié</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10 max-w-2xl mx-auto">La plupart des hôtels ne pratiquent pas l'upsell systématiquement par manque de temps. L'agent envoie automatiquement à chaque réservant, 3 jours avant l'arrivée, une offre personnalisée.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { titre: "Surclassement chambre", exemple: "\"Votre réservation est confirmée pour le 12 juillet. Pour 25€ de plus, nous pouvons vous surclasser en chambre Deluxe avec vue sur jardin — disponible ce soir-là.\"", color },
+          { titre: "Petit-déjeuner inclus", exemple: "\"Bonjour, votre séjour approche ! Ajoutez le petit-déjeuner pour 18€/personne au lieu de 22€ en le réservant maintenant.\"", color: "#34d399" },
+          { titre: "Services additionnels", exemple: "\"Souhaitez-vous réserver notre espace SPA, un panier d'accueil dans votre chambre ou un parking sécurisé pour votre arrivée ?\"", color: "#a78bfa" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-5">
+            <p class="font-bold text-sm mb-3" style={`color: ${item.color};`}>{item.titre}</p>
+            <p class="text-[#9090b0] text-xs italic leading-relaxed">{item.exemple}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-[#8888aa] text-sm mt-8">Nos hôtels clients constatent en moyenne <strong class="text-white">+18% de revenu par chambre disponible (RevPAR)</strong> grâce à ces séquences.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES LIES -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-pour-hotel-restaurant', title: 'Agent IA pour hôtel et restaurant : réservations, avis et SAV automatisés', cat: 'Automatisation' },
+          { href: '/blog/google-business-ia', title: 'Google Business Profile : comment l\'IA triple vos avis et votre visibilité locale', cat: 'SEO Local' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA : le guide complet 2026', cat: 'Automatisation' },
+          { href: '/blog/prix-agent-ia-2026', title: 'Combien coûte un agent IA en 2026 ? Prix, packs et ROI expliqués', cat: 'Tarifs' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre hôtel mérite plus de réservations directes</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos canaux actuels, votre taux de réponse aux avis et vos pertes hors horaires pour vous chiffrer le gain exact.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #0284c7);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

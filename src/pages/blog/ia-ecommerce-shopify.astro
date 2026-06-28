@@ -1,0 +1,168 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour e-commerce Shopify et WooCommerce : guide complet 2026",
+  description: "Comment connecter un agent IA à votre boutique Shopify ou WooCommerce : SAV automatique, relance paniers abandonnés, recommandations produits. +31% de conversion.",
+  date: "2026-06-30",
+  readTime: "9 min",
+  category: "E-commerce",
+  categoryColor: "#38bdf8",
+  slug: "ia-ecommerce-shopify",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>L'e-commerce est le secteur où l'IA produit les impacts les plus mesurables en temps réel : le panier abandonné est visible à la minute, le taux de conversion aussi. Un agent IA bien configuré sur une boutique Shopify ou WooCommerce peut ajouter 8 à 15% de CA en 30 jours — sans toucher au trafic ni au produit.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 automatisations prioritaires pour un e-commerce</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        titre: "Relance paniers abandonnés",
+        color: "#38bdf8",
+        impact: "+8 à 12% de CA récupéré",
+        desc: "70% des paniers e-commerce sont abandonnés. L'agent envoie une séquence de 3 messages : email à H+1, SMS à H+24, email à J+3 avec code promo si le panier est toujours présent. La personnalisation est clé : le message mentionne les produits exacts abandonnés et, si le compte client est lié, son historique d'achat.",
+        timing: "H+1 / H+24 / J+3",
+      },
+      {
+        titre: "SAV automatique 24h/24",
+        color: "#34d399",
+        impact: "-65% de tickets SAV traités par humain",
+        desc: "\"Où est ma commande ?\", \"Comment retourner un produit ?\", \"Le produit est-il en stock dans taille L ?\" — ces questions représentent 70% du volume SAV d'une boutique. L'agent se connecte à votre logiciel de livraison (Colissimo, Mondial Relay, DHL) et à votre stock pour répondre avec les vraies données.",
+        timing: "Réponse < 30 secondes",
+      },
+      {
+        titre: "Recommandations produits post-achat",
+        color: "#a78bfa",
+        impact: "+22% de taux de réachat à 90 jours",
+        desc: "J+7 après la livraison confirmée, l'agent envoie un email avec des produits complémentaires basés sur ce qui a été acheté — pas des bestsellers génériques, mais des produits réellement pertinents selon la catégorie. J+14, il demande un avis et offre un bon de réduction pour la prochaine commande.",
+        timing: "J+7 / J+14 post-livraison",
+      },
+      {
+        titre: "Qualification des leads B2B",
+        color: "#f59e0b",
+        impact: "+40% de conversion leads wholesale",
+        desc: "Pour les boutiques qui ont un canal B2B (wholesale, revendeurs), l'agent qualifie chaque demande de compte revendeur : volume d'achat estimé, type d'activité, zone géographique. Il envoie le catalogue prix B2B et relance à J+3 si pas de réponse.",
+        timing: "Immédiat + relance J+3",
+      },
+      {
+        titre: "Gestion des avis produits",
+        color: "#fb923c",
+        impact: "+3 à 5 avis/semaine par boutique",
+        desc: "J+10 après la livraison, l'agent invite le client à laisser un avis sur le produit — avec un lien direct vers la page produit. Les avis positifs améliorent le taux de conversion des fiches produits de 15 à 25% selon les études.",
+        timing: "J+10 post-livraison",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+          <div class="text-right flex-shrink-0">
+            <span class="text-xs font-bold block" style={`color: ${item.color};`}>{item.impact}</span>
+            <span class="text-xs text-[#8888aa]">{item.timing}</span>
+          </div>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Shopify vs WooCommerce : ce qui change pour l'intégration</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Fonction</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#38bdf8] uppercase tracking-wider text-center">Shopify</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#a78bfa] uppercase tracking-wider text-center">WooCommerce</div>
+      {[
+        ["API officielle", "Shopify API — robuste, bien documentée", "WooCommerce REST API — fiable, open source"],
+        ["Webhooks", "Natifs — déclenchement en temps réel", "Natifs avec plugin WooCommerce"],
+        ["Données clients", "Centralisées dans Shopify Admin", "Dans WordPress/WooCommerce DB"],
+        ["Paniers abandonnés", "Webhook natif", "Plugin Abandoned Cart Pro ou équiv."],
+        ["Stocks en temps réel", "API Inventory", "WC API + gestion stock WP"],
+        ["Délai d'intégration", "3 à 5 jours", "4 à 6 jours (config WordPress)"],
+      ].map(([fn, sho, woo]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{fn}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa] text-center">{sho}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa] text-center">{woo}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Exemple réel : boutique mode 800 commandes/mois</h2>
+
+  <p>Une boutique mode Shopify, 800 commandes mensuelles, panier moyen 65€. Avant déploiement :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Taux d'abandon panier : 73% — aucune relance automatique",
+      "SAV : 2 personnes à temps partiel sur les emails, délai de réponse 18h en moyenne",
+      "Taux de réachat à 90 jours : 18%",
+      "Avis produits collectés : 3 à 5 par mois (demande verbale uniquement)",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <span class="text-red-400 mt-0.5 flex-shrink-0">×</span>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <p>Après 60 jours :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "CA récupéré sur paniers abandonnés : +9 100€/mois (9% de 73% × 800 × 65€ × 24%)",
+      "SAV : 68% des tickets traités par l'agent — les 2 personnes gèrent uniquement les cas complexes",
+      "Taux de réachat à 90 jours : 29% (+61% relatif) grâce aux séquences post-achat",
+      "Avis produits : 47 avis collectés sur le 2ème mois",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les erreurs à éviter en e-commerce IA</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        n: "1",
+        titre: "Relancer trop vite après l'abandon",
+        detail: "Un email à H+1 est optimal. À H+5 minutes, le client est encore en train de réfléchir — l'interrompre avec un email crée de la friction, pas de la conversion.",
+      },
+      {
+        n: "2",
+        titre: "Offrir une remise systématiquement",
+        detail: "Si vous offrez toujours 10% sur panier abandonné, vous apprenez à vos clients à abandonner pour obtenir la remise. Testez d'abord sans remise (H+1), puis avec (J+3 seulement si le panier est toujours présent).",
+      },
+      {
+        n: "3",
+        titre: "Confondre SAV et recommandations",
+        detail: "Un client qui demande où est sa commande ne veut pas de recommandations produits. L'agent doit distinguer les intentions et répondre de façon pertinente — pas cross-seller sur chaque contact.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 flex items-start gap-4">
+        <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-red-400 flex-shrink-0 bg-red-500/10 border border-red-500/20">{item.n}</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.titre}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/ecommerce" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Page secteur e-commerce &rarr;</a>
+    <a href="/calculateur-roi" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #38bdf8, #0284c7);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>

@@ -50,6 +50,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour garages automobiles : https://iaforge.fr/ia-pour/garages
 - IA pour vétérinaires : https://iaforge.fr/ia-pour/veterinaires
 - IA pour kinésithérapeutes : https://iaforge.fr/ia-pour/kinesitherapeutes
+- IA pour hôtels : https://iaforge.fr/ia-pour/hotels
+- IA pour salles de sport : https://iaforge.fr/ia-pour/salles-sport
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -62,6 +64,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : Automatiser la facturation PME : https://iaforge.fr/blog/automatiser-facturation-pme
 - Article : Agent IA pour hôtel et restaurant : https://iaforge.fr/blog/ia-pour-hotel-restaurant
 - Article : CRM et IA pour PME : https://iaforge.fr/blog/crm-ia-pme
+- Article : Prospection commerciale avec l'IA : https://iaforge.fr/blog/prospection-commerciale-ia
+- Article : IA pour e-commerce Shopify et WooCommerce : https://iaforge.fr/blog/ia-ecommerce-shopify
+- Article : No-code et IA pour automatiser son business : https://iaforge.fr/blog/no-code-automatisation-ia
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact

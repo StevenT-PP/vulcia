@@ -1,0 +1,161 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Prospection commerciale avec l'IA : guide complet pour PME en 2026",
+  description: "Comment utiliser l'IA pour automatiser sa prospection commerciale : sourcing de leads, qualification, séquences email et LinkedIn. Outils, cas d'usage et résultats réels.",
+  date: "2026-06-29",
+  readTime: "10 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "prospection-commerciale-ia",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La prospection commerciale est la tâche que tous les dirigeants de PME veulent automatiser en priorité — et aussi celle où l'IA produit les résultats les plus inégaux. Bien configurée, une séquence de prospection IA double les taux de réponse. Mal configurée, elle grille votre réputation en 48 heures. Voici ce qui fonctionne.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 étapes de la prospection que l'IA automatise</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        etape: "1. Sourcing et constitution de listes",
+        color: "#7c5cfc",
+        desc: "L'IA scrape et enrichit des listes de prospects à partir de LinkedIn Sales Navigator, Kaspr, Hunter.io ou Apollo. Elle extrait les contacts, vérifie les emails, et classe les prospects selon vos critères ICP (taille d'entreprise, secteur, poste, zone géographique).",
+        outils: ["LinkedIn Sales Navigator", "Apollo.io", "Kaspr", "Hunter.io"],
+        gain: "Constitution d'une liste de 200 prospects qualifiés en 2 heures vs 2 semaines manuellement",
+      },
+      {
+        etape: "2. Qualification et scoring",
+        color: "#38bdf8",
+        desc: "L'agent analyse chaque prospect : signaux d'intention (publications LinkedIn, actualités d'entreprise, offres d'emploi), taille, secteur, maturité digitale. Il attribue un score et priorise les prospects à fort potentiel.",
+        outils: ["Signaux LinkedIn", "Crunchbase", "Google Alerts", "Clearbit"],
+        gain: "Le commercial ne contacte que les 20% de prospects à fort potentiel — le reste est nurturé automatiquement",
+      },
+      {
+        etape: "3. Séquences de contact personnalisées",
+        color: "#34d399",
+        desc: "L'agent rédige et envoie des emails et messages LinkedIn ultra-personnalisés — pas des templates génériques. Il mentionne l'actualité récente de l'entreprise, un contenu que le prospect a partagé, ou un défi spécifique à son secteur.",
+        outils: ["Lemlist", "La Growth Machine", "Instantly", "Waalaxy"],
+        gain: "+2 à 4× de taux de réponse vs emails de masse génériques",
+      },
+      {
+        etape: "4. Suivi et relances",
+        color: "#f59e0b",
+        desc: "L'agent relance automatiquement les non-répondants avec des messages différents — ton, angle, CTA — et stoppe les séquences pour les prospects qui ont répondu ou qui se sont désinscrits. Il pousse les réponses dans votre CRM avec le contexte complet.",
+        outils: ["Votre CRM", "Zapier/Make", "Slack (alertes)", "Agent IA IAForge"],
+        gain: "Aucun prospect chaud oublié — chaque réponse déclanche une alerte immédiate",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="font-bold text-base mb-3" style={`color: ${item.color};`}>{item.etape}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-4">{item.desc}</p>
+        <div class="flex flex-wrap gap-2 mb-3">
+          {item.outils.map(o => (
+            <span class="text-xs px-2 py-0.5 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{o}</span>
+          ))}
+        </div>
+        <p class="text-xs text-[#9090b0] italic">{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les règles d'or pour ne pas griller votre réputation</h2>
+
+  <p>La prospection IA mal configurée est pire que pas de prospection du tout. Voici les 5 règles non-négociables :</p>
+
+  <div class="not-prose my-8 space-y-3">
+    {[
+      {
+        regle: "1. La personnalisation doit être réelle, pas simulée",
+        detail: "\"J'ai vu que votre entreprise recrute un responsable commercial\" vaut 10× \"J'espère que vous allez bien\". L'IA doit réellement lire et utiliser des informations spécifiques au prospect — pas juste insérer son prénom dans un template.",
+      },
+      {
+        regle: "2. Maximum 3 messages par séquence",
+        detail: "Après 3 messages sans réponse, le prospect a décidé. Une 4ème relance ne change jamais le résultat — elle génère des signalements de spam qui dégradent votre délivrabilité pour tout le monde.",
+      },
+      {
+        regle: "3. Volume humain sur LinkedIn",
+        detail: "LinkedIn détecte et bannit les comptes qui envoient plus de 100 messages/jour. Avec l'IA, restez sous 30 messages/jour par compte. Utilisez plusieurs comptes si vous avez besoin de plus de volume.",
+      },
+      {
+        regle: "4. Toujours un lien de désinscription",
+        detail: "Pas juste pour le RGPD (obligatoire) — pour votre réputation. Un prospect qui peut se désinscrire facilement ne se plaint pas. Un prospect bloqué va signaler votre email.",
+      },
+      {
+        regle: "5. Mesurer la réponse, pas l'envoi",
+        detail: "Le taux d'ouverture est un vanity metric. Ce qui compte : le taux de réponse (objectif : 5 à 15% selon le secteur) et le taux de conversion en RDV (objectif : 1 à 3%). Si ces chiffres sont mauvais, changez le message — pas le volume.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.regle}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Benchmarks réels par secteur</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Secteur cible", "Taux de réponse", "Taux RDV", "Canal prioritaire"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["PME services B2B", "8 à 14%", "2 à 4%", "Email + LinkedIn"],
+        ["Professions libérales", "5 à 10%", "1 à 3%", "Email personnalisé"],
+        ["E-commerce", "3 à 7%", "0,5 à 2%", "Email + retargeting"],
+        ["Industrie / BTP", "4 à 8%", "1 à 2%", "Email + appel"],
+        ["Santé / Médical", "6 à 12%", "2 à 4%", "Email ciblé"],
+        ["Tech / SaaS", "10 à 18%", "3 à 6%", "LinkedIn + email"],
+      ].map(([sect, rep, rdv, canal]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{sect}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{rep}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc]">{rdv}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{canal}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le stack prospection IA pour PME en 2026</h2>
+
+  <p>Voici le stack que nous recommandons pour une PME qui veut prospecter sérieusement sans déployer un budget enterprise :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { outil: "Apollo.io (49€/mois)", role: "Sourcing et enrichissement de données — base de 250M de contacts B2B, vérification email incluse" },
+      { outil: "La Growth Machine (50€/mois)", role: "Séquences multicanales LinkedIn + email + Twitter — personnalisation par variable dynamique" },
+      { outil: "Agent IA IAForge", role: "Qualification des réponses entrantes, push CRM automatique, relances selon l'étape du pipeline" },
+      { outil: "HubSpot Free ou Pipedrive", role: "CRM de suivi — l'agent s'y connecte pour pousser les prospects et déclencher les séquences de nurturing" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <div>
+          <p class="text-white text-xs font-semibold mb-1">{item.outil}</p>
+          <p class="text-[#8888aa] text-xs leading-relaxed">{item.role}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <p>Budget total : 100 à 200€/mois d'outils + l'agent IA. Pour une PME qui signe 1 à 2 clients par mois supplémentaires grâce à la prospection automatisée, le ROI est immédiat.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne peut pas faire à votre place</h2>
+
+  <p>La prospection IA optimise le volume et la personnalisation — elle ne remplace pas la proposition de valeur. Si votre offre n'est pas claire, si vous ne savez pas pourquoi un prospect devrait vous choisir plutôt qu'un concurrent, l'IA va juste envoyer ce message flou à plus de gens plus vite.</p>
+
+  <p>Avant d'automatiser, vérifiez : est-ce que vos 3 derniers clients vous ont choisi pour la même raison ? Si oui, c'est ça que l'agent doit dire. Si non, travaillez votre positionnement avant de scaler la prospection.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit prospection gratuit &rarr;
+    </a>
+    <a href="/blog/crm-ia-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">CRM et IA pour PME &rarr;</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Guide relances IA &rarr;</a>
+  </div>
+
+</BlogLayout>
