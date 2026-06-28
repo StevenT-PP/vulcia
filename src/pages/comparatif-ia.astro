@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -44,7 +44,7 @@ const tools = [
     verdict: "Intégré à Google Workspace. Reste un outil générique sans mémoire de votre activité.",
   },
   {
-    name: "Agent IA IAForge",
+    name: "Agent IA Vulcia",
     price: "Dès 149 €/mois",
     forBusiness: true,
     memory: true,
@@ -72,33 +72,33 @@ const scenarios = [
   {
     title: "Un client pose une question à 22h",
     generic: "ChatGPT ne sait pas qui vous êtes, n'a pas accès à vos horaires ou tarifs. Le client reçoit une réponse générique inutile ou rien du tout.",
-    iaforge: "L'agent connaît vos horaires, vos tarifs et vos FAQ. Il répond en 3 secondes à la question précise, propose un RDV si nécessaire, et note la demande dans votre CRM.",
+    vulcia: "L'agent connaît vos horaires, vos tarifs et vos FAQ. Il répond en 3 secondes à la question précise, propose un RDV si nécessaire, et note la demande dans votre CRM.",
   },
   {
     title: "Un prospect demande un devis",
     generic: "ChatGPT peut aider à rédiger un modèle de devis générique. Il ne connaît pas vos prix, vos options, vos délais. L'humain doit tout reprendre.",
-    iaforge: "L'agent pose les bonnes questions (surface, localisation, urgence pour un artisan), calcule une estimation selon votre grille, et envoie un PDF signable.",
+    vulcia: "L'agent pose les bonnes questions (surface, localisation, urgence pour un artisan), calcule une estimation selon votre grille, et envoie un PDF signable.",
   },
   {
     title: "Données médicales ou juridiques",
     generic: "GPT-4o et Claude stockent les données sur des serveurs américains. Non-conforme RGPD pour les données de santé ou judiciaires.",
-    iaforge: "Option Mistral hébergé à Paris : vos données ne quittent pas la France. Conforme RGPD natif pour les secteurs sensibles.",
+    vulcia: "Option Mistral hébergé à Paris : vos données ne quittent pas la France. Conforme RGPD natif pour les secteurs sensibles.",
   },
   {
     title: "Suivi et amélioration",
     generic: "Aucun tableau de bord. Vous ne savez pas ce que l'outil fait, combien de questions il reçoit, où il échoue.",
-    iaforge: "Dashboard temps réel : toutes les conversations, taux de résolution, questions sans réponse, leads qualifiés. On améliore en continu sur la base des données.",
+    vulcia: "Dashboard temps réel : toutes les conversations, taux de résolution, questions sans réponse, leads qualifiés. On améliore en continu sur la base des données.",
   },
 ];
 
 const faqItems = [
   {
-    q: "Un agent IA IAForge utilise bien ChatGPT ou Claude en dessous ?",
-    a: "Oui. IAForge orchestre GPT-4o, Claude Sonnet ou Mistral selon votre secteur et vos contraintes. La différence : on ajoute la couche de configuration, de mémoire, d'intégration et de supervision qui rend ces modèles utiles pour votre activité spécifique.",
+    q: "Un agent IA Vulcia utilise bien ChatGPT ou Claude en dessous ?",
+    a: "Oui. Vulcia orchestre GPT-4o, Claude Sonnet ou Mistral selon votre secteur et vos contraintes. La différence : on ajoute la couche de configuration, de mémoire, d'intégration et de supervision qui rend ces modèles utiles pour votre activité spécifique.",
   },
   {
     q: "Pourquoi ne pas utiliser directement ChatGPT Team ou Claude for Work ?",
-    a: "Ces offres donnent accès au modèle brut dans une interface. Pour en faire un vrai agent métier, il faut configurer des instructions système précises, connecter des APIs (agenda, CRM, devis), gérer le flux de conversation, et surveiller les performances. C'est exactement ce qu'on fait chez IAForge.",
+    a: "Ces offres donnent accès au modèle brut dans une interface. Pour en faire un vrai agent métier, il faut configurer des instructions système précises, connecter des APIs (agenda, CRM, devis), gérer le flux de conversation, et surveiller les performances. C'est exactement ce qu'on fait chez Vulcia.",
   },
   {
     q: "Est-ce que l'agent peut remplacer tous mes outils actuels ?",
@@ -116,7 +116,7 @@ const faqItems = [
 ---
 
 <Layout
-  title="Comparatif IA 2026 : ChatGPT, Claude, Gemini vs Agent sur-mesure | IAForge"
+  title="Comparatif IA 2026 : ChatGPT, Claude, Gemini vs Agent sur-mesure | Vulcia"
   description="ChatGPT, Claude ou Gemini pour votre PME ? Comparatif objectif des outils IA génériques vs agents configurés sur-mesure. Tableau, scénarios réels, verdict."
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -229,8 +229,8 @@ const faqItems = [
                 <p class="text-[#8888aa] text-sm leading-relaxed">{s.generic}</p>
               </div>
               <div class="rounded-xl p-4" style="background: rgba(124,92,252,0.06); border: 1px solid rgba(124,92,252,0.2);">
-                <p class="text-xs font-bold text-[#7c5cfc] uppercase tracking-wider mb-2">Agent IA IAForge</p>
-                <p class="text-[#8888aa] text-sm leading-relaxed">{s.iaforge}</p>
+                <p class="text-xs font-bold text-[#7c5cfc] uppercase tracking-wider mb-2">Agent IA Vulcia</p>
+                <p class="text-[#8888aa] text-sm leading-relaxed">{s.vulcia}</p>
               </div>
             </div>
           </div>
@@ -247,7 +247,7 @@ const faqItems = [
           <p class="text-xs font-bold uppercase tracking-widest text-[#7c5cfc] mb-4">Ce qui fait la différence</p>
           <h2 class="text-3xl font-black text-white mb-6">Un modèle IA, c'est un moteur.<br/>Un agent sur-mesure, c'est une voiture.</h2>
           <p class="text-[#8888aa] leading-relaxed mb-6">
-            GPT-4o et Claude sont des moteurs extraordinaires. Mais personne ne conduit un moteur seul. L'agent IAForge, c'est toute la voiture : carrosserie (interface adaptée à votre site), GPS (votre agenda et vos données), compteur (tableau de bord de supervision) — et nous au volant pour les ajustements.
+            GPT-4o et Claude sont des moteurs extraordinaires. Mais personne ne conduit un moteur seul. L'agent Vulcia, c'est toute la voiture : carrosserie (interface adaptée à votre site), GPS (votre agenda et vos données), compteur (tableau de bord de supervision) — et nous au volant pour les ajustements.
           </p>
           <a href="/agent-ia" class="text-[#7c5cfc] hover:text-white transition-colors text-sm font-semibold">Voir comment fonctionne un agent IA &rarr;</a>
         </div>

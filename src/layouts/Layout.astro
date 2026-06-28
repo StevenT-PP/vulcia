@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "IAForge - Agence spécialisée en agents IA, automatisation et SEO pour les entreprises. Gagnez du temps, réduisez vos coûts, dominez votre marché.",
+  description = "Vulcia - Agence spécialisée en agents IA, automatisation et SEO pour les entreprises. Gagnez du temps, réduisez vos coûts, dominez votre marché.",
   ogImage = "/og.png"
 } = Astro.props;
 
@@ -33,7 +33,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL(ogImage, Astro.site)} />
   <meta property="og:locale" content="fr_FR" />
-  <meta property="og:site_name" content="IAForge" />
+  <meta property="og:site_name" content="Vulcia" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -57,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "IAForge",
+    "name": "Vulcia",
     "url": "https://vulcia.fr",
     "logo": "https://vulcia.fr/favicon.svg",
     "description": "Agence spécialisée en agents IA, automatisation intelligente et SEO pour les entreprises françaises.",

@@ -1,4 +1,4 @@
----
+﻿---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 
 const meta = {
@@ -47,7 +47,7 @@ const meta = {
         desc: "Quand vous utilisez un outil IA tiers (Mistral, OpenAI, Anthropic) pour traiter des données client, ce prestataire est un sous-traitant. Vous devez signer un DPA (Data Processing Agreement) qui définit ses obligations envers vous.",
         items: [
           "Tous les grands fournisseurs proposent un DPA standardisé",
-          "IAForge fournit un DPA avec chaque déploiement",
+          "Vulcia fournit un DPA avec chaque déploiement",
           "Sans DPA, vous êtes en infraction RGPD même si le traitement est légitime",
         ],
       },
@@ -114,14 +114,14 @@ const meta = {
     {[
       { n: "1", action: "Mise à jour de la politique de confidentialité de votre site (mention de l'IA)", fait: true },
       { n: "2", action: "Bandeau de consentement sur le widget de chat si collecte de données personnelles", fait: true },
-      { n: "3", action: "Signature du DPA avec IAForge (fourni avec chaque contrat)", fait: true },
+      { n: "3", action: "Signature du DPA avec Vulcia (fourni avec chaque contrat)", fait: true },
       { n: "4", action: "Registre des traitements mis à jour (obligation RGPD pour toutes les organisations)", fait: false },
       { n: "5", action: "Procédure de réponse aux demandes de droits RGPD (suppression, accès, portabilité)", fait: false },
     ].map(item => (
       <div class="flex items-center gap-3 glass rounded-xl p-3">
         <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0" style="background: #fbbf24;">{item.n}</span>
         <p class="text-[#8888aa] text-sm flex-1">{item.action}</p>
-        <span class={`text-xs font-bold flex-shrink-0 ${item.fait ? 'text-[#34d399]' : 'text-[#fbbf24]'}`}>{item.fait ? 'IAForge fournit' : 'À faire'}</span>
+        <span class={`text-xs font-bold flex-shrink-0 ${item.fait ? 'text-[#34d399]' : 'text-[#fbbf24]'}`}>{item.fait ? 'Vulcia fournit' : 'À faire'}</span>
       </div>
     ))}
   </div>

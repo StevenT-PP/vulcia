@@ -1,8 +1,8 @@
-﻿# IAForge — Agence IA & SEO pour PME françaises
+﻿# Vulcia — Agence IA & SEO pour PME françaises
 # URL : https://vulcia.fr
 # Dernière mise à jour : 2026-07
 
-> IAForge est une agence française spécialisée dans le déploiement d'agents IA sur-mesure, le SEO automatisé et les sites web haute performance pour les TPE et PME. Basée en France, données hébergées en France.
+> Vulcia est une agence française spécialisée dans le déploiement d'agents IA sur-mesure, le SEO automatisé et les sites web haute performance pour les TPE et PME. Basée en France, données hébergées en France.
 
 ## Ce qu'on fait
 
@@ -161,4 +161,4 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Audit gratuit 30 min : https://vulcia.fr/contact
 
 ## À propos
-IAForge est une agence qui démarre. Nous privilégions la transparence sur les preuves : prix affichés publiquement, garantie résultat contractualisée, audit gratuit avant tout engagement. Nous ne fabriquons pas de témoignages.
+Vulcia est une agence qui démarre. Nous privilégions la transparence sur les preuves : prix affichés publiquement, garantie résultat contractualisée, audit gratuit avant tout engagement. Nous ne fabriquons pas de témoignages.

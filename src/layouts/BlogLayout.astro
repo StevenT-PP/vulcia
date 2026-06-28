@@ -30,11 +30,11 @@ const jsonLd = {
   "author": {
     "@type": "Person",
     "name": "Steven Texier",
-    "jobTitle": "Fondateur IAForge"
+    "jobTitle": "Fondateur Vulcia"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "IAForge",
+    "name": "Vulcia",
     "url": "https://vulcia.fr",
     "logo": { "@type": "ImageObject", "url": "https://vulcia.fr/favicon.svg" }
   },
@@ -56,7 +56,7 @@ const breadcrumb = {
 };
 ---
 
-<Layout title={`${article.title} | IAForge Blog`} description={article.description}>
+<Layout title={`${article.title} | Vulcia Blog`} description={article.description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumb)} />
 
@@ -86,7 +86,7 @@ const breadcrumb = {
         <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-black" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">ST</div>
         <div>
           <p class="text-white text-xs font-semibold">Steven Texier</p>
-          <p class="text-[#8888aa] text-xs">Fondateur · IAForge</p>
+          <p class="text-[#8888aa] text-xs">Fondateur · Vulcia</p>
         </div>
       </div>
 
@@ -98,7 +98,7 @@ const breadcrumb = {
         <div class="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-black" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">ST</div>
         <div>
           <p class="text-white font-bold text-sm mb-1">Steven Texier</p>
-          <p class="text-[#8888aa] text-xs mb-3">Fondateur d'IAForge. Spécialiste en automatisation IA, SEO et acquisition pour PME françaises. Accompagne les dirigeants qui veulent des résultats mesurables, pas des projets pilotes.</p>
+          <p class="text-[#8888aa] text-xs mb-3">Fondateur d'Vulcia. Spécialiste en automatisation IA, SEO et acquisition pour PME françaises. Accompagne les dirigeants qui veulent des résultats mesurables, pas des projets pilotes.</p>
           <a href="/a-propos" class="text-xs text-[#8888aa] hover:text-white transition-colors mr-4">En savoir plus</a>
           <a href="/contact" class="text-xs font-semibold text-[#7c5cfc] hover:text-white transition-colors">Travailler avec Steven &rarr;</a>
         </div>
