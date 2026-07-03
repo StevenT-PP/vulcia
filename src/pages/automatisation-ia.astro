@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Qu'est-ce que l'automatisation IA pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "L'automatisation IA consiste à confier des tâches répétitives (réponses clients, relances, devis, prise de rendez-vous) à un agent IA qui les exécute automatiquement, 24h/24, sans intervention humaine." } },
+    { "@type": "Question", "name": "Combien de temps faut-il pour automatiser ses premiers processus ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec Vulcia, les premiers processus sont opérationnels en 7 jours. La phase d'analyse prend 1-2 jours, la configuration 3-4 jours, les tests et ajustements 1-2 jours." } },
+    { "@type": "Question", "name": "Quelles tâches peut-on automatiser avec l'IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Prise de rendez-vous, réponse aux demandes de devis, qualification de prospects, relances clients, FAQ produits/services, support après-vente, facturation récurrente, rapports automatiques." } },
+    { "@type": "Question", "name": "Faut-il des compétences techniques pour utiliser un agent IA ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Vulcia configure tout et vous forme en 1h. Vous gérez votre agent via un dashboard simple, sans code, sans technique." } },
+    { "@type": "Question", "name": "L'automatisation IA remplace-t-elle mes employés ?", "acceptedAnswer": { "@type": "Answer", "text": "Non — elle supprime les tâches répétitives à faible valeur pour libérer vos équipes sur les missions qui comptent : relation client complexe, développement commercial, expertise métier." } }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automatisation IA pour PME",
+  "provider": { "@type": "Organization", "name": "Vulcia", "url": "https://vulcia.fr" },
+  "description": "Automatisation des processus répétitifs pour PME françaises grâce aux agents IA : prise de rendez-vous, relances clients, qualification de leads, support client 24h/24.",
+  "areaServed": "France",
+  "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "highPrice": "1490", "offerCount": "4" }
+};
+
+const processus = [
+  { icon: '📅', title: 'Prise de rendez-vous', desc: "L'agent propose des créneaux, confirme et envoie les rappels. Zéro appel manqué.", gain: '−4h/semaine' },
+  { icon: '📋', title: 'Devis automatiques', desc: 'Questions, qualification du besoin, devis personnalisé envoyé en 2 minutes.', gain: '−5h/semaine' },
+  { icon: '🔄', title: 'Relances clients', desc: 'Séquences de relance par email et SMS, déclenchées automatiquement.', gain: '−2h/semaine' },
+  { icon: '💬', title: 'Support client 24/7', desc: 'Réponses instantanées aux FAQ, escalade vers vous si nécessaire.', gain: '−6h/semaine' },
+  { icon: '🎯', title: 'Qualification de leads', desc: "L'agent filtre, note et transmet les prospects chauds à votre agenda.", gain: '−3h/semaine' },
+  { icon: '📊', title: 'Rapports automatiques', desc: 'Dashboard mis à jour en temps réel. Rapports hebdo envoyés par email.', gain: '−2h/semaine' },
+  { icon: '✉️', title: 'Emails entrants', desc: 'Tri, catégorisation, réponses standards gérés automatiquement.', gain: '−3h/semaine' },
+  { icon: '⭐', title: "Collecte d'avis", desc: "Demande d'avis Google automatique après chaque prestation.", gain: '+avis Google' },
+];
+
+const secteurs = [
+  { href: '/ia-pour/medecins', label: 'Médecins & cabinets', sub: 'Rdv, rappels, no-shows' },
+  { href: '/ia-pour/artisans', label: 'Artisans BTP', sub: 'Devis, planning, relances' },
+  { href: '/ia-pour/restaurants', label: 'Restaurants', sub: 'Réservations, menu, avis' },
+  { href: '/ia-pour/avocats', label: 'Avocats', sub: 'Qualification dossiers' },
+  { href: '/ia-pour/cabinets-comptables', label: 'Comptables', sub: 'Tâches répétitives' },
+  { href: '/ia-pour/agences-immobilieres', label: 'Immobilier', sub: 'Qualification acheteurs' },
+  { href: '/ia-pour/ecommerce', label: 'E-commerce', sub: 'SAV, relances panier' },
+  { href: '/ia-pour/coachs', label: 'Coachs', sub: 'Ventes, onboarding' },
+  { href: '/ia-pour/hotels', label: 'Hôtels', sub: 'Demandes nocturnes' },
+  { href: '/ia-pour/pharmacies', label: 'Pharmacies', sub: 'Commandes, fidélisation' },
+  { href: '/ia-pour/kinesitherapeutes', label: 'Kinés', sub: 'Planning automatique' },
+  { href: '/ia-pour', label: 'Tous les secteurs →', sub: '30+ secteurs couverts' },
+];
+---
+
+<Layout
+  title="Automatisation IA pour PME : gagnez 15h/semaine sur vos tâches répétitives | Vulcia"
+  description="Automatisez vos processus répétitifs avec l'IA : prise de rendez-vous, devis, relances, support client. Opérationnel en 7 jours, garanti ROI positif sous 90 jours."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+
+  <Nav />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-20 blur-[100px]" style="background: radial-gradient(ellipse, #f59e0b, transparent);"></div>
+    </div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-8 border" style="background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: #f59e0b;">Automatisation IA · Opérationnel en 7 jours</div>
+      <h1 class="text-5xl md:text-6xl font-black text-white leading-[1.05] mb-6">
+        Automatisez vos tâches répétitives.<br />
+        <span style="background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Gagnez 15h par semaine.</span>
+      </h1>
+      <p class="text-lg text-[#8888aa] max-w-2xl mx-auto mb-10">Prise de rendez-vous, réponse aux devis, relances clients, support après-vente — vos agents IA s'en chargent 24h/24 pendant que vous vous concentrez sur votre métier.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-4 rounded-xl font-bold text-white transition-all hover:opacity-90 hover:scale-[1.02]" style="background: linear-gradient(135deg, #f59e0b, #d97706);">Audit automatisation gratuit &rarr;</a>
+        <a href="/tarifs" class="px-8 py-4 rounded-xl font-semibold text-white border border-white/10 hover:border-white/30 transition-all glass">Voir les tarifs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chiffres clés -->
+  <section class="py-12 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+      {[
+        { val: '15h', label: 'économisées/semaine en moyenne' },
+        { val: '7j', label: 'pour être opérationnel' },
+        { val: '24/7', label: 'vos agents ne dorment jamais' },
+        { val: '90j', label: 'garanti ROI positif' },
+      ].map(s => (
+        <div class="glass rounded-2xl p-6 text-center">
+          <div class="text-3xl font-black mb-1" style="color: #f59e0b;">{s.val}</div>
+          <div class="text-xs text-[#8888aa]">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 8 processus -->
+  <section class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">8 processus à automatiser dès maintenant</h2>
+        <p class="text-[#8888aa] max-w-xl mx-auto">Chaque heure économisée sur ces tâches, c'est une heure investie dans votre cœur de métier.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {processus.map(p => (
+          <div class="glass rounded-xl p-5 hover:border-[#f59e0b]/30 border border-white/0 transition-all">
+            <div class="text-2xl mb-3">{p.icon}</div>
+            <h3 class="text-white font-bold text-sm mb-2">{p.title}</h3>
+            <p class="text-[#8888aa] text-xs mb-3 leading-relaxed">{p.desc}</p>
+            <span class="text-xs font-semibold px-2 py-1 rounded-full" style="color: #f59e0b; background: rgba(245,158,11,0.1);">{p.gain}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment ça marche -->
+  <section class="py-20 px-6 bg-white/[0.02]">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Comment ça marche</h2>
+        <p class="text-[#8888aa]">De l'audit à vos premiers processus automatisés en 7 jours.</p>
+      </div>
+      <div class="space-y-6">
+        {[
+          { n: '01', title: 'Audit de vos processus (Jour 1)', desc: "On cartographie toutes vos tâches répétitives : temps passé, fréquence, complexité. On identifie les 3 processus à ROI maximal." },
+          { n: '02', title: 'Configuration des agents (Jours 2-4)', desc: "On configure chaque agent IA avec votre vocabulaire métier, vos règles de gestion, vos informations. L'agent apprend votre façon de travailler." },
+          { n: '03', title: 'Intégration à vos outils (Jour 5)', desc: 'Connexion à votre agenda, CRM, site web, WhatsApp Business, email. Tout se parle, rien ne se perd.' },
+          { n: '04', title: 'Tests et ajustements (Jours 6-7)', desc: "On teste chaque scénario, on affine les réponses, on valide avec vous. Zéro mise en production sans votre validation." },
+          { n: '05', title: 'Déploiement et suivi (Continu)', desc: 'Go live. Dashboard de supervision en temps réel. On surveille les premières semaines et on ajuste si besoin.' },
+        ].map(s => (
+          <div class="flex gap-6 glass rounded-xl p-6">
+            <span class="text-3xl font-black flex-shrink-0 leading-none" style="color: #f59e0b;">{s.n}</span>
+            <div>
+              <h3 class="text-white font-bold mb-2">{s.title}</h3>
+              <p class="text-[#8888aa] text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Secteurs -->
+  <section class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Automatisation par secteur</h2>
+        <p class="text-[#8888aa]">Des agents pré-configurés pour votre métier, affinés avec votre réalité terrain.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {secteurs.map(s => (
+          <a href={s.href} class="glass rounded-xl p-4 hover:border-[#f59e0b]/40 border border-white/0 transition-all group">
+            <p class="text-white text-sm font-semibold group-hover:text-[#f59e0b] transition-colors">{s.label}</p>
+            <p class="text-[#8888aa] text-xs mt-1">{s.sub}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Avant / Après -->
+  <section class="py-20 px-6 bg-white/[0.02]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Avant / après l'automatisation IA</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-8 border border-red-500/20">
+          <h3 class="text-white font-black text-lg mb-6 flex items-center gap-2"><span class="text-red-400">✗</span> Sans automatisation</h3>
+          <ul class="space-y-4">
+            {["Appels manqués en dehors des heures → clients perdus", "2-3h/jour sur des emails répétitifs", "Relances clients oubliées → CA perdu", "Devis réalisés à la main un par un", "Pas de temps pour développer l'activité", "Stress constant de ne pas répondre assez vite"].map(item => (
+              <li class="flex items-start gap-3 text-sm text-[#8888aa]"><span class="text-red-400 flex-shrink-0 mt-0.5">→</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-8 border border-[#f59e0b]/20">
+          <h3 class="text-white font-black text-lg mb-6 flex items-center gap-2"><span style="color: #f59e0b;">✓</span> Avec Vulcia</h3>
+          <ul class="space-y-4">
+            {["0 appel manqué : l'agent répond à 3h du matin", "Emails triés et traités automatiquement", "Relances déclenchées automatiquement au bon moment", "Devis générés en 2 minutes par l'agent", "15h/semaine libérées pour votre cœur de métier", "Croissance de l'activité sans embauche"].map(item => (
+              <li class="flex items-start gap-3 text-sm text-white"><span class="flex-shrink-0 mt-0.5" style="color: #f59e0b;">→</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Questions fréquentes</h2>
+      <div class="space-y-4">
+        {[
+          { q: "Qu'est-ce que l'automatisation IA pour une PME ?", a: "L'automatisation IA consiste à confier des tâches répétitives à un agent IA qui les exécute automatiquement, 24h/24. Prise de rendez-vous, réponses clients, devis, relances — l'agent s'en charge pendant que vous vous concentrez sur votre métier." },
+          { q: "Combien de temps pour mettre en place l'automatisation ?", a: "7 jours ouvrés de la signature au go live. Analyse des processus (J1-J2), configuration (J3-J5), tests et validation (J6-J7). Pas de délais à 3 mois, pas de cahier des charges de 50 pages." },
+          { q: "Quelles tâches peut-on automatiser avec l'IA ?", a: "Prise de rendez-vous, réponse aux demandes de devis, qualification de prospects, relances clients, FAQ produits/services, support après-vente, collecte d'avis Google, rapports de performance automatiques." },
+          { q: "Faut-il des compétences techniques ?", a: "Non. Vulcia configure tout et vous forme en 1h. Vous gérez vos agents via un dashboard simple — aucun code, aucune compétence technique requise." },
+          { q: "L'automatisation IA remplace-t-elle mes employés ?", a: "Non. Elle supprime les tâches répétitives à faible valeur pour libérer vos équipes sur les missions qui comptent : relation client complexe, expertise métier, développement commercial. Les PME qui automatisent embauchent plus, pas moins." },
+        ].map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+              <span class="text-white font-semibold text-sm pr-4">{item.q}</span>
+              <svg class="flex-shrink-0 transition-transform group-open:rotate-180 text-[#8888aa]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="px-6 pb-6 text-[#8888aa] text-sm leading-relaxed">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto glass rounded-3xl p-12 text-center" style="border: 1px solid rgba(245,158,11,0.2);">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6 border" style="background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: #f59e0b;">Audit gratuit · 30 minutes · Sans engagement</div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Quels processus automatiser en premier ?</h2>
+      <p class="text-[#8888aa] mb-8 max-w-lg mx-auto">En 30 minutes, on identifie les 3 tâches qui vous coûtent le plus de temps et on vous montre exactement comment les automatiser — avec un ROI estimé avant de signer.</p>
+      <a href="/contact" class="inline-block px-10 py-4 rounded-xl text-white font-bold text-lg transition-all hover:opacity-90 hover:scale-[1.02]" style="background: linear-gradient(135deg, #f59e0b, #d97706);">Réserver mon audit gratuit &rarr;</a>
+      <p class="text-xs text-[#8888aa] mt-4">ROI positif garanti sous 90 jours · Sans engagement</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details[open] summary { color: #f59e0b; }
+</style>

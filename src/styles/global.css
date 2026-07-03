@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Astron';
+  src: url('/fonts/Astron.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Astron';
+  src: url('/fonts/Astron-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --bg: #080810;

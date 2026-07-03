@@ -1,0 +1,264 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "SEO local pour PME : la méthode complète 2026",
+  description: "Guide complet du référencement local pour PME françaises en 2026 : Google Business Profile, citations NAP, pages locales, avis et stratégie de contenu. Résultats en 90 jours.",
+  date: "2026-06-30",
+  readTime: "10 min",
+  category: "SEO",
+  categoryColor: "#34d399",
+  slug: "seo-local-pme",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le SEO local est la discipline SEO la plus accessible et la plus rentable pour une PME ou un artisan. Contrairement au SEO national qui nécessite des centaines de backlinks et des années de patience, le SEO local peut vous faire apparaître en première position sur Google dans votre ville sous 90 jours — avec les bonnes actions au bon moment.</p>
+  <p>Ce guide couvre l'intégralité de la méthode que nous appliquons pour nos clients PME en France. Pas de théorie inutile : uniquement ce qui génère des résultats mesurables.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Qu'est-ce que le SEO local, exactement ?</h2>
+  <p>Le SEO local désigne l'ensemble des actions qui permettent à votre entreprise d'apparaître quand quelqu'un cherche un service <strong class="text-white">dans une zone géographique précise</strong>. "Plombier Paris 15", "dentiste Lyon Confluence", "restaurant végétarien Bordeaux" — ce sont des requêtes locales.</p>
+  <p>Google affiche trois types de résultats pour ces requêtes :</p>
+  <div class="space-y-3 not-prose">
+    {[
+      ["Priorité 1", "Le Pack Local (3 fiches Google Maps)", "Les 3 résultats qui apparaissent avec une carte. Ils captent 40 à 60% des clics sur les requêtes locales. C'est l'enjeu principal du SEO local."],
+      ["Priorité 2", "Les résultats organiques classiques", "Votre site web dans les résultats naturels. Complémentaire aux fiches Maps pour capturer les requêtes informatives ('comment choisir un plombier')."],
+      ["Optionnel", "Les résultats payants (Google Ads)", "Affichage immédiat mais coût par clic. Complémentaire au SEO en attendant que le référencement naturel monte."],
+    ].map(([badge, titre, desc]) => (
+      <div class="glass rounded-xl p-5 flex gap-4">
+        <span class="text-xs font-semibold px-2 py-1 rounded-full h-fit flex-shrink-0" style="color: #34d399; background: rgba(52,211,153,0.1);">{badge}</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{titre}</p>
+          <p class="text-[#8888aa] text-xs">{desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 piliers du SEO local</h2>
+  <div class="space-y-6 not-prose">
+
+    <div class="glass rounded-2xl p-6" style="border-left: 3px solid #34d399;">
+      <div class="flex items-start gap-4 mb-4">
+        <span class="text-3xl font-black flex-shrink-0 leading-none" style="color: #34d399;">01</span>
+        <div>
+          <h3 class="text-white font-black text-lg">Google Business Profile (GBP)</h3>
+          <p class="text-[#8888aa] text-sm mt-1">Votre fiche Google est le levier le plus impactant du SEO local. Elle pilote directement votre position dans le Pack Local (carte Google Maps). Une fiche optimisée peut doubler vos appels entrants.</p>
+        </div>
+      </div>
+      <ul class="space-y-2">
+        {[
+          "Réclamer et vérifier votre fiche si ce n'est pas fait",
+          "Compléter 100% des informations (horaires, photos, description 750 caractères)",
+          "Choisir la bonne catégorie principale ET les catégories secondaires",
+          "Publier 1 post GBP par semaine (actu, offre, événement)",
+          "Répondre à tous les avis en moins de 48h",
+          "Ajouter vos produits et services avec prix",
+        ].map(item => (
+          <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+            <svg class="flex-shrink-0 mt-0.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="glass rounded-2xl p-6" style="border-left: 3px solid #38bdf8;">
+      <div class="flex items-start gap-4 mb-4">
+        <span class="text-3xl font-black flex-shrink-0 leading-none" style="color: #38bdf8;">02</span>
+        <div>
+          <h3 class="text-white font-black text-lg">Cohérence NAP sur le web</h3>
+          <p class="text-[#8888aa] text-sm mt-1">NAP = Name, Address, Phone. Votre nom, adresse et téléphone doivent être rigoureusement identiques sur tous les annuaires du web. Une seule incohérence (ex: 'Rue' vs 'R.') brouille le signal Google.</p>
+        </div>
+      </div>
+      <ul class="space-y-2">
+        {[
+          "Vérifier votre NAP sur Pages Jaunes, Yelp, Tripadvisor, Kompass",
+          "Créer ou réclamer votre fiche Societe.com et Verif.com",
+          "Assurer la cohérence exacte : même orthographe partout",
+          "Utiliser une adresse physique (pas de boite postale)",
+          "Ne pas utiliser de numéro de téléphone virtuel qui change",
+        ].map(item => (
+          <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+            <svg class="flex-shrink-0 mt-0.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="glass rounded-2xl p-6" style="border-left: 3px solid #7c5cfc;">
+      <div class="flex items-start gap-4 mb-4">
+        <span class="text-3xl font-black flex-shrink-0 leading-none" style="color: #7c5cfc;">03</span>
+        <div>
+          <h3 class="text-white font-black text-lg">Votre site web local</h3>
+          <p class="text-[#8888aa] text-sm mt-1">Votre site doit envoyer des signaux géographiques clairs à Google. Les pages de service doivent mentionner votre ville, zone d'intervention et les quartiers ou villes voisines que vous couvrez.</p>
+        </div>
+      </div>
+      <ul class="space-y-2">
+        {[
+          "Page d'accueil avec ville dans le titre H1 ou dans la meta",
+          "Schema JSON-LD LocalBusiness avec adresse complète",
+          "Mentionner les villes/quartiers couverts dans le contenu",
+          "Une page dédiée par ville si vous couvrez plusieurs zones",
+          "Embed Google Maps sur la page contact",
+          "Mentions légales avec adresse complète visible",
+        ].map(item => (
+          <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+            <svg class="flex-shrink-0 mt-0.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="glass rounded-2xl p-6" style="border-left: 3px solid #f59e0b;">
+      <div class="flex items-start gap-4 mb-4">
+        <span class="text-3xl font-black flex-shrink-0 leading-none" style="color: #f59e0b;">04</span>
+        <div>
+          <h3 class="text-white font-black text-lg">Avis clients</h3>
+          <p class="text-[#8888aa] text-sm mt-1">Le nombre et la qualité des avis Google est le signal de confiance le plus puissant pour le Pack Local. Une entreprise avec 50 avis à 4.8 étoiles sera toujours devant une entreprise avec 5 avis à 5 étoiles.</p>
+        </div>
+      </div>
+      <ul class="space-y-2">
+        {[
+          "Envoyer un lien avis Google automatiquement après chaque prestation",
+          "Viser 5 nouveaux avis par mois minimum",
+          "Répondre à chaque avis (positif et négatif) en moins de 48h",
+          "Ne jamais acheter de faux avis (risque de suspension GBP)",
+          "Former vos équipes à demander les avis en face-à-face",
+        ].map(item => (
+          <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+            <svg class="flex-shrink-0 mt-0.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le calendrier des résultats SEO local</h2>
+  <p>Le SEO local n'est pas immédiat — mais il est beaucoup plus rapide que le SEO national. Voici le calendrier réaliste :</p>
+  <div class="space-y-3 not-prose">
+    {[
+      ["Jours 1-7", "#8888aa", "Actions techniques", "GBP optimisé, site corrigé, citations créées"],
+      ["Semaine 2-4", "#f59e0b", "Premiers signaux", "Google indexe les changements, position GBP commence à bouger"],
+      ["Mois 2-3", "#38bdf8", "Premières progressions", "+30% de visibilité locale, premiers mots-clés en page 1"],
+      ["Mois 3-6", "#34d399", "Accélération", "Pack Local atteint pour 3-5 requêtes locales principales"],
+      ["Mois 6+", "#7c5cfc", "Consolidation", "Autorité locale établie, résultats durables et difficiles à copier"],
+    ].map(([periode, color, titre, desc]) => (
+      <div class="glass rounded-xl p-4 flex items-center gap-4">
+        <span class="text-sm font-bold flex-shrink-0 w-28 text-right" style={`color: ${color};`}>{periode}</span>
+        <div class="w-px h-8 bg-white/10 flex-shrink-0"></div>
+        <div>
+          <p class="text-white font-semibold text-xs">{titre}</p>
+          <p class="text-[#8888aa] text-xs">{desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Optimiser sa fiche Google Business Profile</h2>
+  <p>La fiche GBP est le pivot du SEO local. Voici les points les plus sous-estimés par les PME :</p>
+  <div class="not-prose glass rounded-2xl p-6 overflow-x-auto">
+    <table class="w-full text-sm min-w-[500px]">
+      <thead><tr class="border-b border-white/10">
+        <th class="text-left py-3 pr-4 text-[#8888aa] font-semibold">Élément GBP</th>
+        <th class="text-left py-3 pr-4 text-white font-semibold">Impact SEO</th>
+        <th class="text-left py-3 text-[#8888aa] font-semibold">% PME qui l'optimisent</th>
+      </tr></thead>
+      <tbody>
+        {[
+          ["Catégorie principale", "Très élevé", "#34d399", "60%"],
+          ["Catégories secondaires", "Élevé", "#38bdf8", "20%"],
+          ["Description (750 car.)", "Élevé", "#38bdf8", "30%"],
+          ["Photos (min. 15 photos)", "Élevé", "#38bdf8", "25%"],
+          ["Posts hebdomadaires", "Moyen", "#f59e0b", "8%"],
+          ["FAQ intégrée à la fiche", "Élevé", "#38bdf8", "5%"],
+          ["Horaires spéciaux (fêtes)", "Moyen", "#f59e0b", "15%"],
+          ["Attributs (paiement, WiFi...)", "Moyen", "#f59e0b", "12%"],
+        ].map(([elem, impact, color, pct]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-4 text-white text-xs">{elem}</td>
+            <td class="py-3 pr-4 text-xs" style={`color: ${color};`}>{impact}</td>
+            <td class="py-3 text-[#8888aa] text-xs">{pct}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comment générer plus d'avis Google</h2>
+  <p>Les avis sont le carburant du SEO local. Voici la méthode qui fonctionne le mieux pour les PME :</p>
+  <div class="space-y-4 not-prose">
+    {[
+      ["1.", "Demander en fin de prestation (en face-à-face)", "\"Si vous êtes satisfait, un avis Google m'aiderait vraiment — ça prend 30 secondes.\" Taux de conversion : 60-70%. C'est la méthode la plus efficace."],
+      ["2.", "Envoyer un message automatisé post-prestation", "SMS ou email avec lien direct vers la fiche Google (lien court). Envoyé automatiquement 2h après la fin de prestation via votre agent IA. Taux de conversion : 15-25%."],
+      ["3.", "QR Code à l'accueil ou sur les factures", "Un QR Code qui ouvre directement le formulaire d'avis Google. Facile à scanner, pas besoin de chercher la fiche. Idéal pour les commerces physiques."],
+      ["4.", "Répondre à tous les avis existants", "Google valorise les fiches actives. Répondre aux avis (positifs et négatifs) signal que la fiche est vivante et améliore votre note globale dans l'algorithme local."],
+    ].map(([num, titre, desc]) => (
+      <div class="glass rounded-xl p-5">
+        <div class="flex gap-3">
+          <span class="text-xl font-black flex-shrink-0" style="color: #34d399;">{num}</span>
+          <div>
+            <p class="text-white font-semibold text-sm mb-1">{titre}</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">SEO local vs Google Ads : que choisir pour une PME ?</h2>
+  <div class="not-prose glass rounded-2xl p-6 overflow-x-auto">
+    <table class="w-full text-sm min-w-[400px]">
+      <thead><tr class="border-b border-white/10">
+        <th class="text-left py-3 pr-4 text-[#8888aa] font-semibold">Critère</th>
+        <th class="text-left py-3 pr-4 font-semibold" style="color: #34d399;">SEO local</th>
+        <th class="text-left py-3 text-[#8888aa] font-semibold">Google Ads</th>
+      </tr></thead>
+      <tbody>
+        {[
+          ["Délai pour premiers résultats", "90 jours", "Immédiat"],
+          ["Coût mensuel (PME)", "300-800 €", "500-2000 €"],
+          ["Durabilité des résultats", "Long terme", "S'arrête si on coupe le budget"],
+          ["Crédibilité perçue", "Forte (résultats naturels)", "Moindre (marqué 'Sponsorisé')"],
+          ["Taux de clic moyen", "Supérieur", "Inférieur"],
+          ["ROI à 12 mois", "Excellent", "Bon mais plafonne"],
+        ].map(([crit, seo, ads]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-4 text-[#8888aa] text-xs">{crit}</td>
+            <td class="py-3 pr-4 text-white text-xs font-semibold">{seo}</td>
+            <td class="py-3 text-[#8888aa] text-xs">{ads}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="mt-4 text-sm"><strong class="text-white">Recommandation :</strong> Commencez par le SEO local pour construire une base solide et durable. Activez Google Ads en parallèle les 3 premiers mois pour générer du trafic immédiat pendant que le SEO monte. Coupez les Ads une fois que le Pack Local est acquis.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 erreurs SEO local qui coûtent des clients</h2>
+  <div class="space-y-3 not-prose">
+    {[
+      "NAP incohérent entre votre site et vos fiches annuaires (erreur la plus fréquente).",
+      "Fiche GBP non vérifiée ou vérifiée sous le mauvais compte Google.",
+      "Zéro photo sur la fiche GBP (−30% de clics selon les données Google).",
+      "Ignorer les avis négatifs sans répondre (signal de mauvaise gestion pour Google et les prospects).",
+      "Un seul mot-clé dans la description GBP au lieu de couvrir vos 5-6 services principaux.",
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <span class="text-red-400 font-bold text-sm flex-shrink-0">✗</span>
+        <p class="text-[#8888aa] text-sm">{item}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Où en est votre SEO local ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">Notre audit SEO local gratuit identifie les 5 actions prioritaires pour apparaître dans le Pack Local de votre ville — en 30 minutes.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #34d399, #059669);">Audit SEO local gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

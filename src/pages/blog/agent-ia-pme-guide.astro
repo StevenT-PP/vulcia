@@ -1,0 +1,232 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour PME : le guide complet 2026",
+  description: "Tout ce que vous devez savoir sur les agents IA pour PME en 2026 : définition, cas d'usage, prix, différence avec un chatbot, et comment choisir la bonne solution pour votre activité.",
+  date: "2026-06-30",
+  readTime: "12 min",
+  category: "Agent IA",
+  categoryColor: "#7c5cfc",
+  slug: "agent-ia-pme-guide",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>L'agent IA pour PME est devenu en 2026 la technologie la plus impactante pour les petites et moyennes entreprises françaises. Pas parce qu'il est à la mode — mais parce qu'il résout un problème concret et universel : les TPE et PME perdent en moyenne 15 à 20 heures par semaine sur des tâches répétitives qui ne nécessitent aucune expertise humaine.</p>
+  <p>Ce guide vous donne tout ce qu'il faut savoir pour comprendre ce qu'est un agent IA, ce qu'il peut faire pour votre activité, combien il coûte, et comment choisir la bonne solution — sans vous perdre dans le jargon technique.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Qu'est-ce qu'un agent IA pour PME ?</h2>
+  <p>Un agent IA est un programme capable de <strong class="text-white">comprendre le langage naturel</strong>, de traiter des demandes et d'exécuter des actions — sans qu'un humain n'ait à intervenir à chaque étape.</p>
+  <p>Contrairement à un simple chatbot qui suit un arbre de décision figé ("appuyez sur 1 pour X, sur 2 pour Y"), un agent IA comprend le contexte, s'adapte à chaque situation et peut enchaîner plusieurs actions en autonomie : récupérer un créneau disponible dans votre agenda, envoyer une confirmation par SMS, créer un ticket dans votre CRM et déclencher une relance 48h plus tard.</p>
+
+  <div class="not-prose glass rounded-2xl p-6 my-8">
+    <h3 class="text-white font-bold mb-4">Chatbot vs Agent IA : la différence en un exemple</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
+        <p class="text-red-400 font-semibold text-sm mb-3">Chatbot classique</p>
+        <div class="space-y-2 text-xs text-[#8888aa]">
+          <p>Client : "Je veux un rendez-vous"</p>
+          <p>Bot : "Choisissez : Lundi / Mardi / Mercredi"</p>
+          <p>Client : "Lundi après-midi"</p>
+          <p>Bot : "14h ou 15h ?"</p>
+          <p>Client : "Je préfère le matin en fait"</p>
+          <p class="text-red-400">Bot : "Je n'ai pas compris. Choisissez : Lundi / Mardi / Mercredi"</p>
+        </div>
+      </div>
+      <div class="rounded-xl p-4 border" style="background: rgba(124,92,252,0.1); border-color: rgba(124,92,252,0.3);">
+        <p class="font-semibold text-sm mb-3" style="color: #7c5cfc;">Agent IA Vulcia</p>
+        <div class="space-y-2 text-xs text-[#8888aa]">
+          <p>Client : "Je veux un rendez-vous"</p>
+          <p>Agent : "Bonjour ! Pour quel type de soin ?"</p>
+          <p>Client : "Bilan de santé, plutôt le matin"</p>
+          <p>Agent : "J'ai un créneau lundi 9h15 ou mercredi 10h. Lequel vous convient ?"</p>
+          <p>Client : "Mercredi"</p>
+          <p class="text-white">Agent : "Confirmé ! Vous recevrez un SMS de rappel la veille."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 10 tâches qu'un agent IA peut faire à votre place</h2>
+  <div class="space-y-3 not-prose">
+    {[
+      ["01", "Répondre aux demandes de renseignement", "Prix, disponibilités, délais, localisation — 24h/24, sans décrocher le téléphone."],
+      ["02", "Prendre et confirmer les rendez-vous", "Synchronisation directe avec votre agenda. Rappels SMS/email automatiques."],
+      ["03", "Générer des devis personnalisés", "Questions, qualification du besoin, calcul automatique, envoi du devis en 2 minutes."],
+      ["04", "Qualifier les prospects entrants", "Filtre, score et transmet à votre agenda uniquement les leads qualifiés."],
+      ["05", "Relancer les clients inactifs", "Séquences automatiques déclenchées selon l'ancienneté, le panier, le secteur."],
+      ["06", "Gérer le support après-vente", "Réponses aux questions fréquentes, suivi de commandes, résolution de problèmes courants."],
+      ["07", "Collecter des avis Google", "Message automatique post-prestation avec lien direct vers votre fiche Google."],
+      ["08", "Trier et répondre aux emails", "Catégorisation, réponses standards, transfert des cas complexes à un humain."],
+      ["09", "Envoyer des rappels de paiement", "Relances douces et automatiques à J+7, J+15, J+30 après la facture."],
+      ["10", "Produire des rapports d'activité", "Dashboard temps réel + rapport hebdomadaire envoyé automatiquement."],
+    ].map(([num, title, desc]) => (
+      <div class="glass rounded-xl p-4 flex gap-4">
+        <span class="text-xl font-black flex-shrink-0 leading-none" style="color: #7c5cfc;">{num}</span>
+        <div>
+          <p class="text-white font-semibold text-sm">{title}</p>
+          <p class="text-[#8888aa] text-xs mt-1">{desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Combien de temps gagne-t-on vraiment ?</h2>
+  <p>Les données consolidées de nos clients montrent un gain moyen de 15 heures par semaine. Voici la décomposition par type de tâche :</p>
+  <div class="not-prose glass rounded-2xl p-6 overflow-x-auto">
+    <table class="w-full text-sm min-w-[400px]">
+      <thead><tr class="border-b border-white/10">
+        <th class="text-left py-3 pr-6 text-[#8888aa] font-semibold">Tâche automatisée</th>
+        <th class="text-left py-3 text-[#7c5cfc] font-semibold">Gain moyen/semaine</th>
+      </tr></thead>
+      <tbody>
+        {[
+          ["Réponses aux demandes entrantes", "4 à 6h"],
+          ["Prise de rendez-vous et confirmations", "2 à 4h"],
+          ["Devis et propositions commerciales", "3 à 5h"],
+          ["Relances clients et suivi", "2 à 3h"],
+          ["Support et SAV courant", "2 à 4h"],
+          ["Emails administratifs répétitifs", "1 à 3h"],
+        ].map(([tache, gain]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-6 text-white text-xs">{tache}</td>
+            <td class="py-3 text-[#7c5cfc] font-semibold text-xs">{gain}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Pour quels secteurs un agent IA est-il le plus efficace ?</h2>
+  <p>L'agent IA fonctionne dans tous les secteurs qui reçoivent des demandes répétitives. Voici les cas d'usage les plus impactants :</p>
+  <div class="space-y-4 not-prose">
+    {[
+      { titre: "Médecins, kinés, dentistes", badge: "−72 % d'appels manqués, −60 % de no-shows", color: "#7c5cfc", desc: "Prise de rendez-vous automatique, rappels patients, réduction des no-shows" },
+      { titre: "Artisans (plombier, électricien, menuisier...)", badge: "0 devis raté, +35 % de taux de conversion", color: "#38bdf8", desc: "Réception des demandes de devis 24h/24, qualification du chantier, envoi du devis" },
+      { titre: "Restaurants et hôtels", badge: "+40 % de réservations directes, −2h/jour", color: "#34d399", desc: "Réservations en ligne, réponses menu/allergènes, gestion des avis" },
+      { titre: "Avocats, comptables, notaires", badge: "−5h/semaine, meilleure qualification des prospects", color: "#f59e0b", desc: "Qualification des dossiers entrants, prise de rendez-vous, rappels de délais" },
+      { titre: "E-commerce", badge: "+15 % de récupération de paniers, −80 % tickets SAV répétitifs", color: "#ec4899", desc: "Support SAV, suivi de commandes, relance panier abandonné, FAQ produits" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 border-l-2" style={`border-color: ${item.color};`}>
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+          <h3 class="text-white font-bold text-sm">{item.titre}</h3>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style={`color: ${item.color}; background: ${item.color}1a;`}>{item.badge}</span>
+        </div>
+        <p class="text-[#8888aa] text-xs">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Combien coûte un agent IA pour une PME ?</h2>
+  <p>Le prix d'un agent IA varie selon la complexité des processus à automatiser et le volume de conversations mensuel. Voici les grandes catégories du marché :</p>
+  <div class="not-prose glass rounded-2xl p-6 overflow-x-auto">
+    <table class="w-full text-sm min-w-[500px]">
+      <thead><tr class="border-b border-white/10">
+        <th class="text-left py-3 pr-4 text-[#8888aa] font-semibold">Solution</th>
+        <th class="text-left py-3 pr-4 text-white font-semibold">Prix</th>
+        <th class="text-left py-3 text-[#8888aa] font-semibold">Limites</th>
+      </tr></thead>
+      <tbody>
+        {[
+          ["Chatbot no-code (Tidio, Crisp)", "0-50 €/mois", "Pas d'IA réelle, arbre de décision figé"],
+          ["ChatGPT / Claude en direct", "20-100 €/mois", "Pas d'intégration, pas d'automatisation réelle"],
+          ["Agent IA Vulcia — Pack Solo", "149 €/mois", "1 agent, 500 conversations, site existant"],
+          ["Agent IA Vulcia — Pack Essentiel", "349 €/mois", "2 agents + nouveau site + SEO"],
+          ["Agent IA Vulcia — Pack Croissance", "790 €/mois", "3 agents + blog + SEO avancé"],
+          ["Développement sur-mesure (agence dev)", "5 000-30 000 € setup", "Long, cher, pas de garantie résultat"],
+        ].map(([sol, prix, limites]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-4 text-white text-xs">{sol}</td>
+            <td class="py-3 pr-4 text-[#7c5cfc] font-semibold text-xs whitespace-nowrap">{prix}</td>
+            <td class="py-3 text-[#8888aa] text-xs">{limites}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comment calculer le ROI d'un agent IA</h2>
+  <p>La formule est simple. Voici un exemple concret pour un artisan plombier :</p>
+  <div class="not-prose glass rounded-2xl p-6">
+    <div class="space-y-3">
+      <div class="flex items-center justify-between py-3 border-b border-white/5">
+        <span class="text-[#8888aa] text-sm">Temps économisé (10h/semaine × 40 €/h)</span>
+        <span class="font-bold text-white text-sm">+1 600 €/mois</span>
+      </div>
+      <div class="flex items-center justify-between py-3 border-b border-white/5">
+        <span class="text-[#8888aa] text-sm">Leads récupérés hors horaires (5/mois × 350 €)</span>
+        <span class="font-bold text-white text-sm">+1 750 €/mois</span>
+      </div>
+      <div class="flex items-center justify-between py-3 border-b border-white/5">
+        <span class="text-[#8888aa] text-sm">Coût Pack Essentiel Vulcia</span>
+        <span class="font-bold text-white text-sm">−349 €/mois</span>
+      </div>
+      <div class="flex items-center justify-between py-3 border-t border-white/10 pt-4">
+        <span class="text-[#8888aa] text-sm">ROI NET</span>
+        <span class="font-bold text-green-400 text-lg">+3 001 €/mois</span>
+      </div>
+    </div>
+  </div>
+  <p class="mt-4">Utilisez notre <a href="/calculateur-roi" class="text-[#7c5cfc] hover:text-white transition-colors">calculateur ROI en ligne</a> pour entrer vos propres données.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">5 questions à poser avant de signer avec une agence IA</h2>
+  <div class="space-y-4 not-prose">
+    {[
+      ["1. Les coûts d'API sont-ils inclus dans le prix ?", "Certaines agences facturent les appels OpenAI ou Anthropic en plus — la facture peut doubler à fort volume."],
+      ["2. Qui est propriétaire des données et de la configuration ?", "Si vous arrêtez le contrat, gardez-vous l'agent ? Vos données restent-elles les vôtres ?"],
+      ["3. Quel SLA de support en cas de panne ?", "Si votre agent IA tombe un samedi soir, qui répond ? En combien de temps ?"],
+      ["4. Comment mesure-t-on le ROI contractuellement ?", "La garantie '90 jours' est belle sur le papier — mais sur quelles métriques exactement ?"],
+      ["5. Le modèle IA utilisé est-il hébergé en France ?", "Pour les données sensibles (santé, juridique), l'hébergement en Europe n'est pas optionnel côté RGPD."],
+    ].map(([q, r]) => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{q}</p>
+        <p class="text-[#8888aa] text-xs">{r}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Aides et subventions pour financer votre agent IA</h2>
+  <p>Plusieurs dispositifs publics peuvent financer une partie de votre investissement IA :</p>
+  <div class="space-y-3 not-prose">
+    {[
+      ["BPI France Diag IA", "Jusqu'à 50% remboursé", "Financement de l'audit IA initial. Notre audit à 590€ HT est éligible."],
+      ["France Num", "Jusqu'à 500€", "Chèque numérique pour les TPE/PME. À combiner avec BPI."],
+      ["OPCO (formation)", "Variable", "La formation à l'utilisation de vos agents IA peut être prise en charge via votre OPCO."],
+      ["CIR / CII", "30% en crédit d'impôt", "Pour les projets d'innovation IA avec une part de R&D identifiable."],
+    ].map(([nom, badge, desc]) => (
+      <div class="glass rounded-xl p-5 flex items-start gap-4">
+        <span class="text-2xl font-black flex-shrink-0" style="color: #7c5cfc;">€</span>
+        <div>
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <p class="text-white font-bold text-sm">{nom}</p>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="color: #34d399; background: rgba(52,211,153,0.1);">{badge}</span>
+          </div>
+          <p class="text-[#8888aa] text-xs">{desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 erreurs à éviter quand on choisit un agent IA</h2>
+  <div class="space-y-4 not-prose">
+    {[
+      ["Erreur 1 : Choisir la solution la moins chère", "Un chatbot à 30€/mois n'est pas un agent IA. Il suit des scripts figés et frustra vos clients. Le coût caché d'une mauvaise expérience client est bien supérieur à la différence de prix."],
+      ["Erreur 2 : Vouloir tout automatiser en une fois", "Commencez par le processus le plus chronophage. Maîtrisez-le, mesurez le ROI, puis élargissez. Les projets IA qui échouent essaient généralement de faire trop en trop peu de temps."],
+      ["Erreur 3 : Ne pas former ses équipes", "Un agent IA géré par quelqu'un qui ne comprend pas son fonctionnement donne de mauvais résultats. Prévoyez 1h de formation à la mise en service, puis un point mensuel pour affiner."],
+    ].map(([titre, desc]) => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-red-400 font-bold text-sm mb-2">{titre}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Prêt à automatiser votre premier processus ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6 max-w-lg mx-auto">En 30 minutes d'audit gratuit, on identifie vos 3 processus les plus chronophages et on vous présente exactement ce que ferait un agent IA — avec un ROI estimé avant de signer.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">Audit gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

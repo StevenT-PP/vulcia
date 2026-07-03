@@ -1,4 +1,4 @@
-﻿---
+---
 import '../styles/global.css';
 
 interface Props {
@@ -21,6 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#080810" />
+  <meta name="google-site-verification" content="Csk8-5a3ch51Oc0etRyFwc0sEhahLxChRm_Ehhsnlro" />
 
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -41,30 +42,63 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png?v=2" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png?v=2" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
 
   <slot name="head" />
 
-  <!-- Preconnect fonts -->
+  <!-- Preload Astron font -->
+  <link rel="preload" href="/fonts/Astron.otf" as="font" type="font/otf" crossorigin />
+
+  <!-- Preconnect / Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
 
+  <!-- Google Analytics + GTM -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VVD6CTFJ4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0VVD6CTFJ4');
+    gtag('config', 'GT-NC6ZPF98');
+  </script>
+
   <!-- JSON-LD Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "ProfessionalService",
     "name": "Vulcia",
     "url": "https://vulcia.fr",
     "logo": "https://vulcia.fr/favicon.svg",
-    "description": "Agence spécialisée en agents IA, automatisation intelligente et SEO pour les entreprises françaises.",
+    "image": "https://vulcia.fr/og.png",
+    "description": "Agence IA française : agents IA sur-mesure, création de sites web et référencement SEO pour les PME et indépendants.",
+    "priceRange": "€€",
+    "areaServed": {
+      "@type": "Country",
+      "name": "France"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "FR"
     },
+    "email": "contact@vulcia.fr",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/vulcia",
+      "https://twitter.com/vulcia"
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "sales",

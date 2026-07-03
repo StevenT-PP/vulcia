@@ -1,8 +1,9 @@
 ---
 const links = [
   { href: '/agent-ia', label: 'Agent IA' },
-  { href: '/offres', label: 'Tarifs' },
-  { href: '/comparatif-ia', label: 'Comparatif' },
+  { href: '/creation-site-web', label: 'Site web' },
+  { href: '/referencement-seo', label: 'SEO' },
+  { href: '/tarifs', label: 'Tarifs' },
   { href: '/blog', label: 'Blog' },
 ];
 
@@ -13,11 +14,8 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2.5 group">
-      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 4L11 18H16L12 27L23 14H17Z" fill="#a78bfa"/>
-      </svg>
-      <span class="font-black text-xl tracking-tight text-white">IA<span style="color: #a78bfa; font-weight: 300; letter-spacing: 0.03em">Forge</span></span>
+    <a href="/" class="flex items-center group">
+      <span style="font-family: 'Astron', sans-serif; font-size: 1.25rem; color: white; letter-spacing: 0.05em;">Vulcia</span>
     </a>
 
     <!-- Nav links (desktop) -->
@@ -34,9 +32,6 @@ const currentPath = Astro.url.pathname;
 
     <!-- CTA -->
     <div class="flex items-center gap-3">
-      <a href="tel:+33600000000" class="hidden md:block text-sm text-[#8888aa] hover:text-white transition-colors">
-        Appel gratuit
-      </a>
       <a
         href="/contact"
         class="text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
