@@ -89,4 +89,22 @@
     opacity: 0;
     transform: translateY(24px);
   }
+
+  .section-alt {
+    background: var(--bg-2);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    background: linear-gradient(135deg, var(--accent), #5b3fdb);
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; }
 }

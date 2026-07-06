@@ -12,6 +12,7 @@ interface Props {
     category: string;
     categoryColor: string;
     slug: string;
+    metaTitle?: string;
   };
 }
 
@@ -56,7 +57,7 @@ const breadcrumb = {
 };
 ---
 
-<Layout title={`${article.title} | Vulcia Blog`} description={article.description}>
+<Layout title={article.metaTitle ?? `${article.title} | Vulcia`} description={article.description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumb)} />
 
