@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "Vulcia - Agence spécialisée en agents IA, automatisation et SEO pour les entreprises. Gagnez du temps, réduisez vos coûts, dominez votre marché.",
+  description = "Vulcia — Agence IA et SEO pour PME françaises. Agents IA sur-mesure, référencement Google et sites web haute performance. Opérationnel en 7 jours. Dès 149€/mois.",
   ogImage = "/og.png"
 } = Astro.props;
 
@@ -74,6 +74,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://vulcia.fr/#organization",
     "name": "Vulcia",
     "url": "https://vulcia.fr",
     "logo": "https://vulcia.fr/favicon.svg",

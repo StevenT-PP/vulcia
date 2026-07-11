@@ -116,7 +116,7 @@ const tiers = [
   title="Tarifs Agent IA | Vulcia — Dès 149€/mois, sans engagement"
   description="Tarifs transparents dès 149€/mois. 0€ de frais d'installation. Garantie résultat 90 jours. Sans engagement. Agent IA configuré pour votre métier en 7 jours."
 >
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
@@ -156,7 +156,7 @@ const tiers = [
         "acceptedAnswer": { "@type": "Answer", "text": "Le dispositif Diag IA de BPI France permet aux PME de moins de 250 salariés de faire financer jusqu'à 50% d'un diagnostic numérique. Notre audit à 590€ HT est éligible : votre coût réel peut descendre à 295€." }
       }
     ]
-  })}</script>
+  })} />
   <Nav />
 
   <section class="pt-32 pb-24 px-6">

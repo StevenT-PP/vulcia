@@ -144,7 +144,7 @@ const sectors = [
   title="Vulcia — Agent IA pour votre métier | Opérationnel en 7 jours"
   description="Vulcia déploie des agents IA sur-mesure, une stratégie SEO automatisée et des sites haute performance pour les PME françaises. Audit gratuit en 30 minutes."
 >
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
@@ -179,7 +179,7 @@ const sectors = [
         "acceptedAnswer": { "@type": "Answer", "text": "Oui, et souvent encore mieux. Les TPE et artisans sont ceux qui gagnent le plus de temps proportionnellement — parce qu'ils font tout seuls. Un assistant virtuel à 149€/mois peut remplacer des heures de gestion administrative quotidienne." }
       }
     ]
-  })}</script>
+  })} />
   <Nav />
 
   <!-- ══════════════════════════════════════

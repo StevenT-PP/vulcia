@@ -44,7 +44,7 @@ const faqItems = [
   title="Agent IA pour entreprise — Configuré pour votre métier | Vulcia"
   description="Déployez un agent IA sur votre site en 7 jours. Répond à vos clients 24h/24, prend les rendez-vous, qualifie les prospects — configuré pour votre secteur d'activité. Dès 149€/mois."
 >
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqItems.map(f => ({
@@ -52,8 +52,8 @@ const faqItems = [
       "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
     }))
-  })}</script>
-  <script type="application/ld+json" slot="head">{JSON.stringify({
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Agent IA sur-mesure pour PME",
@@ -66,7 +66,7 @@ const faqItems = [
       "priceCurrency": "EUR",
       "priceSpecification": { "@type": "RecurringPaymentFrequency", "frequency": "Monthly" }
     }
-  })}</script>
+  })} />
   <Nav />
 
   <!-- HERO -->
