@@ -1,0 +1,34 @@
+Options -Indexes
+
+# HTTPS enforcement
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# WWW → non-WWW
+RewriteCond %{HTTP_HOST} ^www\.vulcia\.fr [NC]
+RewriteRule ^(.*)$ https://vulcia.fr/$1 [R=301,L]
+
+# Old URL redirects (single hop — targets include trailing slash to avoid chaining)
+Redirect 301 /offres /tarifs/
+Redirect 301 /offres/ /tarifs/
+Redirect 301 /comparatif-ia /comparatif/
+Redirect 301 /comparatif-ia/ /comparatif/
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
